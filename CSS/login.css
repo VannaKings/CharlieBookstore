@@ -18,49 +18,87 @@ body
     font-family: 'Montserrat', sans-serif;
 }
 
-.logo{
-    
-    max-width: 100%;
-    margin-top: 60px;
-}
-
 #img-logo{
-    display: block;
     width: 250px;
-    margin: 0 auto;
+    margin-bottom: 5px;
 }
 
 .formulario{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
 }
+
 .formulario form{
+    
     text-align: center;
     margin: 0 auto;
     width: 25%;
-    border: solid 2px var(--azul);
-    padding: 20px 5px;
-    height: 250px;
+    border: solid 2px rgb(219, 219, 219);
+    padding: 20px 40px;    
 }
 .login-title{
     margin-bottom: 30px;
     color: var(--marromEscuro);
 }
 .email, .senha{
-    max-width: 50%;
-    margin: 20px 50px;
+    /* max-width: 50%; */
+    margin: 20px 0;
 }
-p{
-    text-align: start;
+.senha-titulo, .email-titulo{
+    width: 10px;
     font-size: 18px;
     color: var(--marromEscuro);
 }
-.cadastro{
-    border-radius: 20px;
+.entrar{
+    border-radius: 10px;
     border: solid 1px #e4d1ba;
-    padding: 10px 15px;
+    padding: 8px 40px;
     font-size: 16px;
-    margin-top: 10px;
-    background-color: var(--bege);
-    color: var(--marromEscuro);
+    margin: 10px 0 20px 0;
+    background-color: var(--laranja);
+    color: white;
     cursor: pointer;
+}
+div input{
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid var(--bege);
+    outline-style: none;
+    width: 100%;
+}
+
+.cadastro-titulo
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+.cadastro-titulo div
+{
+    background-color: var(--laranja);
+    padding: 2px 40px;
+    border-radius: 1px;
+    margin: 0 10px;
+}
+.cadastro-titulo p
+{
+    margin: 10px 0;
+    color: var(--marromEscuro);
+    font-weight: bold;
+}
+
+button
+{
+    background-color: var(--bege);
+    padding: 10px 60px;
+    color: var(--marromEscuro);
+    border: 1px solid var(--bege);
+    border-radius: 10px;    
+    cursor: pointer;
+    font-size: 16px;
 }
