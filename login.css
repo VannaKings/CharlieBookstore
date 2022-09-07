@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.logo{
+    
+    max-width: 100%;
+    margin-top: 60px;
+}
+#img-logo{
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+    
+}
+.formulario{
+    width: 100%;
+}
+.formulario form{
+    text-align: center;
+    margin: 0 auto;
+    width: 25%;
+    border: solid 2px #2c2c2c;
+    padding: 20px 5px;
+    height: 250px;
+}
+.login-title{
+    margin-bottom: 30px;
+}
+.email, .senha{
+    max-width: 50%;
+    margin: 20px auto;
+}
+p{
+    text-align: start;
+    font-size: 18px;
+}
+.cadastro{
+    border-radius: 20px;
+    border: solid 1px #e4d1ba;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: #e4d1ba;
+    color: #5c3d2f;
+}
