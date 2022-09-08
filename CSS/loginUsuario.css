@@ -29,7 +29,7 @@ body
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .formulario form{
@@ -122,4 +122,5 @@ button
     border-radius: 10px;    
     cursor: pointer;
     font-size: 16px;
+    margin-bottom: 20px;
 }
