@@ -44,15 +44,34 @@ body
     margin-bottom: 30px;
     color: var(--marromEscuro);
 }
-.email, .senha{
+.email, .senha, .redefinir{
     /* max-width: 50%; */
     margin: 20px 0;
 }
+
 .senha-titulo, .email-titulo{
     width: 10px;
     font-size: 18px;
     color: var(--marromEscuro);
 }
+.redefinir
+{
+    text-align: start;
+}
+
+.redefinir a
+{
+    font-size: 14px;
+    color: var(--marronEscuro);
+    text-decoration: none;    
+}
+
+.redefinir a:hover
+{
+    color: var(--marromEscuro);
+    font-weight: bold;
+}
+
 .entrar{
     border-radius: 10px;
     border: solid 1px #e4d1ba;
@@ -63,6 +82,7 @@ body
     color: white;
     cursor: pointer;
 }
+
 div input{
     margin: 10px 0;
     border: none;
@@ -85,6 +105,7 @@ div input{
     border-radius: 1px;
     margin: 0 10px;
 }
+
 .cadastro-titulo p
 {
     margin: 10px 0;
