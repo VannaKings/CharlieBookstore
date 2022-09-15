@@ -30,9 +30,9 @@
         <div class="navegador">
              <!-- Navegador Perfil -->
             <div class="icons">
-                <i class="fa-solid fa-user-gear"></i>
-                <i class="fa-solid fa-gear"></i>
-                <i class="fa-solid fa-unlock"></i>
+                <i class="fa-solid fa-user-gear" style="color:violet ;"></i>
+                <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
+                <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
             </div>           
             <nav class="nav-perfil">                      
                 <a href="">Perfil</a>                
@@ -44,9 +44,9 @@
         <div class="navegador" id="navegador2">
             <!-- Navegador Funções -->
             <div class="icons">
-                <i class="fa-solid fa-house"></i>
-                <i class="fa-solid fa-gear"></i>
-                <i class="fa-solid fa-unlock"></i>
+                <i class="fa-solid fa-house" style="color:#ed8863;"></i>
+                <i class="fa-solid fa-list" style="color:#4ed5a3;"></i>
+                <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
             </div>
             <nav class="nav-funcoes">
                 <a href="#">Home</a>
@@ -56,8 +56,9 @@
         </div>
     </section>
     <!-- Bootstrap -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <main class="conteudo">
+      <nav class="navbar navbar-expand-lg" style="background-color: #61cdff;">
+        <a class="navbar-brand" href="#" style="color: white;">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -65,14 +66,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#" style="color: white;">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#" style="color: white;">Perfil</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+              <a class="nav-link dropdown-toggle" href="#" style="color: white;"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Site
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Action</a>
@@ -83,10 +84,41 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:white; "><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
       </nav>
+      <section class="secao-principal">
+        <h1>Acesso Administrativo</h1>
+        <p>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</p>
+        <div class="funcoes">
+          <div class="card">
+            <img src="imgs/categoria.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Organize suas categorias</h5>
+              <p class="card-text">Adicione, edite ou exclua categorias existentes no seu site</p>
+              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Organizar categorias</a>
+            </div>
+          </div>
+          <div class="card">
+            <img src="imgs/livros.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Customize seus Produtos</h5>
+              <p class="card-text">Personalize a visualização dos seus produtos ou adicione novos</p>
+              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Editar produtos</a>
+            </div>
+          </div>
+          <div class="card">
+            <img src="imgs/book-and-coffee.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Visite seu site</h5>
+              <p class="card-text">Quer ver como ficou sua edição e costumização? Entre no seu site!</p>
+              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Ir para o site</a>
+            </div>
+          </div>
+        </div>
+    </section>
+    </main>
 </body>
 </html>
