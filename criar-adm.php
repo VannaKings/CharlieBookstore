@@ -9,7 +9,7 @@
     <body>
         <h1>Cria um novo Administrador</h1>
         <br>    
-        <Form Action="criar.php" method="POST">
+        <Form Action="criar-adm-confirma.php" method="POST">
             <br>
             Nome : 
             <input type="text" name="nome">
