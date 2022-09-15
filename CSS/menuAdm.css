@@ -1,0 +1,157 @@
+/* Cores da loja */
+:root
+{
+    --marromEscuro: #5c3d2f;
+    --laranja: #b75c3b;
+    --marrom: #be8c66;
+    --bege: #e4d1ba;
+    --azul: #90BDD2;
+    --preto: rgb(70, 70, 70);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(218, 215, 215);
+    display: flex;
+    align-items: flex-start;
+}
+
+p
+{
+    color: var(--preto);
+}
+
+.menu
+{
+    background-color: whitesmoke;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    max-height: 100%;
+    z-index: 1;
+}
+
+.logo img{
+    width: 200px;
+    margin: 20px 10px;
+}
+.perfil
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.perfil .nome
+{
+    font-weight: bold;
+    color: black;
+    margin: 0;
+}
+
+.perfil .cargo
+{
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.perfil img
+{
+    width: 100px;
+}
+
+.navegador
+{
+    display: grid;
+    grid-template-columns: 33px 125px;
+}
+
+#navegador2
+{
+    margin-bottom: 50px;
+}
+
+.icons i
+{
+    margin: 10px 0;
+}
+
+
+.navegador nav 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-perfil a
+{
+    margin: 6px 0 ;
+}
+
+.nav-funcoes a
+{
+    margin: 6px 0 ;
+}
+
+.nav-perfil a:hover
+{
+    color: var(--laranja);
+    font-weight: bold;
+}
+
+.nav-funcoes a:hover
+{
+    color: var(--laranja);
+    font-weight: bold;
+}
+
+.menu h1
+{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 20px 0;
+    width: 155px;
+}
+.navegador a
+{
+    font-size: 16px;
+    color: var(--cinza);
+    text-decoration: none;
+}
+.navegador i
+{
+    color: gray;
+}
+
+form
+{
+    display: flex;
+
+}
+
+nav
+{
+    display: flex; 
+    width: 100%;
+}
+nav a 
+{
+    margin-left: 10px;
+}
+nav .collapse
+{
+    justify-content: space-between;
+}
