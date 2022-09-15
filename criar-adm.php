@@ -20,6 +20,9 @@
             Senha : 
             <input type="password" name="senha">
             <br>
+            Ativo:
+            <input type="number" name="ativo" id="ativo">
+            <br>
             <input type="submit" value="Enviar"> 
         </Form>
         <br>

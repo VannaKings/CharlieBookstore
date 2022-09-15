@@ -24,16 +24,18 @@
         $email = $_POST["email"];
         $senha = $_POST["senha"];
 
-
-        //Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
-        $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
         
+        //Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
+        $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetch();
+        $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
+                          
         //Se o retorno for vazio (0), então a senha ou email estão incorretos
         if(count($admin) == 0){
             echo "Usuário ou senha inválidos";
         }
         else{
-            echo "Usuário autenticado";
+            echo "Usuário autenticado, Olá $adminNome[0]";
+            
         }
     ?>
 </body>
