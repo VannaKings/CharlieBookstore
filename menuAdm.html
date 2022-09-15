@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Charlie Bookstore</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/menuAdm.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0169495cc4.js" crossorigin="anonymous"></script>
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<body>
+    <section class="menu">
+        <!-- Logo -->
+        <figure class="logo">
+            <img src="imgs/logoCharlie.png" alt="">
+        </figure>
+        <!-- Perfil -->
+        <div class="perfil">
+            <img src="imgs/user.png" alt="imagem de perfil">
+            <p class="nome">Fulano de tals</p>
+            <p class="cargo">Administrador</p>
+        </div>
+        <div class="navegador">
+             <!-- Navegador Perfil -->
+            <div class="icons">
+                <i class="fa-solid fa-user-gear"></i>
+                <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-unlock"></i>
+            </div>           
+            <nav class="nav-perfil">                      
+                <a href="">Perfil</a>                
+                <a href="">Configuração</a>
+                <a href="">Sair</a>
+            </nav>
+        </div>
+        <h1>Navegador</h1>
+        <div class="navegador" id="navegador2">
+            <!-- Navegador Funções -->
+            <div class="icons">
+                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-unlock"></i>
+            </div>
+            <nav class="nav-funcoes">
+                <a href="#">Home</a>
+                <a href="#">Categorias</a>
+                <a href="#">Produtos</a>
+            </nav>
+        </div>
+    </section>
+    <!-- Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+</body>
+</html>

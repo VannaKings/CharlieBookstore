@@ -16,6 +16,9 @@
 body
 {
     font-family: 'Montserrat', sans-serif;
+    background-image: url(../imgs/fundoLogin.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #img-logo{
@@ -29,7 +32,8 @@ body
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin: 20px 0;
+    
 }
 
 .formulario form{
@@ -38,7 +42,8 @@ body
     margin: 0 auto;
     width: 25%;
     border: solid 2px rgb(219, 219, 219);
-    padding: 20px 40px;    
+    padding: 40px 40px; 
+    background-color: white;   
 }
 .login-title{
     margin-bottom: 30px;
@@ -77,7 +82,7 @@ body
     border: solid 1px #e4d1ba;
     padding: 8px 40px;
     font-size: 16px;
-    margin: 10px 0 20px 0;
+    margin: 10px 0;
     background-color: var(--laranja);
     color: white;
     cursor: pointer;
@@ -97,6 +102,7 @@ div input{
     align-items: center;
     justify-content: center;
     margin: 10px 0;
+   
 }
 .cadastro-titulo div
 {
@@ -113,14 +119,15 @@ div input{
     font-weight: bold;
 }
 
-button
+.cadastre-se
 {
     background-color: var(--bege);
     padding: 10px 60px;
+    margin-bottom: 20px;
     color: var(--marromEscuro);
     border: 1px solid var(--bege);
     border-radius: 10px;    
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 20px;
+    text-decoration: none;
 }
