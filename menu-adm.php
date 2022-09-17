@@ -39,7 +39,7 @@
       $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
 
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR") ;
-    ?>
+  ?>
     <section class="menu">
         <!-- Logo -->
         <figure class="logo">
@@ -55,7 +55,6 @@
             }
             else{
                 echo "$adminNome[0]";
-                
             }
             ?></p>
             <p class="cargo">Administrador</p>
@@ -66,11 +65,12 @@
                 <i class="fa-solid fa-user-gear" style="color:violet ;"></i>
                 <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
                 <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
-            </div>           
+            </div>
+             <!-- Nav com data-filter -->     
             <nav class="nav-perfil">                      
                 <a href="">Perfil</a>                
-                <a href="cadastro-adm.php">Configuração</a>
-                <a href="loginAdm.html">Sair</a>
+                <a href="" data-filter="configuracao">Configuração</a>
+                <a href="login-adm.html">Sair</a>
             </nav>
         </div>
         <h1>Navegador</h1>
@@ -81,48 +81,49 @@
                 <i class="fa-solid fa-list" style="color:#4ed5a3;"></i>
                 <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
             </div>
+             <!-- Nav com data-filter -->
             <nav class="nav-funcoes">
-                <a href="#">Home</a>
-                <a href="#">Categorias</a>
-                <a href="#">Produtos</a>
+                <a data-filter="home">Home</a>
+                <a>Categorias</a>
+                <a>Produtos</a>
             </nav>
         </div>
     </section>
-    <!-- Bootstrap -->
+    <!-- Bootstrap (com style dentro em algumas tags) -->
     <main class="conteudo">
-      <nav class="navbar navbar-expand-lg" style="background-color: #61cdff;">
-        <a class="navbar-brand" href="#" style="color: white;">Menu</a>
+      <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
+        <a class="navbar-brand" href="#" style="color: white; font-size:24px;">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: white;">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" style="color: white;">Perfil</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" style="color: white;"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Site
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-          </ul>
+        <div class="collapse navbar-collapse navegador" id="navbarSupportedContent">
+          <!-- Nav com data-filter -->
+          <nav class="navbar-nav mr-auto">
+              <a class="nav-link" href="#" style="color: white;" data-filter="home">Home</a>
+              <a class="nav-link" href="#" style="color: white;">Perfil</a>            
+              <nav class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" style="color: white;"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Site
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </nav>
+          </nav>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color:white; "><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
       </nav>
-      <section class="secao-principal">
+
+      <!-- Home -->
+
+      <section class="secao-principal home">
         <h1>Acesso Administrativo</h1>
         <h3>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</h3>
         <div class="funcoes">
@@ -147,12 +148,15 @@
             <div class="card-body">
               <h5 class="card-title">Edite os Administradores</h5>
               <p class="card-text">Adicione ou edite informações de outros administradores</p>
-              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Ir para o site</a>
+              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Configurar admins</a>
             </div>
           </div>
         </div>
     </section>
-    <section class= "secao-principal">
+
+    <!-- Configuração -->
+
+    <section class= "secao-principal configuracao">
     <h1>Configuração</h1>
     <h3>Crie, exclua ou atualize dados de outros administradores</h3>
     <table class="table table-striped table-hover" id="tabela">
@@ -196,9 +200,12 @@
           } //while($linha = $cmd->fetch());
         ?> 
     </table>
+    <button><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
     </section>
     </main>
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<!-- JavaScript -->
+<script src="single-pag.js"></script>
 </html>

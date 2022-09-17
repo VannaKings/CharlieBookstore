@@ -52,7 +52,6 @@ p
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .perfil .nome
@@ -75,6 +74,8 @@ p
     width: 100px;
 }
 
+/* Navegador vertical */
+
 .navegador
 {
     display: grid;
@@ -92,7 +93,7 @@ p
 }
 
 
-.navegador nav 
+.navegador nav
 {
     display: flex;
     flex-direction: column;
@@ -101,11 +102,13 @@ p
 .nav-perfil a
 {
     margin: 6px 0 ;
+    cursor: pointer;
 }
 
 .nav-funcoes a
 {
     margin: 6px 0 ;
+    cursor: pointer;
 }
 
 .nav-perfil a:hover
@@ -116,7 +119,7 @@ p
 
 .nav-funcoes a:hover
 {
-    color: var(--laranja);
+    color:var(--laranja)!important;
     font-weight: bold;
 }
 
@@ -128,6 +131,7 @@ p
     margin: 20px 0;
     width: 155px;
 }
+
 .navegador a
 {
     font-size: 16px;
@@ -135,10 +139,11 @@ p
     text-decoration: none;
 }
 
+/* Navegador horizontal */
+
 form
 {
     display: flex;
-
 }
 
 .navbar
@@ -146,6 +151,11 @@ form
     display: flex; 
     width: 100%;
 }
+.navbar-brand
+{
+    margin-bottom: 5px;
+}
+
 .conteudo
 {
     display: flex; 
@@ -187,9 +197,11 @@ nav .collapse
     --bs-gradient: none;
 }
 
+/* Estilo padrão de todas as seções */
+
 .secao-principal
 {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -207,6 +219,14 @@ nav .collapse
     font-weight: normal;
 }
 
+/* Seção home(inicialmente com display ativo) */
+
+main .home
+{
+    display: flex;
+    flex-direction: column;
+}
+
 .card
 {
     max-width: 300px;
@@ -218,9 +238,41 @@ nav .collapse
     display: flex;
 }
 
+/* Seção de configuração */
+
 #tabela
 {
     max-width: 1000px;
     margin: 20px;
 }
 
+#tabela .fa-pen-to-square
+{
+    color: rgb(109, 210, 109) ;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+#tabela .fa-trash
+{
+    color: rgb(229, 93, 93) ;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.configuracao button
+{
+    padding: 10px 20px;
+    color: white;
+    background-color:rgb(109, 210, 109);
+    margin: 0 20px;
+    border: 1px solid rgb(109, 210, 109);
+    border-radius: 10px;
+    max-width: 300px;
+    font-size: 18px;
+}
+
+.configuracao button i
+{
+    margin-right: 10px;
+}
