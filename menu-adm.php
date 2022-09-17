@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Charlie Bookstore</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="CSS/menuAdm.css">
+    <link rel="stylesheet" href="CSS/menu-adm.css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- Font Awesome -->
@@ -37,6 +37,8 @@
       // Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
       $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
       $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
+
+      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR") ;
     ?>
     <section class="menu">
         <!-- Logo -->
@@ -48,7 +50,7 @@
             <img src="imgs/user.png" alt="imagem de perfil">
             <p class="nome"><?php
             if(count($admin) == 0){
-              header('Location: loginAdmErro.html');
+              header('Location: login-adm-erro.html');
               echo "Usuário ou senha inválidos";
             }
             else{
@@ -67,7 +69,7 @@
             </div>           
             <nav class="nav-perfil">                      
                 <a href="">Perfil</a>                
-                <a href="">Configuração</a>
+                <a href="cadastro-adm.php">Configuração</a>
                 <a href="loginAdm.html">Sair</a>
             </nav>
         </div>
@@ -122,7 +124,7 @@
       </nav>
       <section class="secao-principal">
         <h1>Acesso Administrativo</h1>
-        <p>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</p>
+        <h3>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</h3>
         <div class="funcoes">
           <div class="card">
             <img src="imgs/categoria.jpeg" class="card-img-top" alt="...">
@@ -143,13 +145,60 @@
           <div class="card">
             <img src="imgs/book-and-coffee.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Visite seu site</h5>
-              <p class="card-text">Quer ver como ficou sua edição e costumização? Entre no seu site!</p>
+              <h5 class="card-title">Edite os Administradores</h5>
+              <p class="card-text">Adicione ou edite informações de outros administradores</p>
               <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Ir para o site</a>
             </div>
           </div>
         </div>
     </section>
+    <section class= "secao-principal">
+    <h1>Configuração</h1>
+    <h3>Crie, exclua ou atualize dados de outros administradores</h3>
+    <table class="table table-striped table-hover" id="tabela">
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Adm ativo</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+        <?php
+            //Lista os Admins
+          while($linha = $cmd->fetch())
+          { 
+        ?>
+        <tr>
+          <td>
+            <?php
+              echo $linha["ADM_NOME"];         
+            ?>
+          </td>
+          <td>
+            <?php
+              echo $linha["ADM_EMAIL"];         
+            ?>
+          </td>
+            <?php
+              if($linha["ADM_ATIVO"])
+              {
+                echo '<td class="table-success">Sim</td>';                  
+              }
+              else
+              {
+                echo '<td class="table-danger">Não</td>';
+              }                                        
+            ?>
+            <td><i class="fa-solid fa-pen-to-square"></i></td>
+            <td><i class="fa-solid fa-trash"></i></td>                      
+          </tr>
+        <?php
+          } //while($linha = $cmd->fetch());
+        ?> 
+    </table>
+    </section>
     </main>
 </body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </html>

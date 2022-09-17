@@ -197,14 +197,14 @@ nav .collapse
 {
     margin: 20px;
     color: var(--laranja);
-    
-    max-width: 400px;
+    max-width: 410px;
 }
 
-.secao-principal > p
+.secao-principal h3
 {
     margin-left: 20px;
     font-size: 20px;
+    font-weight: normal;
 }
 
 .card
@@ -217,3 +217,10 @@ nav .collapse
 {
     display: flex;
 }
+
+#tabela
+{
+    max-width: 1000px;
+    margin: 20px;
+}
+
