@@ -47,6 +47,7 @@ p
     width: 200px;
     margin: 20px 10px;
 }
+
 .perfil
 {
     display: flex;
@@ -92,34 +93,22 @@ p
     margin: 10px 0;
 }
 
-
-.navegador nav
+.navegador ul
 {
     display: flex;
     flex-direction: column;
+    list-style: none;
 }
 
-.nav-perfil a
+.nav-perfil li, .nav-funcoes li, .nav-perfil a
 {
     margin: 6px 0 ;
     cursor: pointer;
 }
 
-.nav-funcoes a
-{
-    margin: 6px 0 ;
-    cursor: pointer;
-}
-
-.nav-perfil a:hover
+.nav-perfil li:hover,.nav-perfil a:hover, .nav-funcoes li:hover
 {
     color: var(--laranja);
-    font-weight: bold;
-}
-
-.nav-funcoes a:hover
-{
-    color:var(--laranja)!important;
     font-weight: bold;
 }
 
@@ -131,7 +120,6 @@ p
     margin: 20px 0;
     width: 155px;
 }
-
 .navegador a
 {
     font-size: 16px;
@@ -167,6 +155,7 @@ form button
 {
     margin-right: 20px;
 }
+
 nav a 
 {
     margin-left: 20px;

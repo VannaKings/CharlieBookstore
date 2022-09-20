@@ -26,19 +26,21 @@
       //Mostra a string de conexão do mySQL
       $dsn = 'mysql:host=' . $mysqlhostname . ';dbname=' . $mysqldatabase . ';port=' . $mysqlport;
       $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
-      
-          
 
       //Captura o post do usuário
       $email = $_POST["email"];
       $senha = $_POST["senha"];
 
-      
       // Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
       $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
       $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
+      $adminAtivo = $pdo->query("SELECT ADM_ATIVO FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
 
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR") ;
+
+      if($adminAtivo[0] == false || count($admin) == 0){
+        header('Location: login-adm-erro.html');
+      }
   ?>
     <section class="menu">
         <!-- Logo -->
@@ -49,13 +51,7 @@
         <div class="perfil">
             <img src="imgs/user.png" alt="imagem de perfil">
             <p class="nome"><?php
-            if(count($admin) == 0){
-              header('Location: login-adm-erro.html');
-              echo "Usuário ou senha inválidos";
-            }
-            else{
                 echo "$adminNome[0]";
-            }
             ?></p>
             <p class="cargo">Administrador</p>
         </div>
@@ -67,11 +63,11 @@
                 <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
             </div>
              <!-- Nav com data-filter -->     
-            <nav class="nav-perfil">                      
-                <a href="">Perfil</a>                
-                <a href="" data-filter="configuracao">Configuração</a>
-                <a href="login-adm.html">Sair</a>
-            </nav>
+            <ul class="nav-perfil nav">                      
+                <li class="filtro">Perfil</li>                
+                <li class="filtro" data-filter="configuracao">Configuração</li>
+                <li><a href="login-adm.html">Sair</a></li>
+            </ul>            
         </div>
         <h1>Navegador</h1>
         <div class="navegador" id="navegador2">
@@ -82,11 +78,11 @@
                 <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
             </div>
              <!-- Nav com data-filter -->
-            <nav class="nav-funcoes">
-                <a data-filter="home">Home</a>
-                <a>Categorias</a>
-                <a>Produtos</a>
-            </nav>
+            <ul class="nav-funcoes nav">
+                <li class="filtro" data-filter="home">Home</li>
+                <li class="filtro">Categorias</li>
+                <li class="filtro">Produtos</li>
+            </ul>
         </div>
     </section>
     <!-- Bootstrap (com style dentro em algumas tags) -->
@@ -99,8 +95,8 @@
       
         <div class="collapse navbar-collapse navegador" id="navbarSupportedContent">
           <!-- Nav com data-filter -->
-          <nav class="navbar-nav mr-auto">
-              <a class="nav-link" href="#" style="color: white;" data-filter="home">Home</a>
+          <nav class="nav  navbar-nav mr-auto ">
+              <a class="nav-link filtro" href="#" style="color: white;" data-filter="home">Home</a>
               <a class="nav-link" href="#" style="color: white;">Perfil</a>            
               <nav class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" style="color: white;"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
