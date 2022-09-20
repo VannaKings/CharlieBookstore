@@ -9,6 +9,7 @@
     --azulClaro: #85d1f4;
     --preto: rgb(70, 70, 70);
     --laranjaClaro: rgb(248, 202, 162);
+    --verde: rgb(109, 210, 109);
 }
 
 *{
@@ -129,7 +130,7 @@ p
 
 /* Navegador horizontal */
 
-form
+.form-inline
 {
     display: flex;
 }
@@ -151,7 +152,7 @@ form
     flex-direction: column;
 }
 
-form button
+.form-inline button
 {
     margin-right: 20px;
 }
@@ -237,7 +238,7 @@ main .home
 
 #tabela .fa-pen-to-square
 {
-    color: rgb(109, 210, 109) ;
+    color: var(--verde) ;
     cursor: pointer;
     margin: 0 20px;
 }
@@ -253,9 +254,9 @@ main .home
 {
     padding: 10px 20px;
     color: white;
-    background-color:rgb(109, 210, 109);
+    background-color: var(--verde);
     margin: 0 20px;
-    border: 1px solid rgb(109, 210, 109);
+    border: 1px solid var(--verde);
     border-radius: 10px;
     max-width: 300px;
     font-size: 18px;
@@ -265,3 +266,57 @@ main .home
 {
     margin-right: 10px;
 }
+
+.secao-adicionar
+{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.secao-adicionar .container
+{
+    border: 1px solid rgb(208, 208, 208);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+.secao-adicionar h1
+{
+    color: var(--laranja);
+}
+.form-adm
+{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.form-adm button
+{
+    background-color: var(--verde);
+    border-color: var(--verde);
+    margin-top: 10px;
+}
+
+.form-row
+{
+    display: flex;
+    justify-content: space-between;   
+    max-width: 400px; 
+}
+.email, .senha
+{
+    margin: 10px 0;
+}
+.senha
+{
+    margin-left: 5px;
+    max-width: 190px;
+}
+

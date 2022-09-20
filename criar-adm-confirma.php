@@ -29,9 +29,10 @@
                 $cmd = $pdo->prepare($cmdtext);
 
                 //Executa o comando e verifica se teve sucesso
-                $status = $cmd->execute();
-                if($status) {
-                    echo "Criação do Administrador com sucesso";
+                $isInputEmpty = $nome && $email && $senha
+
+                if($isInputEmpty){
+                    $status = $cmd->execute();
                 } 
                 else{
                     echo "Ocorreu um erro ao inserir";

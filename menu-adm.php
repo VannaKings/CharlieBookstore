@@ -153,50 +153,80 @@
     <!-- Configuração -->
 
     <section class= "secao-principal configuracao">
-    <h1>Configuração</h1>
-    <h3>Crie, exclua ou atualize dados de outros administradores</h3>
-    <table class="table table-striped table-hover" id="tabela">
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Adm ativo</th>
-          <th>Editar</th>
-          <th>Excluir</th>
-        </tr>
-        <?php
-            //Lista os Admins
-          while($linha = $cmd->fetch())
-          { 
-        ?>
-        <tr>
-          <td>
-            <?php
-              echo $linha["ADM_NOME"];         
-            ?>
-          </td>
-          <td>
-            <?php
-              echo $linha["ADM_EMAIL"];         
-            ?>
-          </td>
-            <?php
-              if($linha["ADM_ATIVO"])
-              {
-                echo '<td class="table-success">Sim</td>';                  
-              }
-              else
-              {
-                echo '<td class="table-danger">Não</td>';
-              }                                        
-            ?>
-            <td><i class="fa-solid fa-pen-to-square"></i></td>
-            <td><i class="fa-solid fa-trash"></i></td>                      
+      <h1>Configuração</h1>
+      <h3>Crie, exclua ou atualize dados de outros administradores</h3>
+      <table class="table table-striped table-hover" id="tabela">
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Adm ativo</th>
+            <th>Editar</th>
+            <th>Excluir</th>
           </tr>
-        <?php
-          } //while($linha = $cmd->fetch());
-        ?> 
-    </table>
-    <button><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
+          <?php
+              //Lista os Admins
+            while($linha = $cmd->fetch())
+            { 
+          ?>
+          <tr>
+            <td>
+              <?php
+                echo $linha["ADM_NOME"];         
+              ?>
+            </td>
+            <td>
+              <?php
+                echo $linha["ADM_EMAIL"];         
+              ?>
+            </td>
+              <?php
+                if($linha["ADM_ATIVO"])
+                {
+                  echo '<td class="table-success">Sim</td>';                  
+                }
+                else
+                {
+                  echo '<td class="table-danger">Não</td>';
+                }                                        
+              ?>
+              <td><i class="fa-solid fa-pen-to-square"></i></td>
+              <td><i class="fa-solid fa-trash"></i></td>                      
+            </tr>
+          <?php
+            } //while($linha = $cmd->fetch());
+          ?> 
+      </table>
+      <button class="btn-adicionar-adm"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
+    </section>
+    <section class="secao-adicionar">
+      <div class="container">
+        <h1>Cadastro</h1>
+        <form class="form-adm">
+          <div class="form-group">
+            <label for="inputAddress">Nome</label>
+            <input type="text" class="form-control nome" id="inputName" placeholder="Nome">
+          </div>
+          <div class="form-row">
+            <div class="email form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            </div>          
+            <div class="senha form-group col-md-6">
+              <label for="inputPassword4">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>                 
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Administrador ativo
+              </label>
+            </div>
+          </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+      </div>
     </section>
     </main>
 </body>

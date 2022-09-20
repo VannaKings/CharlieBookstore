@@ -66,6 +66,6 @@
     ?> 
         </table>
         <br>
-        <a href="../index.html">Voltar para o Indice</a>    
+        <a href="login-adm.html">Voltar para o Indice</a>    
     </body>
     </html>
