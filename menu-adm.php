@@ -26,21 +26,22 @@
       //Mostra a string de conexão do mySQL
       $dsn = 'mysql:host=' . $mysqlhostname . ';dbname=' . $mysqldatabase . ';port=' . $mysqlport;
       $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
-
+      
       //Captura o post do usuário
       $email = $_POST["email"];
       $senha = $_POST["senha"];
-
+      $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
+      setcookie('nome', $adminNome[0],time()+3600);
       // Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
       $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
-      $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
+      
       $adminAtivo = $pdo->query("SELECT ADM_ATIVO FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
-
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR") ;
-
+      
       if($adminAtivo[0] == false || count($admin) == 0){
         header('Location: login-adm-erro.html');
       }
+      
   ?>
     <section class="menu">
         <!-- Logo -->
@@ -50,9 +51,11 @@
         <!-- Perfil -->
         <div class="perfil">
             <img src="imgs/user.png" alt="imagem de perfil">
-            <p class="nome"><?php
-                echo "$adminNome[0]";
-            ?></p>
+            <p class="nome">
+              <?php  
+                echo $_COOKIE['nome'];
+              ?>
+            </p>
             <p class="cargo">Administrador</p>
         </div>
         <div class="navegador">
@@ -66,7 +69,7 @@
             <ul class="nav-perfil nav">                      
                 <li class="filtro">Perfil</li>                
                 <li class="filtro" data-filter="configuracao">Configuração</li>
-                <li><a href="login-adm.html">Sair</a></li>
+                <li><a href="login-adm.php">Sair</a></li>
             </ul>            
         </div>
         <h1>Navegador</h1>
