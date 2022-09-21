@@ -193,13 +193,24 @@
                 }                                        
               ?>
               <td><i class="fa-solid fa-pen-to-square"></i></td>
-              <td><i class="fa-solid fa-trash"></i></td>                      
+              
+              <td>
+                <form action="exclui.php" method="post">
+                  <i class="fa-solid fa-trash">
+                    <?php
+                      echo "<input type='text' name='id' value = '$linha[ADM_ID]' style = 'display:none;'> <input type='text' name='ativo' value = '$linha[ADM_ATIVO]' style = 'display:none;'>";
+                    ?>                    
+                    <input type="submit" value="excluir">
+                  </i>
+                </form>
+              </td>                      
             </tr>
           <?php
             } //while($linha = $cmd->fetch());
           ?> 
       </table>
       <button class="btn-adicionar-adm"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
+      
     </section>
     <section class="secao-adicionar">
       <div class="container">
