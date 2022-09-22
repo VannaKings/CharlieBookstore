@@ -28,19 +28,20 @@
       $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
       
       //Captura o post do usuário
-      $email = $_POST["email"];
-      $senha = $_POST["senha"];
-      $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
-      setcookie('nome', $adminNome[0],time()+3600);
+      
+      // $email = $_POST["email"];
+      // $senha = $_POST["senha"];
+      
+      
+      
+      
       // Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
-      $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
       
-      $adminAtivo = $pdo->query("SELECT ADM_ATIVO FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
-      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR") ;
       
-      if($adminAtivo[0] == false || count($admin) == 0){
-        header('Location: login-adm-erro.html');
-      }
+      
+      
+      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR");
+      
       
   ?>
     <section class="menu">
@@ -171,44 +172,48 @@
             while($linha = $cmd->fetch())
             { 
           ?>
-          <tr>
-            <td>
-              <?php
-                echo $linha["ADM_NOME"];         
-              ?>
-            </td>
-            <td>
-              <?php
-                echo $linha["ADM_EMAIL"];         
-              ?>
-            </td>
-              <?php
-                if($linha["ADM_ATIVO"])
-                {
-                  echo '<td class="table-success">Sim</td>';                  
-                }
-                else
-                {
-                  echo '<td class="table-danger">Não</td>';
-                }                                        
-              ?>
-              <td><i class="fa-solid fa-pen-to-square"></i></td>
-              
+            
+            <tr>
               <td>
-                <form action="exclui.php" method="post">
-                  <i class="fa-solid fa-trash">
-                    <?php
-                      echo "<input type='text' name='id' value = '$linha[ADM_ID]' style = 'display:none;'> <input type='text' name='ativo' value = '$linha[ADM_ATIVO]' style = 'display:none;'>";
-                    ?>                    
-                    <input type="submit" value="excluir">
-                  </i>
-                </form>
-              </td>                      
+                <?php
+                  echo $linha["ADM_NOME"];         
+                ?>
+              </td>
+              <td>
+                <?php
+                  echo $linha["ADM_EMAIL"];         
+                ?>
+              </td>
+                <?php
+                  if($linha["ADM_ATIVO"])
+                  {
+                    echo '<td class="table-success">Sim</td>';                  
+                  }
+                  else
+                  {
+                    echo '<td class="table-danger">Não</td>';
+                  }                                        
+                ?>
+                <td><i class="fa-solid fa-pen-to-square"></i></td>
+                
+                <td>
+                  <form action="exclui.php" method="post">
+                    <!-- <i class="fa-solid fa-trash"> -->
+                      <?php
+                        echo "<input type='text' name='id' value = '$linha[ADM_ID]' style = 'display:none;'> <input type='text' name='ativo' value = '$linha[ADM_ATIVO]' style = 'display:none;'>";
+                      ?>                    
+                      <input type="submit" value="Excluir" style = 'padding: 5px;font-size:12px;border-radius:5px;'>
+                    <!-- </i> -->
+                  </form>
+                </td>                      
             </tr>
+            
           <?php
+            
             } //while($linha = $cmd->fetch());
           ?> 
       </table>
+      
       <button class="btn-adicionar-adm"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
       
     </section>
@@ -243,6 +248,7 @@
       </div>
     </section>
     </main>
+    
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

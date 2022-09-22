@@ -1,13 +1,5 @@
 <?php
-    $mysqlhostname = "144.22.244.104";
-    $mysqlport = "3306";
-    $mysqlusername = "CharlieB";
-    $mysqlpassword = "CharlieB";
-    $mysqldatabase = "CharlieBookstore";
-
-    //Mostra a string de conexão do mySQL
-    $dsn = 'mysql:host=' . $mysqlhostname . ';dbname=' . $mysqldatabase . ';port=' . $mysqlport;
-    $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
+    include 'start-mysql.php';
 
 
     $id = $_POST['id'];
@@ -23,5 +15,14 @@
     $cmd->bindValue(":id",$id);
     
     $cmd->execute();
-    echo "Update executado com sucesso";
-    // header('Location: menu-adm.php');
+    header('Location: menu-adm.php');
+?>;
+<!-- <form action="menu-adm.php" method="post">
+    <?php
+        $email = $_COOKIE['email'];
+        $senha = $_COOKIE['senha'];
+        echo "<input type = 'text' value ='$email'  name = 'email' style = 'display:none;'><input type = 'text' value ='$senha' name='senha' style = 'display:none;'>";
+    ?>
+    
+    <input type="submit" value="VOLTAR">
+</form> -->

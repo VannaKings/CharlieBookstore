@@ -15,12 +15,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <body>
     <?php
-        setcookie('nome', ' ',time()+3600);
+        setcookie('nome', '',time()-3600);
+        setcookie('email', '',time()-3600);
+        setcookie('senha', '',time()-3600);
     ?>
     <section class="formulario">
         <!-- Login -->
         
-        <form action="menu-adm.php" method="POST">
+        <form action="logar-adm.php" method="POST">
             <div class="logo">
                 <img src="imgs/logoCharlie.png" alt="" id="img-logo">
             </div>
