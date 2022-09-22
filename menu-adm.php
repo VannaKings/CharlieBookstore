@@ -190,10 +190,10 @@
                 }                                        
               ?>
               <td><i class="fa-solid fa-pen-to-square"></i></td>
-              <td><input class="form-check-input" type="checkbox" id="gridCheck"></td>                      
+              <td><i class="fa-solid fa-trash"></i></td>                      
             </tr>
           <?php
-            } //fechando o while($linha = $cmd->fetch());
+            } //while($linha = $cmd->fetch());
           ?> 
       </table>
       <button class="btn-adicionar-adm"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
