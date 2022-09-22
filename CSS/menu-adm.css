@@ -249,8 +249,18 @@ main .home
     cursor: pointer;
     margin: 0 20px;
 }
+.configuracao form button
+{
+    border-radius: 20px;
+    background-color: var(--verde);
+    padding: 5px 10px;
+    border: 1px solid var(--verde);
+    color: white;
+    font-size: 12px;
+    margin-left: 10px;
+}
 
-.configuracao button
+.configuracao .btn-adicionar-adm
 {
     padding: 10px 20px;
     color: white;
@@ -262,7 +272,7 @@ main .home
     font-size: 18px;
 }
 
-.configuracao button i
+.configuracao .btn-adicionar-adm i
 {
     margin-right: 10px;
 }
@@ -277,7 +287,8 @@ main .home
 
 .secao-adicionar .container
 {
-    border: 1px solid rgb(208, 208, 208);
+    /* border: 1px solid rgb(208, 208, 208); */
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -301,7 +312,7 @@ main .home
 {
     background-color: var(--verde);
     border-color: var(--verde);
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .form-row
@@ -312,7 +323,7 @@ main .home
 }
 .email, .senha
 {
-    margin: 10px 0;
+    margin: 20px 0;
 }
 .senha
 {

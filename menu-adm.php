@@ -32,17 +32,8 @@
       // $email = $_POST["email"];
       // $senha = $_POST["senha"];
       
-      
-      
-      
-      // Realiza uma Query SQL para buscar o administrador que tenha o email e a senha passado pelo usuário
-      
-      
-      
-      
-      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR");
-      
-      
+      // Realiza uma Query SQL para buscar todos os administradores
+      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@fulano%'");  
   ?>
     <section class="menu">
         <!-- Logo -->
@@ -163,9 +154,9 @@
           <tr>
             <th>Nome</th>
             <th>Email</th>
-            <th>Adm ativo</th>
+            <th>Acesso adm</th>
             <th>Editar</th>
-            <th>Excluir</th>
+            <th>Trocar acesso</th>
           </tr>
           <?php
               //Lista os Admins
@@ -198,41 +189,39 @@
                 
                 <td>
                   <form action="exclui.php" method="post">
-                    <!-- <i class="fa-solid fa-trash"> -->
-                      <?php
-                        echo "<input type='text' name='id' value = '$linha[ADM_ID]' style = 'display:none;'> <input type='text' name='ativo' value = '$linha[ADM_ATIVO]' style = 'display:none;'>";
-                      ?>                    
-                      <input type="submit" value="Excluir" style = 'padding: 5px;font-size:12px;border-radius:5px;'>
-                    <!-- </i> -->
+                    <?php                    
+                      echo "<input type='text' name='id' value = '$linha[ADM_ID]' style = 'display:none;'>
+                      <input class='form-check-input' name='ativo' type='checkbox' id='gridCheck' value ='$linha[ADM_ATIVO]'>"                   
+                    ?> 
+                    <button type="submit"class="btn-trocar-adm"><i class="fa-solid fa-rotate-right"></i></button>
                   </form>
                 </td>                      
-            </tr>
-            
+            </tr>            
           <?php
-            
             } //while($linha = $cmd->fetch());
           ?> 
       </table>
       
       <button class="btn-adicionar-adm"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
       
+      
     </section>
     <section class="secao-adicionar">
       <div class="container">
         <h1>Cadastro</h1>
-        <form class="form-adm">
+        <form class="form-adm" Action="criar-adm-confirma.php" method="POST">
           <div class="form-group">
             <label for="inputAddress">Nome</label>
-            <input type="text" class="form-control nome" id="inputName" placeholder="Nome">
+            <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome">
           </div>
           <div class="form-row">
             <div class="email form-group col-md-6">
               <label for="inputEmail4">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
             </div>          
             <div class="senha form-group col-md-6">
               <label for="inputPassword4">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Password">
             </div>                 
           </div>
           <div class="form-group">
@@ -243,7 +232,7 @@
               </label>
             </div>
           </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <button type="submit" class="btn btn-primary" value="Enviar">Cadastrar</button>
         </form>
       </div>
     </section>
