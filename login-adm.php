@@ -14,6 +14,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <body>
+    <?php
+        setcookie('nome', '',time()-3600);
+        setcookie('email', '',time()-3600);
+        setcookie('senha', '',time()-3600);
+    ?>
     <section class="formulario">
         <!-- Login -->
         
@@ -22,7 +27,6 @@
                 <img src="imgs/logoCharlie.png" alt="" id="img-logo">
             </div>
             <h1 class="login-title">Acesso Admin</h1>
-            <p style = "color: #ff3333">Usuário ou senha inválidos</p>
             <div class="email">
                 <p class="email-titulo">Email: </p>
                 <input type="email" name="email" id="email">

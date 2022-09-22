@@ -6,15 +6,7 @@
         <h1>Listar os Administradores</h1>
         <br>
     <?php
-        $mysqlhostname = "144.22.244.104";
-        $mysqlport = "3306";
-        $mysqlusername = "CharlieB";
-        $mysqlpassword = "CharlieB";
-        $mysqldatabase = "CharlieBookstore";
-
-        //Mostra a string de conexão do mySQL e Conecta no banco de dados
-        $dsn = 'mysql:host=' . $mysqlhostname . ';dbname=' . $mysqldatabase . ';port=' . $mysqlport;
-        $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
+        include 'start-mysql.php';
 
         //Monta o comando de inserção
         $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR") ;
