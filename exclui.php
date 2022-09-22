@@ -15,7 +15,7 @@
     $cmd->bindValue(":id",$id);
     
     $cmd->execute();
-    header('Location: menu-adm.php');
+    header('Location: menu-adm-sucesso.php');
 ?>;
 <!-- <form action="menu-adm.php" method="post">
     <?php
