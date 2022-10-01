@@ -240,27 +240,22 @@ main .home
 {
     color: var(--verde) ;
     cursor: pointer;
-    margin: 0 20px;
+    margin: 0 10px;
 }
 
-#tabela .fa-trash
+#tabela .fa-circle-check
 {
-    color: rgb(229, 93, 93) ;
-    cursor: pointer;
-    margin: 0 20px;
-}
-.configuracao form button
-{
-    border-radius: 20px;
-    background-color: var(--verde);
-    padding: 5px 10px;
-    border: 1px solid var(--verde);
-    color: white;
-    font-size: 12px;
-    margin-left: 10px;
+    color: var(--verde);
+    margin: 0 10px;
 }
 
-.configuracao .btn-adicionar-adm
+#tabela .fa-circle-exclamation
+{
+    color: red;
+    margin: 0 10px;
+}
+
+.configuracao .btn-cadastro
 {
     padding: 10px 20px;
     color: white;
@@ -272,7 +267,7 @@ main .home
     font-size: 18px;
 }
 
-.configuracao .btn-adicionar-adm i
+.configuracao .btn-primary i
 {
     margin-right: 10px;
 }
@@ -297,9 +292,10 @@ main .home
     margin-bottom: 40px;
 }
 
-.secao-adicionar h1
+.modal-header .modal-title
 {
     color: var(--laranja);
+    font-size: 36px;
 }
 .form-adm
 {
@@ -308,18 +304,17 @@ main .home
     max-width: 500px;
 }
 
-.form-adm button
+.form-adm .btn-adicionar
 {
     background-color: var(--verde);
     border-color: var(--verde);
-    margin-top: 20px;
 }
 
 .form-row
 {
     display: flex;
     justify-content: space-between;   
-    max-width: 400px; 
+    max-width: 500px; 
 }
 .email, .senha
 {
@@ -327,6 +322,5 @@ main .home
 }
 .senha
 {
-    margin-left: 5px;
-    max-width: 190px;
+    max-width: 220px;
 }

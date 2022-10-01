@@ -21,12 +21,12 @@ for (i = 0; i < nav.length; i++) {
 
 //Mostrando o adicionar cadastro
 
-const botao = document.querySelector(".btn-adicionar-adm")
-const secaoAddAdm = document.querySelector(".secao-adicionar")
+// const botao = document.querySelector(".btn-adicionar-adm")
+// const secaoAddAdm = document.querySelector(".secao-adicionar")
 
-botao.addEventListener("click",(event) => {
-    event.preventDefault();
+// botao.addEventListener("click",(event) => {
+//     event.preventDefault();
 
-    secaoAddAdm.style.display = "flex"
-    botao.style.display = "none"
-})
+//     secaoAddAdm.style.display = "flex"
+//     botao.style.display = "none"
+// })
