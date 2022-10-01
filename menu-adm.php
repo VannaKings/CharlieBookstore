@@ -143,133 +143,143 @@
             </div>
           </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Configuração -->
+      <!-- Configuração -->
 
-    <section class= "secao-principal configuracao">
-      <h1>Configuração</h1>
-      <h3>Crie, exclua ou atualize dados de outros administradores</h3>
-      <table class="table table-striped table-hover" id="tabela">
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Ativo</th>
-            <th>Editar</th>
-          </tr>
-          <?php
-              //Lista os Admins
-            while($linha = $cmd->fetch())
-            { 
-          ?>
-            
+      <section class= "secao-principal configuracao">
+        <h1>Configuração</h1>
+        <h3>Crie, exclua ou atualize dados de outros administradores</h3>
+        <table class="table table-striped table-hover" id="tabela">
             <tr>
-              <td>
-                <?php
-                  echo $linha["ADM_NOME"];         
-                ?>
-              </td>
-              <td>
-                <?php
-                  echo $linha["ADM_EMAIL"];         
-                ?>
-              </td>
-                <?php
-                  if($linha["ADM_ATIVO"])
-                  {
-                    echo '<td class=""><i class="fa-solid fa-circle-check"></i></td>';                  
-                  }
-                  else
-                  {
-                    echo '<td class=""><i class="fa-solid fa-circle-exclamation"></i></td>';
-                  }                                        
-                ?>
-                <td><i class="fa-solid fa-pen-to-square"></i></td>                 
-            </tr>            
-          <?php
-            } //while($linha = $cmd->fetch());
-          ?> 
-      </table>
-      
-      <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
-      
-      <!-- Modal -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Cadastro</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ativo</th>
+              <th>Editar</th>
+            </tr>
+            <?php
+                //Lista os Admins
+              while($linha = $cmd->fetch())
+              { 
+            ?>
+              
+              <tr>
+                <td>
+                  <?php
+                    echo $linha["ADM_NOME"];         
+                  ?>
+                </td>
+                <td>
+                  <?php
+                    echo $linha["ADM_EMAIL"];         
+                  ?>
+                </td>
+                  <?php
+                    if($linha["ADM_ATIVO"])
+                    {
+                      echo '<td class=""><i class="fa-solid fa-circle-check"></i></td>';                  
+                    }
+                    else
+                    {
+                      echo '<td class=""><i class="fa-solid fa-circle-exclamation"></i></td>';
+                    }                                        
+                  ?>
+                  <td><button type="button" class="btn btn-primary" style="background: none; border: none; padding: 0;"data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar"><i class="fa-solid fa-pen-to-square"></i></button></td>                 
+              </tr>            
+            <?php
+              } //while($linha = $cmd->fetch());
+            ?> 
+        </table>
+        
+        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
+        
+        <!-- Modal Cadastro -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
 
-            <form class="form-adm" Action="criar-adm-confirma.php" method="POST">
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="inputAddress">Nome</label>
-                  <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome">
-                </div>
-                <div class="form-row">
-                  <div class="email form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                  </div>          
-                  <div class="senha form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                  </div>                 
-                </div>
-                <div class="form-group">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                      Administrador ativo
-                    </label>
+              <form class="form-adm" Action="criar-adm-confirma.php" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="inputAddress">Nome</label>
+                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome">
+                  </div>
+                  <div class="form-row">
+                    <div class="email form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>          
+                    <div class="senha form-group col-md-6">
+                      <label for="inputPassword4">Password</label>
+                      <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Administrador ativo
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
-              </div>
-            </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
+                </div>
+              </form>
 
-          </div>
-        </div>
-      </div>
-    </section>  
-    <!-- 
-    <section class="secao-adicionar">
-      <div class="container">
-        <h1>Cadastro</h1>
-        <form class="form-adm" Action="criar-adm-confirma.php" method="POST">
-          <div class="form-group">
-            <label for="inputAddress">Nome</label>
-            <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome">
-          </div>
-          <div class="form-row">
-            <div class="email form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>          
-            <div class="senha form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>                 
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Administrador ativo
-              </label>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" value="Enviar">Cadastrar</button>
-        </form>
-      </div>
-    </section>
-    </main> -->
-    
+        </div>
+
+        <div class="modal fade" id="staticBackdrop-editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="criar-adm-confirma.php" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="inputAddress">Nome</label>
+                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome">
+                  </div>
+                  <div class="form-row">
+                    <div class="email form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>          
+                    <div class="senha form-group col-md-6">
+                      <label for="inputPassword4">Password</label>
+                      <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Administrador ativo
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>     
+    </main>
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
