@@ -156,9 +156,9 @@
               while($linha = $cmd->fetch())
               { 
             ?>
-              
               <tr>
                 <td class = "nome-adm-tabela">
+
                   <?php
                     echo $linha["ADM_NOME"];         
                   ?>
@@ -179,8 +179,7 @@
                     }                                        
                   ?>
                   <td>
-                    <?php
-                      $id = $linha["ADM_ID"]; 
+                    <?php                      
                       echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>"; 
                     ?>
                   </td>
@@ -211,16 +210,17 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-
               <form class="form-adm" Action="criar-adm.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
                     <label for="inputAddress">Nome</label>
                     <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
+
                   </div>
                   <div class="form-row">
                     <div class="email form-group col-md-6">
                       <label for="inputEmail4">Email</label>
+
                       <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
                     </div>          
                     <div class="senha form-group col-md-6">
