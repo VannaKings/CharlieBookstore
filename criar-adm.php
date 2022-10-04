@@ -6,25 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar adm</title>
 </head>
-    <body>
-        <h1>Cria um novo Administrador</h1>
-        <br>    
-        <Form Action="criar-adm-confirma.php" method="POST">
-            <br>
-            Nome : 
-            <input type="text" name="nome">
-            <br>
-            Email : 
-            <input type="text" name="email">
-            <br>
-            Senha : 
-            <input type="password" name="senha">
-            <br>
-            Ativo:
-            <input type="number" name="ativo" id="ativo">
-            <br>
-            <input type="submit" value="Enviar"> 
-        </Form>
-        <br>
-    </body>
+<body>
+    <?php
+        include 'start-mysql.php';
+
+        //Captura o post do usuário
+        $nome = $_POST["nome"];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];                
+        
+        //Checando o checkbox
+        if(isset($_POST["ativo"]))
+        {
+            $ativo = 1;
+        }
+        else
+        {
+            $ativo = 0;
+        }
+        
+        //Monta o comando de inscrição
+        $cmdtext = "INSERT INTO ADMINISTRADOR(ADM_NOME, ADM_EMAIL, ADM_SENHA, ADM_ATIVO) VALUES('" . $nome . "','" . $email . "','" . $senha . "','" . $ativo . "')";
+        $cmd = $pdo->prepare($cmdtext);
+
+        //Executa o comando e verifica se teve sucesso
+        $isInputEmpty = $nome && $email && $senha;
+
+        if($isInputEmpty){
+            $status = $cmd->execute();
+            header('Location: menu-adm.php');
+        } 
+        else{
+            echo "Ocorreu um erro ao inserir";
+            header('Location: menu-adm-erro.php');
+        }
+
+    ?>
+</body>
 </html>
