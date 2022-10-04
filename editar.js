@@ -12,7 +12,7 @@ let senhaTabela = Array.from(document.getElementsByClassName("senha-adm-tabela")
 let button = Array.from(document.getElementsByClassName("btn-selecionar-editar"));
 
 
-//Chamando a função a todos botões e atribuindo a chave de cada com o index
+//Chamando a função em todos os botões e atribuindo a chave de cada um com o index do array
 button.forEach((element, index) => {
     element.setAttribute("chave", index);
     element.addEventListener("click", showEdit);
