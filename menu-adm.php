@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -17,23 +17,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <body>
   <?php 
-      $mysqlhostname = "144.22.244.104";
-      $mysqlport = "3306";
-      $mysqlusername = "CharlieB";
-      $mysqlpassword = "CharlieB";
-      $mysqldatabase = "CharlieBookstore";
-
-      //Mostra a string de conexão do mySQL
-      $dsn = 'mysql:host=' . $mysqlhostname . ';dbname=' . $mysqldatabase . ';port=' . $mysqlport;
-      $pdo = new PDO($dsn, $mysqlusername, $mysqlpassword);
-      
-      //Captura o post do usuário
-      
-      // $email = $_POST["email"];
-      // $senha = $_POST["senha"];
+      include "start-mysql.php";
       
       // Realiza uma Query SQL para buscar todos os administradores
-      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@fulano%'");  
+      // $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@fulano%'");
+      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+      
+      if(!$_COOKIE['nome']){
+        header('Location:login-adm-erro.html');
+      }  
+      
+  
   ?>
     <section class="menu">
         <!-- Logo -->
@@ -143,104 +137,166 @@
             </div>
           </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Configuração -->
+      <!-- Configuração -->
 
-    <section class= "secao-principal configuracao">
-      <h1>Configuração</h1>
-      <h3>Crie, exclua ou atualize dados de outros administradores</h3>
-      <table class="table table-striped table-hover" id="tabela">
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Acesso adm</th>
-            <th>Editar</th>
-            <th>Trocar acesso</th>
-          </tr>
-          <?php
-              //Lista os Admins
-            while($linha = $cmd->fetch())
-            { 
-          ?>
-            
+      <section class= "secao-principal configuracao">
+        <h1>Configuração</h1>
+        <h3>Crie, exclua ou atualize dados de outros administradores</h3>
+        <table class="table table-striped table-hover" id="tabela">
             <tr>
-              <td>
-                <?php
-                  echo $linha["ADM_NOME"];         
-                ?>
-              </td>
-              <td>
-                <?php
-                  echo $linha["ADM_EMAIL"];         
-                ?>
-              </td>
-                <?php
-                  if($linha["ADM_ATIVO"])
-                  {
-                    echo '<td class="table-success">Sim</td>';                  
-                  }
-                  else
-                  {
-                    echo '<td class="table-danger">Não</td>';
-                  }                                        
-                ?>
-                <td><i class="fa-solid fa-pen-to-square"></i></td>
-                
-                <td>
-                  <form action="exclui.php" method="post">
-                    <?php                    
-                      echo "<input type='text' name='id' value = '$linha[ADM_ID]' style = 'display:none;'>
-                      <input class='form-check-input' name='ativo' type='checkbox' id='gridCheck' value ='$linha[ADM_ATIVO]'>"                   
-                    ?> 
-                    <button type="submit"class="btn-trocar-adm"><i class="fa-solid fa-rotate-right"></i></button>
-                  </form>
-                </td>                      
-            </tr>            
-          <?php
-            } //while($linha = $cmd->fetch());
-          ?> 
-      </table>
-      
-      <button class="btn-adicionar-adm"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
-      
-      
-    </section>
-    <section class="secao-adicionar">
-      <div class="container">
-        <h1>Cadastro</h1>
-        <form class="form-adm" Action="criar-adm-confirma.php" method="POST">
-          <div class="form-group">
-            <label for="inputAddress">Nome</label>
-            <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome">
-          </div>
-          <div class="form-row">
-            <div class="email form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
-            </div>          
-            <div class="senha form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Password">
-            </div>                 
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Administrador ativo
-              </label>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ativo</th>
+              <th>Editar</th>
+            </tr>
+            <?php
+                //Lista os Admins
+              while($linha = $cmd->fetch())
+              { 
+            ?>
+              
+              <tr>
+                <td class = "nome-adm-tabela">
+                  <?php
+                    echo $linha["ADM_NOME"];         
+                  ?>
+                </td>
+                <td class = "email-adm-tabela">
+                  <?php
+                    echo $linha["ADM_EMAIL"];         
+                  ?>
+                </td>
+                  <?php
+                    if($linha["ADM_ATIVO"])
+                    {
+                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                    }
+                    else
+                    {
+                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                    }                                        
+                  ?>
+                  <td>
+                    <?php
+                      $id = $linha["ADM_ID"]; 
+                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>"; 
+                    ?>
+                  </td>
+                  <td class = "senha-adm-tabela" style = "display:none;">
+                    <?php
+                      
+                      echo $linha["ADM_SENHA"]; 
+                    ?>
+                  </td>
+                  <td class = "id-adm-tabela" style = "display:none;">
+                    <?php
+                      echo $linha["ADM_ID"];
+                    ?>
+                  </td>                 
+              </tr>            
+            <?php
+              } //while($linha = $cmd->fetch());
+            ?> 
+        </table>
+        
+        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
+        
+        <!-- Modal Cadastro -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="criar-adm.php" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="inputAddress">Nome</label>
+                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
+                  </div>
+                  <div class="form-row">
+                    <div class="email form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                    </div>          
+                    <div class="senha form-group col-md-6">
+                      <label for="inputPassword4">Senha</label>
+                      <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Senha" required>
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input"  name="ativo" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Administrador ativo
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
+                </div>
+              </form>
+
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" value="Enviar">Cadastrar</button>
-        </form>
-      </div>
-    </section>
+        </div>
+        
+        <!-- Modal Editar -->
+        <div class="modal fade" id="staticBackdrop-editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="edita-adm.php" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <label for="inputAddress">Nome</label>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                  </div>
+                  <div class="form-row">
+                    <div class="email form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input name="email" type="email" class="form-control inputEmail" id="inputEmail4" placeholder="Email" required>
+                    </div>          
+                    <div class="senha form-group col-md-6">
+                      <label for="inputPassword4">Senha</label>
+                      <input name="senha" type="password" class="form-control inputSenha" id="inputPassword4" placeholder="Senha" required>
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name = 'ativo' value = "1">
+                      <label class="form-check-label" for="gridCheck">
+                        Administrador ativo
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>     
     </main>
-    
 </body>
+
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
 <script src="single-pag.js"></script>
+<script src = "editar.js"></script>
 </html>
