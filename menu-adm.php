@@ -47,14 +47,15 @@
         <div class="navegador">
              <!-- Navegador Perfil -->
             <div class="icons">
+                <i class="fa-solid fa-house" style="color:#ed8863;"></i>
                 <i class="fa-solid fa-user-gear" style="color:violet ;"></i>
-                <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
+                
                 <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
             </div>
              <!-- Nav com data-filter -->     
-            <ul class="nav-perfil nav">                      
-                <li class="filtro">Perfil</li>                
-                <li class="filtro" data-filter="configuracao">Configuração</li>
+            <ul class="nav-perfil nav">  
+                <li class="filtro" data-filter="home">Home</li>                      
+                <li class="filtro">Perfil</li>                          
                 <li><a href="login-adm.php">Sair</a></li>
             </ul>            
         </div>
@@ -62,15 +63,15 @@
         <div class="navegador" id="navegador2">
             <!-- Navegador Funções -->
             <div class="icons">
-                <i class="fa-solid fa-house" style="color:#ed8863;"></i>
+                <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
                 <i class="fa-solid fa-list" style="color:#4ed5a3;"></i>
                 <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
             </div>
              <!-- Nav com data-filter -->
             <ul class="nav-funcoes nav">
-                <li class="filtro" data-filter="home">Home</li>
-                <li class="filtro">Categorias</li>
-                <li class="filtro">Produtos</li>
+                <li class="filtro" data-filter="configuracao">Configuração</li>
+                <li class="filtro" data-filter="categorias">Categorias</li>
+                <li class="filtro" data-filter="produtos">Produtos</li>
             </ul>
         </div>
     </section>
@@ -87,17 +88,7 @@
           <nav class="nav  navbar-nav mr-auto ">
               <a class="nav-link filtro" href="#" style="color: white;" data-filter="home">Home</a>
               <a class="nav-link" href="#" style="color: white;">Perfil</a>            
-              <nav class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" style="color: white;"id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Site
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </nav>
+              <a class="nav-link" href="#" style="color: white;">Site</a>              
           </nav>
         </div>
       </nav>
@@ -108,28 +99,28 @@
         <h1>Acesso Administrativo</h1>
         <h3>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</h3>
         <div class="funcoes">
-          <div class="card">
+          <div class="card navegador">
             <img src="imgs/categoria.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body nav">
               <h5 class="card-title">Organize suas categorias</h5>
               <p class="card-text">Adicione, edite ou exclua categorias existentes no seu site</p>
-              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Organizar categorias</a>
+              <a href="#" class="btn btn-primary filtro" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="categorias">Organizar categorias</a>
             </div>
           </div>
-          <div class="card">
+          <div class="card navegador">
             <img src="imgs/livros.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body nav">
               <h5 class="card-title">Customize seus Produtos</h5>
               <p class="card-text">Personalize a visualização dos seus produtos ou adicione novos</p>
-              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Editar produtos</a>
+              <a href="#" class="btn btn-primary filtro" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="produtos">Editar produtos</a>
             </div>
           </div>
-          <div class="card">
+          <div class="card navegador">
             <img src="imgs/book-and-coffee.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body nav">
               <h5 class="card-title">Edite os Administradores</h5>
               <p class="card-text">Adicione ou edite informações de outros administradores</p>
-              <a href="#" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863;">Configurar admins</a>
+              <a href="#" class="btn btn-primary filtro" data-filter="configuracao" style="background-color: #ed8863; border-color: #ed8863; color: white">Configurar admins</a>
             </div>
           </div>
         </div>
@@ -209,18 +200,17 @@
               <form class="form-adm" Action="criar-adm.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <label for="inputAddress">Nome</label>
+                    <label for="inputAddress">Nome:</label>
                     <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
 
                   </div>
-                  <div class="form-row">
-                    <div class="email form-group col-md-6">
-                      <label for="inputEmail4">Email</label>
-
+                  <div class="form-group row">
+                    <div class="col">
+                      <label for="inputEmail4">Email:</label>
                       <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
                     </div>          
-                    <div class="senha form-group col-md-6">
-                      <label for="inputPassword4">Senha</label>
+                    <div class="col">
+                      <label for="inputPassword4">Senha:</label>
                       <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Senha" required>
                     </div>                 
                   </div>
@@ -259,12 +249,12 @@
                     <label for="inputAddress">Nome</label>
                     <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
                   </div>
-                  <div class="form-row">
-                    <div class="email form-group col-md-6">
+                  <div class="form-group row">
+                    <div class="col">
                       <label for="inputEmail4">Email</label>
                       <input name="email" type="email" class="form-control inputEmail" id="inputEmail4" placeholder="Email" required>
                     </div>          
-                    <div class="senha form-group col-md-6">
+                    <div class="col">
                       <label for="inputPassword4">Senha</label>
                       <input name="senha" type="password" class="form-control inputSenha" id="inputPassword4" placeholder="Senha" required>
                     </div>                 
@@ -286,7 +276,186 @@
             </div>
           </div>
         </div>
-      </section>     
+      </section>
+      
+      
+      <!-- Seção Produtos -->
+
+      <section class= "secao-principal produtos secao-produtos">
+        <h1>Produtos</h1>
+        <h3>Adicione ou edite produtos já existentes do seu site.</h3>
+        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-adicionar-produto"><i class="fa-solid fa-book"></i>Adicionar produto</button>
+        <div class="container">
+          <div class="container-filtro">
+              <div class="titulo_filtro">
+                  <i class="fa-solid fa-bookmark"></i>
+                  <strong>FILTRO</strong>
+              </div>
+              <p>Categorias</p>
+              <div class="filter-box">
+                  <a href="#" class="" >Todos</a>
+                  <a href="#" class="">Categoria</a>
+                  <a href="#" class="">Categoria</a>
+                  <a href="#" class="">Categoria</a>
+              </div>
+          </div>
+          <div class="container-nav-produtos">
+            <div class="container-produtos">
+              <div class="produto card">
+                  <img src="" alt="">
+                  <p class="nome"><strong>Nome do produto</strong></p>
+                  <p class="preço">R$ 0,00 </p>
+                  <p class="estoque">N produtos em estoque</p>
+                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+              </div>
+              <div class="produto card">
+                  <img src="" alt="">
+                  <p class="nome"><strong>Nome do produto</strong></p>
+                  <p class="preço">R$ 0,00 </p>
+                  <p class="estoque">N produtos em estoque</p>
+                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+              </div>
+              <div class="produto card">
+                  <img src="" alt="">
+                  <p class="nome"><strong>Nome do produto</strong></p>
+                  <p class="preço">R$ 0,00 </p>
+                  <p class="estoque">N produtos em estoque</p>
+                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+              </div>
+              <div class="produto card">
+                  <img src="" alt="">
+                  <p class="nome"><strong>Nome do produto</strong></p>
+                  <p class="preço">R$ 0,00 </p>
+                  <p class="estoque">N produtos em estoque</p>
+                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+              </div>
+              <div class="produto card">
+                  <img src="" alt="">
+                  <p class="nome"><strong>Nome do produto</strong></p>
+                  <p class="preço">R$ 0,00 </p>
+                  <p class="estoque">N produtos em estoque</p>
+                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+              </div>
+              <div class="produto card">
+                  <img src="" alt="">
+                  <p class="nome"><strong>Nome do produto</strong></p>
+                  <p class="preço">R$ 0,00 </p>
+                  <p class="estoque">N produtos em estoque</p>
+                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+              </div>
+          </div>
+        </div>
+
+        <!-- Modal Editar -->
+
+        <div class="modal fade" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <label for="inputAddress">Título:</label>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="inputAddress">Preço:</label>
+                      <input type="text" class="form-control" aria-label="First name">
+                    </div>
+                    <div class="col">
+                      <label for="inputAddress">Desconto:</label>
+                      <input type="text" class="form-control" aria-label="Last name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword4">Categoria:</label> 
+                    <div class="input-group flex-nowrap">                      
+                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
+                      <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword4">Estoque:</label> 
+                    <div class="input-group flex-nowrap">                      
+                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
+                      <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descrição:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Adicionar -->
+
+        <div class="modal fade" id="staticBackdrop-adicionar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Adicionar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <label for="inputAddress">Título:</label>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="inputAddress">Preço:</label>
+                      <input type="text" class="form-control" aria-label="First name">
+                    </div>
+                    <div class="col">
+                      <label for="inputAddress">Desconto:</label>
+                      <input type="text" class="form-control" aria-label="Last name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword4">Categoria:</label> 
+                    <div class="input-group flex-nowrap">                      
+                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
+                      <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword4">Estoque:</label> 
+                    <div class="input-group flex-nowrap">                      
+                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
+                      <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>                 
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descrição:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 </body>
 

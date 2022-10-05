@@ -1,4 +1,5 @@
 const nav = document.querySelectorAll(".navegador .nav .filtro");
+console.log(nav)
 const secoes = document.querySelectorAll(".secao-principal")
 
 for (i = 0; i < nav.length; i++) {

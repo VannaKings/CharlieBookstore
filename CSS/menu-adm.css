@@ -223,15 +223,15 @@ main .home
     flex-direction: column;
 }
 
+.funcoes
+{
+    display: flex;    
+}
+
 .card
 {
     max-width: 300px;
     margin: 20px 20px;
-}
-
-.funcoes
-{
-    display: flex;
 }
 
 /* Seção de configuração */
@@ -303,12 +303,7 @@ main .home
     color: var(--laranja);
     font-size: 36px;
 }
-.form-adm
-{
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-}
+
 
 .form-adm .btn-adicionar
 {
@@ -316,17 +311,165 @@ main .home
     border-color: var(--verde);
 }
 
-.form-row
+.form-check
+{
+    margin: 10px 0;
+}
+
+/* -----Seção Produtos----- */
+
+.secao-produtos .container
 {
     display: flex;
-    justify-content: space-between;   
-    max-width: 500px; 
+    margin-left: 20px;
+    padding: 30px 10px 0 10px;
 }
-.email, .senha
+
+.container-conteudo
 {
-    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
 }
-.senha
+
+/*  Seção Produtos ---- filtro */
+
+.container-filtro
 {
-    max-width: 220px;
+    max-width: 500px;
+    margin-top: 12px;
+}
+
+.container-filtro i
+{
+    margin: 1px 5px 0 0;
+    font-size: 20px;
+    color: var(--marromEscuro);
+}
+
+.titulo_filtro
+{
+    display: flex;
+    align-items: center;
+}
+
+.titulo_filtro strong
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container-filtro p
+{
+    padding: 20px 0;
+    width: 100%;
+    font-size:20px;
+    border-bottom: 1px solid rgba(201, 201, 201, 0.83);
+    margin-bottom: 20px
+}
+
+.container-filtro .filter-box
+{
+    display: flex;
+    flex-direction: column;
+}
+.container-filtro a
+{
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color:var(--preto) ;
+}
+.container-filtro a:hover
+{
+    color:var(--laranja);
+    font-weight: bold;
+}
+
+/*  Seção Roupas ---- conteudo */
+
+.container-produtos 
+{
+    margin-left: 50px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+}
+.produto
+{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.produto p
+{
+    text-align: center;
+    margin: 0;
+    margin-top: 10px;  
+}
+
+.secao-produtos .produto p strong
+{
+    border-top: 2px solid var(--rosa);
+    font-weight: bold;
+    color: black;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.produto img
+{
+    height: 230px;
+    object-fit: cover;
+    border: none;
+}
+
+.produto .preco
+{
+    color: var(--rosaEscuro);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.produto button
+{
+    margin: 10px 0;
+    width: 150px;
+}
+
+.produto button i
+{
+    margin-right: 5px;
+    
+}
+
+.secao-produtos .btn-cadastro
+{
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--verde);
+    margin: 10px 20px 0 20px;
+    border: 1px solid var(--verde);
+    border-radius: 10px;
+    max-width: 300px;
+    font-size: 18px;
+}
+
+.secao-produtos .btn-cadastro i
+{
+    margin-right: 5px;
+}
+
+.produto
+{
+    padding: 0 10px;
+}
+
+.produto .estoque i
+{
+    color: var(--marromEscuro);
+    margin-right: 5px;
+    font-size: 16px;
 }
