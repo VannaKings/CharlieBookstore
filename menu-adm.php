@@ -20,14 +20,13 @@
       include "start-mysql.php";
       
       // Realiza uma Query SQL para buscar todos os administradores
-      // $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@fulano%'");
-      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+      $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
       
+      //Checa o login do usuário
       if(!$_COOKIE['nome']){
         header('Location:login-adm-erro.html');
-      }  
-      
-  
+      }   
+
   ?>
     <section class="menu">
         <!-- Logo -->
@@ -172,7 +171,6 @@
                   </td>
                   <td class = "senha-adm-tabela" style = "display:none;">
                     <?php
-                      
                       echo $linha["ADM_SENHA"]; 
                     ?>
                   </td>
@@ -206,12 +204,12 @@
                   </div>
                   <div class="form-group row">
                     <div class="col">
-                      <label for="inputEmail4">Email:</label>
-                      <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                      <label for="input-email">Email:</label>
+                      <input name="email" type="email" class="form-control" placeholder="Email" required>
                     </div>          
                     <div class="col">
-                      <label for="inputPassword4">Senha:</label>
-                      <input name="senha" type="password" class="form-control" id="inputPassword4" placeholder="Senha" required>
+                      <label for="input-senha">Senha:</label>
+                      <input name="senha" type="password" class="form-control"  placeholder="Senha" required>
                     </div>                 
                   </div>
                   <div class="form-group">
@@ -235,7 +233,7 @@
         
         <!-- Modal Editar -->
         <div class="modal fade" id="staticBackdrop-editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
@@ -301,54 +299,49 @@
           </div>
           <div class="container-nav-produtos">
             <div class="container-produtos">
-              <div class="produto card">
-                  <img src="" alt="">
-                  <p class="nome"><strong>Nome do produto</strong></p>
+              <div class="card-produto card" style="width: 18rem;">
+                <img src="" alt="" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="nome">Nome do produto</h5>
                   <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">N produtos em estoque</p>
-                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+                  <p class="estoque">0 produtos em estoque</p>
+                  <div class="botoes-produto">
+                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
+                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
+                  </div>
+                </div>
               </div>
-              <div class="produto card">
-                  <img src="" alt="">
-                  <p class="nome"><strong>Nome do produto</strong></p>
+              <div class="card-produto card" style="width: 18rem;">
+                <img src="" alt="" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="nome">Nome do produto</h5>
                   <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">N produtos em estoque</p>
-                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+                  <p class="estoque">0 produtos em estoque</p>
+                  <div class="botoes-produto">
+                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
+                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
+                  </div>
+                </div>
               </div>
-              <div class="produto card">
-                  <img src="" alt="">
-                  <p class="nome"><strong>Nome do produto</strong></p>
+              <div class="card-produto card" style="width: 18rem;">
+                <img src="" alt="" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="nome">Nome do produto</h5>
                   <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">N produtos em estoque</p>
-                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
+                  <p class="estoque">0 produtos em estoque</p>
+                  <div class="botoes-produto">
+                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
+                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
+                  </div>
+                </div>
               </div>
-              <div class="produto card">
-                  <img src="" alt="">
-                  <p class="nome"><strong>Nome do produto</strong></p>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">N produtos em estoque</p>
-                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
-              </div>
-              <div class="produto card">
-                  <img src="" alt="">
-                  <p class="nome"><strong>Nome do produto</strong></p>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">N produtos em estoque</p>
-                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
-              </div>
-              <div class="produto card">
-                  <img src="" alt="">
-                  <p class="nome"><strong>Nome do produto</strong></p>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">N produtos em estoque</p>
-                  <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>                
-              </div>
-          </div>
+            </div>
+          </div>          
         </div>
 
         <!-- Modal Editar -->
 
-        <div class="modal fade" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-produto" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -373,19 +366,26 @@
                       <input type="text" class="form-control" aria-label="Last name">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputPassword4">Categoria:</label> 
-                    <div class="input-group flex-nowrap">                      
-                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                      <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>                 
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword4">Estoque:</label> 
-                    <div class="input-group flex-nowrap">                      
-                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                      <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>                 
+                  <div class="form-group row">
+                    <div class="col">
+                      <label for="inputPassword4">Categoria:</label> 
+                      <div class="input-group flex-nowrap">                      
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
+                        <select class="form-select" id="inputGroupSelect01">
+                          <option selected>Categoria</option>
+                          <option value="1">Categoria</option>
+                          <option value="2">Categoria</option>
+                          <option value="3">Categoria</option>
+                        </select>
+                      </div>                 
+                    </div>
+                    <div class="col">
+                      <label for="inputPassword4">Estoque:</label> 
+                      <div class="input-group flex-nowrap">                      
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                      </div>                 
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
@@ -403,7 +403,7 @@
 
         <!-- Modal Adicionar -->
 
-        <div class="modal fade" id="staticBackdrop-adicionar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade modal-produto" id="staticBackdrop-adicionar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -428,19 +428,26 @@
                       <input type="text" class="form-control" aria-label="Last name">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputPassword4">Categoria:</label> 
-                    <div class="input-group flex-nowrap">                      
-                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                      <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>                 
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword4">Estoque:</label> 
-                    <div class="input-group flex-nowrap">                      
-                      <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                      <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
-                    </div>                 
+                  <div class="form-group row">
+                    <div class="col">
+                      <label for="inputPassword4">Categoria:</label> 
+                      <div class="input-group flex-nowrap">                      
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
+                        <select class="form-select" id="inputGroupSelect01">
+                          <option selected>Categoria</option>
+                          <option value="1">Categoria</option>
+                          <option value="2">Categoria</option>
+                          <option value="3">Categoria</option>
+                        </select>
+                      </div>                 
+                    </div>
+                    <div class="col">
+                      <label for="inputPassword4">Estoque:</label> 
+                      <div class="input-group flex-nowrap">                      
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                      </div>                 
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>

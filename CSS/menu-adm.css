@@ -228,7 +228,7 @@ main .home
     display: flex;    
 }
 
-.card
+.home .card
 {
     max-width: 300px;
     margin: 20px 20px;
@@ -305,11 +305,6 @@ main .home
 }
 
 
-.form-adm .btn-adicionar
-{
-    background-color: var(--verde);
-    border-color: var(--verde);
-}
 
 .form-check
 {
@@ -336,7 +331,6 @@ main .home
 .container-filtro
 {
     max-width: 500px;
-    margin-top: 12px;
 }
 
 .container-filtro i
@@ -392,57 +386,37 @@ main .home
     margin-left: 50px;
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 10px;
 }
-.produto
-{
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-.produto p
-{
-    text-align: center;
-    margin: 0;
-    margin-top: 10px;  
-}
 
-.secao-produtos .produto p strong
+.card-produto img
 {
-    border-top: 2px solid var(--rosa);
-    font-weight: bold;
-    color: black;
-    padding-top: 5px;
-    margin: 0;
-}
-
-.produto img
-{
-    height: 230px;
+    height: 250px;
     object-fit: cover;
     border: none;
 }
 
-.produto .preco
+.card-produto .descricao 
 {
-    color: var(--rosaEscuro);
-    font-size: 20px;
-    text-decoration: none;
+    font-size: 15px!important;
+    margin: 5px 0;
 }
 
-.produto button
+.card-produto .btn-editar-produto, .card-produto .btn-visualizar-produto
 {
-    margin: 10px 0;
-    width: 150px;
+    margin: 15px 0 5px 0;
+    width: 130px;
 }
 
-.produto button i
+.card-produto .btn-editar-produto
 {
     margin-right: 5px;
-    
+}
+
+.card-produto .btn-editar-produto i, .card-produto .btn-visualizar-produto i
+{
+    margin-right: 5px;
 }
 
 .secao-produtos .btn-cadastro
@@ -462,14 +436,9 @@ main .home
     margin-right: 5px;
 }
 
-.produto
+.botoes-produto
 {
-    padding: 0 10px;
-}
+    display: flex;
+    justify-content: space-around;
 
-.produto .estoque i
-{
-    color: var(--marromEscuro);
-    margin-right: 5px;
-    font-size: 16px;
 }
