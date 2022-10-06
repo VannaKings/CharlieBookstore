@@ -46,15 +46,12 @@
         <div class="navegador">
              <!-- Navegador Perfil -->
             <div class="icons">
-                <i class="fa-solid fa-house" style="color:#ed8863;"></i>
-                <i class="fa-solid fa-user-gear" style="color:violet ;"></i>
-                
+                <i class="fa-solid fa-house" style="color:#ed8863;"></i>                
                 <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
             </div>
              <!-- Nav com data-filter -->     
             <ul class="nav-perfil nav">  
-                <li class="filtro" data-filter="home">Home</li>                      
-                <li class="filtro">Perfil</li>                          
+                <li class="filtro" data-filter="home">Home</li>          
                 <li><a href="login-adm.php">Sair</a></li>
             </ul>            
         </div>
@@ -85,9 +82,9 @@
         <div class="collapse navbar-collapse navegador" id="navbarSupportedContent">
           <!-- Nav com data-filter -->
           <nav class="nav  navbar-nav mr-auto ">
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="home">Home</a>
-              <a class="nav-link" href="#" style="color: white;">Perfil</a>            
-              <a class="nav-link" href="#" style="color: white;">Site</a>              
+              <a class="nav-link filtro" href="#" style="color: white;" data-filter="configuracao">Administração</a>
+              <a class="nav-link filtro" href="#" style="color: white;" data-filter="categorias">Categorias</a>            
+              <a class="nav-link filtro" href="#" style="color: white;" data-filter="produtos">Produtos</a>              
           </nav>
         </div>
       </nav>
