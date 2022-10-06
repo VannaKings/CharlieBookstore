@@ -31,7 +31,7 @@
 
         //Executa o comando e verifica se teve sucesso
         $isInputEmpty = $nome && $email && $senha;
-
+        
         if($isInputEmpty){
             $status = $cmd->execute();
             header('Location: menu-adm.php');

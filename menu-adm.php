@@ -17,12 +17,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <body>
   <?php 
+      //Inicia o banco de dados
       include "start-mysql.php";
       
-      // Realiza uma Query SQL para buscar todos os administradores
-      // $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@fulano%'");
+      // Realiza uma Query SQL para buscar todos os administradores com @charlie
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
       
+      //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
         header('Location:login-adm-erro.html');
       }  
@@ -148,7 +149,7 @@
               <th>Editar</th>
             </tr>
             <?php
-                //Lista os Admins
+                //Cria tabela dos Admins
               while($linha = $cmd->fetch())
               { 
             ?>

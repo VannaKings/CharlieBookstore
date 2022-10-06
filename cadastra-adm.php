@@ -7,37 +7,37 @@
     <title>Criar adm</title>
 </head>
 <body>
-<?php
-                include 'start-mysql.php';
+    <?php
+        include 'start-mysql.php';
 
-                //Captura o post do usuário
-                $nome = $_POST["nome"];
-                $email = $_POST["email"];
-                $senha = $_POST["senha"];
-                if(isset($_POST['ativo'])){
-                    $ativo = $_POST['ativo'];
-                }
-                else{
-                    $ativo = 0;
-                }
-                
-                //Monta o comando de inscrição
-                $cmdtext = "INSERT INTO ADMINISTRADOR(ADM_NOME, ADM_EMAIL, ADM_SENHA, ADM_ATIVO) VALUES('" . $nome . "','" . $email . "','" . $senha . "','" . $ativo . "')";
-                $cmd = $pdo->prepare($cmdtext);
+        //Captura o post do usuário
+        $nome = $_POST["nome"];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+        if(isset($_POST['ativo'])){
+            $ativo = $_POST['ativo'];
+        }
+        else{
+            $ativo = 0;
+        }
+        
+        //Monta o comando de inscrição
+        $cmdtext = "INSERT INTO ADMINISTRADOR(ADM_NOME, ADM_EMAIL, ADM_SENHA, ADM_ATIVO) VALUES('" . $nome . "','" . $email . "','" . $senha . "','" . $ativo . "')";
+        $cmd = $pdo->prepare($cmdtext);
 
-                //Executa o comando e verifica se teve sucesso
-                $isInputEmpty = $nome && $email && $senha;
+        //Executa o comando e verifica se teve sucesso
+        $isInputEmpty = $nome && $email && $senha;
 
-                if($isInputEmpty){
-                    $status = $cmd->execute();
-                    header('Location: menu-adm-sucesso.php');
-                    
-                } 
-                else{
-                    echo "Ocorreu um erro ao inserir";
-                    header('Location: menu-adm-erro.php');
-                }
-                
-            ?>
+        if($isInputEmpty){
+            $status = $cmd->execute();
+            header('Location: menu-adm-sucesso.php');
+            
+        } 
+        else{
+            echo "Ocorreu um erro ao inserir";
+            header('Location: menu-adm-erro.php');
+        }
+        
+    ?>
 </body>
 </html>

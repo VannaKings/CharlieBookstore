@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <body>
     <?php
+        //Reinicia cookies
         setcookie('nome', '',time()-3600);
         setcookie('email', '',time()-3600);
         setcookie('senha', '',time()-3600);
