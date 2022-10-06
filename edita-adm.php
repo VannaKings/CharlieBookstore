@@ -23,11 +23,11 @@
     
     if($nome && $email && $senha){
         $cmd->execute();
-        header('Location: menu-adm.php');
+        header('Location: edita-adm-sucesso.php');
         echo "$nome  e $senha  e $email $id";
     }
     else{
-        header('Location: erro-adm.php'); 
+        header('Location: edita-adm-erro.php'); 
     }
     
     
