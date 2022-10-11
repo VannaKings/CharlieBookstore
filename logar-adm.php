@@ -11,28 +11,21 @@
     setcookie('senha', $_POST["senha"], time()+3600);
     
     //Seleciona os administradores 
-    $admin = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
-    $adminNome = $pdo->query("SELECT ADM_NOME FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
-
-    $adminSenha = $pdo->query("SELECT ADM_SENHA FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "'")->fetch();
+    $admin = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
+    $adminNome = $admin[0]["ADM_NOME"];
 
     //Cria um cookie do nome do usuário
-    setcookie('nome', $adminNome[0],time()+3600);
+    setcookie('nome', $adminNome,time()+3600);
 
     //Consulta se o adm está ativo
-    $adminAtivo = $pdo->query("SELECT ADM_ATIVO FROM ADMINISTRADOR  WHERE ADM_EMAIL = '" . $email . "'")->fetch();
-    
+    $adminAtivo = $admin[0]["ADM_ATIVO"];
+
     //Checagem de autenticação do login
-    if($adminAtivo[0] == false || count($admin) == 0){
+    if($adminAtivo != 1){
         header('Location: login-adm-erro.html');
     }
-    else{
-        //Checa a senha
-        if($adminSenha[0] == $senha){
-            header('Location: menu-adm.php');
-        }
-        else{
-            var_dump($adminSenha);
-        }
-        
+    else
+    {
+        header('Location: menu-adm.php');
     }
+    

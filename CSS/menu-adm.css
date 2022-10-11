@@ -223,15 +223,15 @@ main .home
     flex-direction: column;
 }
 
-.card
+.funcoes
+{
+    display: flex;    
+}
+
+.home .card
 {
     max-width: 300px;
     margin: 20px 20px;
-}
-
-.funcoes
-{
-    display: flex;
 }
 
 /* Seção de configuração */
@@ -303,30 +303,142 @@ main .home
     color: var(--laranja);
     font-size: 36px;
 }
-.form-adm
+
+
+
+.form-check
+{
+    margin: 10px 0;
+}
+
+/* -----Seção Produtos----- */
+
+.secao-produtos .container
+{
+    display: flex;
+    margin-left: 20px;
+    padding: 30px 10px 0 10px;
+}
+
+.container-conteudo
 {
     display: flex;
     flex-direction: column;
+}
+
+/*  Seção Produtos ---- filtro */
+
+.container-filtro
+{
     max-width: 500px;
 }
 
-.form-adm .btn-adicionar
+.container-filtro i
 {
-    background-color: var(--verde);
-    border-color: var(--verde);
+    margin: 1px 5px 0 0;
+    font-size: 20px;
+    color: var(--marromEscuro);
 }
 
-.form-row
+.titulo_filtro
 {
     display: flex;
-    justify-content: space-between;   
-    max-width: 500px; 
+    align-items: center;
 }
-.email, .senha
+
+.titulo_filtro strong
 {
-    margin: 20px 0;
+    font-weight: bold;
+    font-size: 20px;
 }
-.senha
+
+.container-filtro p
 {
-    max-width: 220px;
+    padding: 20px 0;
+    width: 100%;
+    font-size:20px;
+    border-bottom: 1px solid rgba(201, 201, 201, 0.83);
+    margin-bottom: 20px
+}
+
+.container-filtro .filter-box
+{
+    display: flex;
+    flex-direction: column;
+}
+.container-filtro a
+{
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color:var(--preto) ;
+}
+.container-filtro a:hover
+{
+    color:var(--laranja);
+    font-weight: bold;
+}
+
+/*  Seção Roupas ---- conteudo */
+
+.container-produtos 
+{
+    margin-left: 50px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+}
+
+.card-produto img
+{
+    height: 250px;
+    object-fit: cover;
+    border: none;
+}
+
+.card-produto .descricao 
+{
+    font-size: 15px!important;
+    margin: 5px 0;
+}
+
+.card-produto .btn-editar-produto, .card-produto .btn-visualizar-produto
+{
+    margin: 15px 0 5px 0;
+    width: 130px;
+}
+
+.card-produto .btn-editar-produto
+{
+    margin-right: 5px;
+}
+
+.card-produto .btn-editar-produto i, .card-produto .btn-visualizar-produto i
+{
+    margin-right: 5px;
+}
+
+.secao-produtos .btn-cadastro
+{
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--verde);
+    margin: 10px 20px 0 20px;
+    border: 1px solid var(--verde);
+    border-radius: 10px;
+    max-width: 300px;
+    font-size: 18px;
+}
+
+.secao-produtos .btn-cadastro i
+{
+    margin-right: 5px;
+}
+
+.botoes-produto
+{
+    display: flex;
+    justify-content: space-around;
+
 }

@@ -29,11 +29,11 @@
     //Checa se alguma informação está vazia para executar o update e enviar o usuário de volta para o menu
     if($nome && $email && $senha){
         $cmd->execute();
-        header('Location: menu-adm.php');//Achar uma forma de mostrar a alteração
+        header('Location: edita-adm-sucesso.php');
         echo "$nome  e $senha  e $email $id";
     }
     else{
-        header('Location: erro-adm.php'); 
+        header('Location: edita-adm-erro.php'); 
     }
     
     
