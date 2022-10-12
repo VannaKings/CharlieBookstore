@@ -7,15 +7,6 @@
     else{
         $desc = 'Descrição pendente';
     }
-    // if(isset($_POST["ativo"])){
-    //     $ativo = 1;
-    //     echo "ativo = 1";
-    // }else{
-    //     $ativo = 0;
-    //     echo "ativo = 0";
-    // }
-
-    //echo "$nome e $desc";
 
     include 'start-mysql.php';
 
@@ -29,7 +20,7 @@
     if($isInputEmpty){
         $status = $cmd->execute();
         echo "Inserido com sucesso";
-        //header('Location: menu-adm.php');
+        header('Location: menu-adm.php');
     } 
     else{
         echo "Ocorreu um erro ao inserir";

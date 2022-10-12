@@ -22,6 +22,7 @@
       
       // Realiza uma Query SQL para buscar todos os administradores com @charlie
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+      $cmdCategoria = $pdo->query("SELECT * FROM CATEGORIA WHERE CATEGORIA_NOME LIKE '%CB%'");
       
       //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
@@ -273,7 +274,139 @@
           </div>
         </div>
       </section>
-      
+
+      <!-- Seção Categoria -->
+      <section class="secao-principal categorias">
+              <h1>Categorias</h1>
+              <table class="table table-striped table-hover" id="#">
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Ativo</th>
+              <th>Editar</th>
+            </tr>
+            <?php
+                //Cria tabela dos Admins
+              while($linha = $cmdCategoria->fetch())
+              { 
+            ?>
+              <tr>
+                <td class = "nome-adm-tabela">
+
+                  <?php
+                    echo $linha["CATEGORIA_NOME"];         
+                  ?>
+                </td>
+                <td class = "email-adm-tabela">
+                  <?php
+                    echo $linha["CATEGORIA_DESC"];         
+                  ?>
+                </td>
+                  <?php
+                    if($linha["CATEGORIA_ATIVO"])
+                    {
+                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                    }
+                    else
+                    {
+                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                    }                                        
+                  ?>
+                  <td>
+                    <?php                      
+                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
+                    ?>
+                  </td>
+              </tr>            
+            <?php
+              } //while($linha = $cmd->fetch());
+            ?> 
+        </table>
+        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-user-plus"></i>Adicionar categoria</button>
+
+        <!-- Adicionar Categoria -->
+        <div class="modal fade" id="staticBackdrop-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form class="form-adm" Action="categoria.php" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="inputAddress">Nome:</label>
+                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
+
+                  </div>
+                  <div class="form-group row">
+                    <div class="col">
+                      <label for="input-desc">Descrição:</label>
+                      <input name="desc" type="text" class="form-control" placeholder="Descrição">
+                    </div>                  
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input"  name="ativo" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Categoria ativa
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Editar Categoria -->
+
+        <div class="modal fade" id="staticBackdrop-editar-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="edita-categoria.php" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <label for="inputAddress">Nome</label>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col">
+                      <label for="inputEmail4">Descrição</label>
+                      <input name="desc" type="text" class="form-control inputEmail" id="#" placeholder="Descrição">
+                    </div>                       
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name = 'ativo' value = "1">
+                      <label class="form-check-label" for="gridCheck">
+                        Categoria ativa
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+
+      </section>
       
       <!-- Seção Produtos -->
 
