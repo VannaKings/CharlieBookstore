@@ -291,13 +291,13 @@
               { 
             ?>
               <tr>
-                <td class = "nome-adm-tabela">
+                <td class = "nome-categoria-tabela">
 
                   <?php
                     echo $linha["CATEGORIA_NOME"];         
                   ?>
                 </td>
-                <td class = "email-adm-tabela">
+                <td class = "desc-categoria-tabela">
                   <?php
                     echo $linha["CATEGORIA_DESC"];         
                   ?>
@@ -305,11 +305,11 @@
                   <?php
                     if($linha["CATEGORIA_ATIVO"])
                     {
-                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                      echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
                     }
                     else
                     {
-                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                      echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
                     }                                        
                   ?>
                   <td class = "id-categoria-tabela" style = "display:none;">
@@ -319,7 +319,7 @@
                   </td>  
                   <td>
                     <?php                      
-                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
+                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
                     ?>
                   </td>
               </tr>            
@@ -347,17 +347,11 @@
                   <div class="form-group row">
                     <div class="col">
                       <label for="input-desc">Descrição:</label>
-                      <input name="desc" type="text" class="form-control" placeholder="Descrição">
+                      <!-- <input name="desc" type="text" class="form-control" placeholder="Descrição"> -->
+                      <textarea name="desc" id="#" cols="30" rows="10" placeholder="Descrição"></textarea>
                     </div>                  
                   </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input"  name="ativo" type="checkbox" id="gridCheck">
-                      <label class="form-check-label" for="gridCheck">
-                        Categoria ativa
-                      </label>
-                    </div>
-                  </div>
+                  
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -382,14 +376,14 @@
               <form class="form-adm" Action="edita-categoria.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <input type="text" name="id" id="idCategoria" style = "display:none">
                     <label for="inputAddress">Nome</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                    <input name="nome" type="text" class="form-control nome inputNomeCategoria" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="form-group row">
                     <div class="col">
                       <label for="inputEmail4">Descrição</label>
-                      <input name="desc" type="text" class="form-control inputEmail" id="#" placeholder="Descrição">
+                      <input name="desc" type="text" class="form-control inputDesc" id="#" placeholder="Descrição">
                     </div>                       
                   </div>
                   <div class="form-group">
@@ -607,4 +601,5 @@
 <!-- JavaScript -->
 <script src="single-pag.js"></script>
 <script src = "editar.js"></script>
+<script src = "editar-categoria.js"></script>
 </html>

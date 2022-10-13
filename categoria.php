@@ -20,10 +20,10 @@
     if($isInputEmpty){
         $status = $cmd->execute();
         echo "Inserido com sucesso";
-        header('Location: menu-adm.php');
+        header('Location: criar-adm-sucesso.php');
     } 
     else{
         echo "Ocorreu um erro ao inserir";
-        //header('Location: menu-adm-erro.php');
+        header('Location: criar-adm-erro.php');
     }
     echo "<a href = 'criar-categoria.php'>Voltar</a>";
