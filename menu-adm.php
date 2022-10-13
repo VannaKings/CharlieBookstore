@@ -22,7 +22,7 @@
       
       // Realiza uma Query SQL para buscar todos os administradores com @charlie
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
-      $cmdCategoria = $pdo->query("SELECT * FROM CATEGORIA WHERE CATEGORIA_NOME LIKE '%CB%'");
+      $cmdCategoria = $pdo->query("SELECT * FROM CATEGORIA");
       
       //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
@@ -312,9 +312,14 @@
                       echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
                     }                                        
                   ?>
+                  <td class = "id-categoria-tabela" style = "display:none;">
+                    <?php
+                      echo $linha["CATEGORIA_ID"];
+                    ?>
+                  </td>  
                   <td>
                     <?php                      
-                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
+                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square' style='color:green'></i></button>"; 
                     ?>
                   </td>
               </tr>            

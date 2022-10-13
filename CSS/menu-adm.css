@@ -242,20 +242,20 @@ main .home
     margin: 20px;
 }
 
-#tabela .fa-pen-to-square
+.fa-pen-to-square
 {
     color: var(--verde) ;
     cursor: pointer;
     margin: 0 10px;
 }
 
-#tabela .fa-circle-check
+.fa-circle-check
 {
     color: var(--verde);
     margin: 0 10px;
 }
 
-#tabela .fa-circle-exclamation
+.fa-circle-exclamation
 {
     color: red;
     margin: 0 10px;
@@ -442,3 +442,7 @@ main .home
     justify-content: space-around;
 
 }
+
+/* Seção Categoria */
+
+.categorias .btn-cadastro
