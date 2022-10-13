@@ -129,7 +129,7 @@
       <section class= "secao-principal configuracao">
         <h1>Configuração</h1>
         <h3>Crie, exclua ou atualize dados de outros administradores</h3>
-        <table class="table table-striped table-hover" id="tabela">
+        <table class="table table-striped table-hover tabela">
             <tr>
               <th>Nome</th>
               <th>Email</th>
@@ -278,7 +278,7 @@
       <!-- Seção Categoria -->
       <section class="secao-principal categorias">
               <h1>Categorias</h1>
-              <table class="table table-striped table-hover" id="#">
+              <table class="table table-striped table-hover tabela" id="#">
             <tr>
               <th>Nome</th>
               <th>Descrição</th>
@@ -319,7 +319,7 @@
                   </td>  
                   <td>
                     <?php                      
-                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square' style='color:green'></i></button>"; 
+                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
                     ?>
                   </td>
               </tr>            

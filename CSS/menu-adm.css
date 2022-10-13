@@ -236,32 +236,32 @@ main .home
 
 /* Seção de configuração */
 
-#tabela
+.tabela
 {
     max-width: 1000px;
     margin: 20px;
 }
 
-.fa-pen-to-square
+.tabela .fa-pen-to-square
 {
     color: var(--verde) ;
     cursor: pointer;
     margin: 0 10px;
 }
 
-.fa-circle-check
+.tabela .fa-circle-check
 {
     color: var(--verde);
     margin: 0 10px;
 }
 
-.fa-circle-exclamation
+.tabela .fa-circle-exclamation
 {
     color: red;
     margin: 0 10px;
 }
 
-.configuracao .btn-cadastro
+.configuracao .btn-cadastro, .categorias .btn-cadastro
 {
     padding: 10px 20px;
     color: white;
@@ -445,4 +445,3 @@ main .home
 
 /* Seção Categoria */
 
-.categorias .btn-cadastro
