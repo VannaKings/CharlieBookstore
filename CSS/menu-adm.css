@@ -445,3 +445,7 @@ main .home
 
 /* Seção Categoria */
 
+.btn-primary .fa-solid 
+{
+    margin-right: 10px!important;
+}

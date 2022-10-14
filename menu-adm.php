@@ -328,7 +328,7 @@
             } //while($linha = $cmd->fetch());
           ?> 
         </table>
-        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-user-plus"></i>Adicionar categoria</button>
+        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-plus"></i>Adicionar categoria</button>
 
         <!-- Adicionar Categoria -->
         <div class="modal fade" id="staticBackdrop-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -343,16 +343,11 @@
                   <div class="form-group">
                     <label for="inputAddress">Nome:</label>
                     <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
-
-                  </div>
-                  <div class="form-group row">
-                    <div class="col">
-                      <label for="input-desc">Descrição:</label>
-                      <!-- <input name="desc" type="text" class="form-control" placeholder="Descrição"> -->
-                      <textarea name="desc" id="#" cols="30" rows="10" placeholder="Descrição"></textarea>
-                    </div>                  
-                  </div>
-                  
+                  </div>                  
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descrição:</label>
+                    <textarea class="form-control"></textarea>
+                  </div>                                      
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -381,11 +376,9 @@
                     <label for="inputAddress">Nome</label>
                     <input name="nome" type="text" class="form-control nome inputNomeCategoria" id="inputName" placeholder="Nome" required>
                   </div>
-                  <div class="form-group row">
-                    <div class="col">
-                      <label for="inputEmail4">Descrição</label>
-                      <input name="desc" type="text" class="form-control inputDesc" id="#" placeholder="Descrição">
-                    </div>                       
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descrição:</label>
+                    <textarea class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                     <div class="form-check">
