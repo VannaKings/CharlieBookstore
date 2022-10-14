@@ -23,6 +23,7 @@
       // Realiza uma Query SQL para buscar todos os administradores com @charlie
       $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
       $cmdCategoria = $pdo->query("SELECT * FROM CATEGORIA");
+      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME FROM CATEGORIA");
       
       //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
@@ -503,9 +504,13 @@
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
                         <select class="form-select" id="inputGroupSelect01">
                           <option selected>Categoria</option>
-                          <option value="1">Categoria</option>
-                          <option value="2">Categoria</option>
-                          <option value="3">Categoria</option>
+                          <?php
+                            //Percorre o nome das categoria e cria uma option para cada uma
+                            while($linha = $cmdCategoriaNome->fetch())
+                            {                          
+                              echo "<option value=". $linha["CATEGORIA_NOME"] .">" .  $linha["CATEGORIA_NOME"] . "</option>";
+                            }
+                          ?>
                         </select>
                       </div>                 
                     </div>
@@ -565,9 +570,13 @@
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
                         <select class="form-select" id="inputGroupSelect01">
                           <option selected>Categoria</option>
-                          <option value="1">Categoria</option>
-                          <option value="2">Categoria</option>
-                          <option value="3">Categoria</option>
+                          <?php
+                            //Percorre o nome das categoria e cria uma option para cada uma
+                            while($linha = $cmdCategoriaNome->fetch())
+                            {                          
+                              echo "<option value=". $linha["CATEGORIA_NOME"] .">" .  $linha["CATEGORIA_NOME"] . "</option>";
+                            }
+                          ?>
                         </select>
                       </div>                 
                     </div>
