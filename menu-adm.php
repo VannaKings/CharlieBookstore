@@ -21,9 +21,9 @@
       include "start-mysql.php";
       
       // Realiza uma Query SQL para buscar todos os administradores com @charlie
-      $cmd = $pdo->query("SELECT ADM_ID, ADM_NOME, ADM_EMAIL, ADM_SENHA FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
-      $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC FROM CATEGORIA");
-      $cmdCategoriaNome = $cmdCategoria[0]["CATEGORIA_NOME"]
+      $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+      $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
       
       //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
