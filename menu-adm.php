@@ -21,9 +21,9 @@
       include "start-mysql.php";
       
       // Realiza uma Query SQL para buscar todos os administradores com @charlie
-      $cmd = $pdo->query("SELECT * FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
-      $cmdCategoria = $pdo->query("SELECT * FROM CATEGORIA");
-      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME FROM CATEGORIA");
+      $cmd = $pdo->query("SELECT ADM_ID, ADM_NOME, ADM_EMAIL, ADM_SENHA FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+      $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC FROM CATEGORIA");
+      $cmdCategoriaNome = $cmdCategoria[0]["CATEGORIA_NOME"]
       
       //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
@@ -41,7 +41,7 @@
             <img src="imgs/user.png" alt="imagem de perfil">
             <p class="nome">
               <?php
-                include 'checa-login.php';
+                echo $_COOKIE['nome'];
               ?>
             </p>
             <p class="cargo">Administrador</p>
@@ -195,7 +195,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form class="form-adm" Action="criar-adm.php" method="POST">
+              <form class="form-adm" Action="Criar/criar-adm.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
                     <label for="inputAddress">Nome:</label>
@@ -240,7 +240,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="edita-adm.php" method="POST">
+              <form class="form-adm" Action="Editar/edita-adm.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
                     <input type="text" name="id" id="idAdm" style = "display:none">
@@ -278,55 +278,55 @@
 
       <!-- Seção Categoria -->
       <section class="secao-principal categorias">
-              <h1>Categorias</h1>
-              <table class="table table-striped table-hover tabela" id="#">
+        <h1>Categorias</h1>
+        <table class="table table-striped table-hover tabela" id="#">
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Ativo</th>
+            <th>Editar</th>
+          </tr>
+          <?php
+            //Cria tabela dos Admins
+            while($linha = $cmdCategoria->fetch())
+            { 
+          ?>
             <tr>
-              <th>Nome</th>
-              <th>Descrição</th>
-              <th>Ativo</th>
-              <th>Editar</th>
-            </tr>
-            <?php
-                //Cria tabela dos Admins
-              while($linha = $cmdCategoria->fetch())
-              { 
-            ?>
-              <tr>
-                <td class = "nome-categoria-tabela">
+              <td class = "nome-categoria-tabela">
 
+                <?php
+                  echo $linha["CATEGORIA_NOME"];         
+                ?>
+              </td>
+              <td class = "desc-categoria-tabela">
+                <?php
+                  echo $linha["CATEGORIA_DESC"];         
+                ?>
+              </td>
+                <?php
+                  if($linha["CATEGORIA_ATIVO"])
+                  {
+                    echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                  }
+                  else
+                  {
+                    echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                  }                                        
+                ?>
+                <td class = "id-categoria-tabela" style = "display:none;">
                   <?php
-                    echo $linha["CATEGORIA_NOME"];         
+                    echo $linha["CATEGORIA_ID"];
+                  ?>
+                </td>  
+                <td>
+                  <?php                      
+                    echo "<button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
                   ?>
                 </td>
-                <td class = "desc-categoria-tabela">
-                  <?php
-                    echo $linha["CATEGORIA_DESC"];         
-                  ?>
-                </td>
-                  <?php
-                    if($linha["CATEGORIA_ATIVO"])
-                    {
-                      echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
-                    }
-                    else
-                    {
-                      echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
-                    }                                        
-                  ?>
-                  <td class = "id-categoria-tabela" style = "display:none;">
-                    <?php
-                      echo $linha["CATEGORIA_ID"];
-                    ?>
-                  </td>  
-                  <td>
-                    <?php                      
-                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
-                    ?>
-                  </td>
-              </tr>            
-            <?php
-              } //while($linha = $cmd->fetch());
-            ?> 
+            </tr>            
+          <?php
+            } //while($linha = $cmd->fetch());
+          ?> 
         </table>
         <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-user-plus"></i>Adicionar categoria</button>
 
@@ -338,7 +338,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form class="form-adm" Action="categoria.php" method="POST">
+              <form class="form-adm" Action="Criar/criar-categoria.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
                     <label for="inputAddress">Nome:</label>
@@ -374,7 +374,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="edita-categoria.php" method="POST">
+              <form class="form-adm" Action="Editar/edita-categoria.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
                     <input type="text" name="id" id="idCategoria" style = "display:none">
@@ -470,72 +470,6 @@
           </div>          
         </div>
 
-        <!-- Modal Editar -->
-
-        <div class="modal fade modal-produto" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <form class="form-adm" Action="" method="POST">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
-                    <label for="inputAddress">Título:</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <label for="inputAddress">Preço:</label>
-                      <input type="text" class="form-control" aria-label="First name">
-                    </div>
-                    <div class="col">
-                      <label for="inputAddress">Desconto:</label>
-                      <input type="text" class="form-control" aria-label="Last name">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col">
-                      <label for="inputPassword4">Categoria:</label> 
-                      <div class="input-group flex-nowrap">                      
-                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                        <select class="form-select" id="inputGroupSelect01">
-                          <option selected>Categoria</option>
-                          <?php
-                            //Percorre o nome das categoria e cria uma option para cada uma
-                            while($linha = $cmdCategoriaNome->fetch())
-                            {                          
-                              echo "<option value=". $linha["CATEGORIA_NOME"] .">" .  $linha["CATEGORIA_NOME"] . "</option>";
-                            }
-                          ?>
-                        </select>
-                      </div>                 
-                    </div>
-                    <div class="col">
-                      <label for="inputPassword4">Estoque:</label> 
-                      <div class="input-group flex-nowrap">                      
-                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
-                      </div>                 
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
         <!-- Modal Adicionar -->
 
         <div class="modal fade modal-produto" id="staticBackdrop-adicionar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -601,6 +535,73 @@
             </div>
           </div>
         </div>
+
+        <!-- Modal Editar -->
+
+        <div class="modal fade modal-produto" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="" method="POST">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <label for="inputAddress">Título:</label>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <label for="inputAddress">Preço:</label>
+                      <input type="text" class="form-control" aria-label="First name">
+                    </div>
+                    <div class="col">
+                      <label for="inputAddress">Desconto:</label>
+                      <input type="text" class="form-control" aria-label="Last name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col">
+                      <label for="inputPassword4">Categoria:</label> 
+                      <div class="input-group flex-nowrap">                      
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
+                        <select class="form-select" id="inputGroupSelect01">
+                          <option selected>Categoria</option>
+                          <?php
+                            //Percorre o nome das categoria e cria uma option para cada uma
+                            while($linha = $cmdCategoriaNome->fetch())
+                            {                          
+                              echo "<option value=". $linha["CATEGORIA_NOME"] .">" .  $linha["CATEGORIA_NOME"] . "</option>";
+                            }
+                          ?>
+                        </select>
+                      </div>                 
+                    </div>
+                    <div class="col">
+                      <label for="inputPassword4">Estoque:</label> 
+                      <div class="input-group flex-nowrap">                      
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                      </div>                 
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descrição:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
       </section>
     </main>
 </body>
@@ -608,7 +609,7 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src="single-pag.js"></script>
-<script src = "editar.js"></script>
-<script src = "editar-categoria.js"></script>
+<script src= "JavaScript/single-pag.js"></script>
+<script src= "JavaScript/editar.js"></script>
+<script src= "JavaScript/editar-categoria.js"></script>
 </html>

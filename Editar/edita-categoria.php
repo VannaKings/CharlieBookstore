@@ -1,10 +1,10 @@
 <?php
 
-include "start-mysql.php";
+include "../start-mysql.php";
 
+//Pegando o Input do usuário
 $nome = $_POST['nome'];
 $id = $_POST['id'];
-//Se o 'desc' estiver vazio aparecerá a frase do else
 if($_POST['desc']){
     $desc = $_POST['desc'];
 }
@@ -12,7 +12,7 @@ else{
     $desc = "Descrição pendente!";
 }
 
-//Está checando se o checkbox está selecionado ou não, caso esteja selecionado é "setado" como true caso não, false
+//Checando o status do checkbox
 if(isset($_POST['ativo'])){
     $ativo = true;
 }
@@ -32,10 +32,10 @@ $cmd->bindValue(":id", $id);
 //Checa se o nome tiver algo e executa o Uptade
 if($nome){
     $cmd->execute();
-    header('Location: edita-adm-sucesso.php');
+    header('Location: edita-sucesso.php');
 }
 else{
-    header('Location: edita-adm-erro.php'); 
+    header('Location: edita-erro.php'); 
 }
 
 

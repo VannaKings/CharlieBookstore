@@ -10,11 +10,13 @@
 <body>
     
     <?php
+        //Alerta sobre a situação do cadastro
         echo "<script>
-                alert('Erro ao cadastrar');
+                alert('Sucesso ao cadastrar!!');
               </script>";
+        //Envia para o menu-adm
         echo "<script>
-                window.location = 'menu-adm.php';
+                window.location = '../menu-adm.php';
               </script>"
     ?>
 </body>

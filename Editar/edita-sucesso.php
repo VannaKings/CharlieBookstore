@@ -12,11 +12,11 @@
     <?php
         //Alerta sobre a situação do cadastro
         echo "<script>
-                alert('Erro ao editar');
+                alert('Sucesso ao editar!!');
               </script>";
         //Envia para o menu-adm
         echo "<script>
-                window.location = 'menu-adm.php';
+                window.location = '../menu-adm.php';
               </script>"
     ?>
 </body>
