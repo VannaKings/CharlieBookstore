@@ -16,7 +16,7 @@
               </script>";
         //Envia para o menu-adm
         echo "<script>
-                window.location = 'menu-adm.php';
+                window.location = '../menu-adm.php';
               </script>"
     ?>
 </body>

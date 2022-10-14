@@ -1,6 +1,6 @@
 <?php
     //Inclui o começo do banco de dados
-    include 'start-mysql.php';
+    include '../start-mysql.php';
 
     //Salva as informações enviadas via POST
     $id = $_POST['id'];
@@ -29,11 +29,10 @@
     //Checa se alguma informação está vazia para executar o update e enviar o usuário de volta para o menu
     if($nome && $email && $senha){
         $cmd->execute();
-        header('Location: edita-adm-sucesso.php');
-        echo "$nome  e $senha  e $email $id";
+        header('Location: edita-sucesso.php');
     }
     else{
-        header('Location: edita-adm-erro.php'); 
+        header('Location: edita-erro.php'); 
     }
     
     

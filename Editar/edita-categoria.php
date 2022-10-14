@@ -1,6 +1,6 @@
 <?php
 
-include "start-mysql.php";
+include "../start-mysql.php";
 
 $nome = $_POST['nome'];
 $id = $_POST['id'];
@@ -32,10 +32,10 @@ $cmd->bindValue(":id", $id);
 //Checa se o nome tiver algo e executa o Uptade
 if($nome){
     $cmd->execute();
-    header('Location: edita-adm-sucesso.php');
+    header('Location: edita-sucesso.php');
 }
 else{
-    header('Location: edita-adm-erro.php'); 
+    header('Location: edita-erro.php'); 
 }
 
 
