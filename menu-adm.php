@@ -22,8 +22,19 @@
       
       // Realiza uma Query SQL para buscar todos os administradores com @charlie
       $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+
+      //Categoria
       $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
-      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+
+      $cmdCategoriaFiltro = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+
+      //Categoria nome
+      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+
+      $cmdCategoriaNomeEditar = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+
+      //Produto
+      $cmdProduto = $pdo->query("SELECT PRODUTO_ID, PRODUTO_NOME, PRODUTO_DESC, PRODUTO_ATIVO, PRODUTO_DESCONTO, PRODUTO_PRECO, CATEGORIA_ID FROM PRODUTO");
       
       //Checa se o login foi feito com sucesso
       if(!$_COOKIE['nome']){
@@ -287,24 +298,24 @@
             <th>Editar</th>
           </tr>
           <?php
-            //Cria tabela dos Admins
-            while($linha = $cmdCategoria->fetch())
+            //Cria tabela de categoria
+            while($categoria = $cmdCategoria->fetch())
             { 
           ?>
             <tr>
               <td class = "nome-categoria-tabela">
 
                 <?php
-                  echo $linha["CATEGORIA_NOME"];         
+                  echo $categoria["CATEGORIA_NOME"];         
                 ?>
               </td>
               <td class = "desc-categoria-tabela">
                 <?php
-                  echo $linha["CATEGORIA_DESC"];         
+                  echo $categoria["CATEGORIA_DESC"];         
                 ?>
               </td>
                 <?php
-                  if($linha["CATEGORIA_ATIVO"])
+                  if($categoria["CATEGORIA_ATIVO"])
                   {
                     echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
                   }
@@ -315,7 +326,7 @@
                 ?>
                 <td class = "id-categoria-tabela" style = "display:none;">
                   <?php
-                    echo $linha["CATEGORIA_ID"];
+                    echo $categoria["CATEGORIA_ID"];
                   ?>
                 </td>  
                 <td>
@@ -372,17 +383,17 @@
               <form class="form-adm" Action="Editar/edita-categoria.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="id" id="idCategoria" style = "display:none">
+                    <input type="text" name="idCategoria" id="idCategoria" style = "display:none">
                     <label for="inputAddress">Nome</label>
-                    <input name="nome" type="text" class="form-control nome inputNomeCategoria" id="inputName" placeholder="Nome" required>
+                    <input name="nomeCategoria" type="text" class="form-control nome inputNomeCategoria" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control InputDesc" name="desc"></textarea>
                   </div>
                   <div class="form-group">
                     <div class="form-check">
-                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name = 'ativo' value = "1">
+                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo' value = "1">
                       <label class="form-check-label" for="gridCheck">
                         Categoria ativa
                       </label>
@@ -413,12 +424,15 @@
                   <i class="fa-solid fa-bookmark"></i>
                   <strong>FILTRO</strong>
               </div>
-              <p>Categorias</p>
+              <p>Categorias</p>              
               <div class="filter-box">
-                  <a href="#" class="" >Todos</a>
-                  <a href="#" class="">Categoria</a>
-                  <a href="#" class="">Categoria</a>
-                  <a href="#" class="">Categoria</a>
+                <a href="#" class="">Todos</a>
+                <?php
+                  while($categoria = $cmdCategoriaFiltro->fetch())
+                  {
+                    echo "<a class={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
+                  }
+                ?>
               </div>
           </div>
           <div class="container-nav-produtos">
@@ -501,7 +515,7 @@
                             //Percorre o nome das categoria e cria uma option para cada uma
                             while($linha = $cmdCategoriaNome->fetch())
                             {                          
-                              echo "<option value=". $linha["CATEGORIA_NOME"] .">" .  $linha["CATEGORIA_NOME"] . "</option>";
+                              echo "<option value={$linha["CATEGORIA_ID"]}>{$linha["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>
@@ -565,9 +579,9 @@
                           <option selected>Categoria</option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
-                            while($linha = $cmdCategoriaNome->fetch())
+                            while($linha = $cmdCategoriaNomeEditar->fetch())
                             {                          
-                              echo "<option value=". $linha["CATEGORIA_NOME"] .">" .  $linha["CATEGORIA_NOME"] . "</option>";
+                              echo "<option value={$linha["CATEGORIA_ID"]}>{$linha["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>

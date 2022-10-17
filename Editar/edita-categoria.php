@@ -3,8 +3,9 @@
 include "../start-mysql.php";
 
 //Pegando o Input do usuário
-$nome = $_POST['nome'];
-$id = $_POST['id'];
+$nome = $_POST['nomeCategoria'];
+$id = $_POST['idCategoria'];
+
 if($_POST['desc']){
     $desc = $_POST['desc'];
 }
@@ -30,7 +31,7 @@ $cmd->bindValue(":ativo", $ativo);
 $cmd->bindValue(":id", $id);
 
 //Checa se o nome tiver algo e executa o Uptade
-if($nome){
+if($nome && $ativo){
     $cmd->execute();
     header('Location: edita-sucesso.php');
 }
