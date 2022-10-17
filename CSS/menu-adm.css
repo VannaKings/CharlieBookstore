@@ -266,7 +266,7 @@ main .home
     padding: 10px 20px;
     color: white;
     background-color: var(--verde);
-    margin: 0 20px;
+    margin: 10px 20px;
     border: 1px solid var(--verde);
     border-radius: 10px;
     max-width: 300px;
@@ -449,3 +449,5 @@ main .home
 {
     margin-right: 10px!important;
 }
+
+
