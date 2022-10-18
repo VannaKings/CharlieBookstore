@@ -525,7 +525,7 @@
                       <label for="inputPassword4">Estoque:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
                   </div>
@@ -591,7 +591,7 @@
                       <label for="inputPassword4">Estoque:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
                   </div>
