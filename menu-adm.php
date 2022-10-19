@@ -20,17 +20,15 @@
       //Inicia o banco de dados
       include "start-mysql.php";
       
-      // Realiza uma Query SQL para buscar todos os administradores com @charlie
+      //Realiza uma Query SQL para buscar todos os administradores com @charlie
       $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
 
       //Categoria
       $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
-
       $cmdCategoriaFiltro = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
 
       //Categoria nome
       $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
-
       $cmdCategoriaNomeEditar = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
 
       //Produto
@@ -357,7 +355,7 @@
                   </div>                  
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea name="desc" class="form-control"></textarea>
                   </div>                                      
                 </div>
                 <div class="modal-footer">

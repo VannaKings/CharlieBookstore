@@ -1,6 +1,6 @@
 <?php
 
-include 'start-mysql.php';
+include '../start-mysql.php';
 
 $nome = $_POST["nome"];
 
