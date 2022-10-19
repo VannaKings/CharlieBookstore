@@ -6,6 +6,7 @@ include "../start-mysql.php";
 $nome = $_POST['nomeCategoria'];
 $id = $_POST['idCategoria'];
 
+//Verificando se a descrição está vazia
 if($_POST['desc']){
     $desc = $_POST['desc'];
 }
@@ -14,17 +15,17 @@ else{
 }
 
 //Checando o status do checkbox
-if(isset($_POST['ativo'])){
-    $ativo = true;
+if(isset($_POST['ativo-categoria'])){
+    $ativo = 1;
     
 }
 else{
-    $ativo = false;
+    $ativo = 0;
 }
-$cmdText = "UPDATE CATEGORIA SET CATEGORIA_NOME = :nome, CATEGORIA_DESC = :descricao, CATEGORIA_ATIVO = :ativo WHERE CATEGORIA_ID = :id";
+
 //Prepara o update
-$cmd = $pdo->prepare($cmdText);
-// , CATEGORIA_ATIVO = :ativo
+$cmd = $pdo->prepare("UPDATE CATEGORIA SET CATEGORIA_NOME = :nome, CATEGORIA_DESC = :descricao, CATEGORIA_ATIVO = :ativo WHERE CATEGORIA_ID = :id");
+
 //Substituição de valores para realizar o update
 $cmd->bindValue(":nome", $nome);
 $cmd->bindValue(":descricao", $desc);

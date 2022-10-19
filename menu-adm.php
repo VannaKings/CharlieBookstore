@@ -24,14 +24,14 @@
       $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
 
       //Categoria
-      $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+      $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
 
-      $cmdCategoriaFiltro = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+      $cmdCategoriaFiltro = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
 
       //Categoria nome
-      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
 
-      $cmdCategoriaNomeEditar = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = true");
+      $cmdCategoriaNomeEditar = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
 
       //Produto
       $cmdProduto = $pdo->query("SELECT PRODUTO_ID, PRODUTO_NOME, PRODUTO_DESC, PRODUTO_ATIVO, PRODUTO_DESCONTO, PRODUTO_PRECO, CATEGORIA_ID FROM PRODUTO");
@@ -393,7 +393,7 @@
                   </div>
                   <div class="form-group">
                     <div class="form-check">
-                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo' value = "1">
+                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo-categoria'>
                       <label class="form-check-label" for="gridCheck">
                         Categoria ativa
                       </label>
