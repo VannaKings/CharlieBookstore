@@ -29,7 +29,7 @@ $cmd = $pdo->prepare("UPDATE CATEGORIA SET CATEGORIA_NOME = :nome, CATEGORIA_DES
 //Substituição de valores para realizar o update
 $cmd->bindValue(":nome", $nome);
 $cmd->bindValue(":descricao", $desc);
-$cmd->bindValue(":ativo", $ativo);
+$cmd->bindValue(":ativo", $ativo, PDO::PARAM_BOOL);
 $cmd->bindValue(":id", $id);
 
 //Checa se o nome tiver algo e executa o Uptade
