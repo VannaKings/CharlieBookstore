@@ -19,7 +19,7 @@
   <?php 
       //Inicia o banco de dados
       include "query-selector.php";
-         
+      require_once "autentica-login.php";
 
   ?>
     <section class="menu">
@@ -46,7 +46,7 @@
              <!-- Nav com data-filter -->     
             <ul class="nav-perfil nav">  
                 <li class="filtro" data-filter="home">Home</li>          
-                <li><a href="login-adm.php">Sair</a></li>
+                <li><a href="logout-adm.php">Sair</a></li>
             </ul>            
         </div>
         <h1>Navegador</h1>

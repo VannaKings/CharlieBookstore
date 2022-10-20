@@ -17,8 +17,6 @@
     <?php
         //Reinicia cookies
         setcookie('nome', '',time()-3600);
-        setcookie('email', '',time()-3600);
-        setcookie('senha', '',time()-3600);
     ?>
     <section class="formulario">
         <!-- Login -->

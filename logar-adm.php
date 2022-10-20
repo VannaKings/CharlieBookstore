@@ -1,14 +1,16 @@
 <?php
 //Importa o start-mysql para iniciar o banco de dados
 include 'start-mysql.php';
+//Inicia sessão
+session_start();
 
 //Recebe dados do login via POST
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 
-//Cria cookies das informações de login
-setcookie('email', $_POST["email"], time()+3600);
-setcookie('senha', $_POST["senha"], time()+3600);
+
+
+
 
 //Seleciona os administradores 
 $admin = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME FROM ADMINISTRADOR WHERE ADM_EMAIL = '" . $email . "' AND ADM_SENHA = '" . $senha . "'")->fetchAll();
@@ -26,6 +28,8 @@ if($adminAtivo != 1){
 }
 else
 {
+    $_SESSION["logado"] = true;
+    $_SESSION["nome"] = $usuario;
     header('Location: menu-adm.php');
 }
     
