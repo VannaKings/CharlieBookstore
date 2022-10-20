@@ -294,7 +294,7 @@
                 
                 echo "
                   <td class = 'id-categoria-tabela' style = 'display:none;'>                    
-                      echo {$categoria["CATEGORIA_ID"]}
+                     {$categoria["CATEGORIA_ID"]}
                   </td>  
                   <td>                                         
                     <button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>
@@ -479,7 +479,7 @@
                             //Percorre o nome das categoria e cria uma option para cada uma
                             foreach($categorias as $categoria)
                             {                          
-                              echo "<option value={$categorias["CATEGORIA_ID"]}>{$categorias["CATEGORIA_NOME"]}</option>";
+                              echo "<option value={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>
@@ -545,7 +545,7 @@
                             //Percorre o nome das categoria e cria uma option para cada uma
                             foreach($categorias as $categoria)
                             {                          
-                              echo "<option value={$categorias["CATEGORIA_ID"]}>{$categorias["CATEGORIA_NOME"]}</option>";
+                              echo "<option value={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>

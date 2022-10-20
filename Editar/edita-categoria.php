@@ -34,7 +34,7 @@ $cmd->bindValue(":id", $id);
 
 //Checa se o nome tiver algo e executa o Uptade
 if($nome){
-    $cmd->execute();
+    $cmd->execute();    
     header('Location: edita-sucesso.php');
 }
 else{
