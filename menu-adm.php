@@ -18,26 +18,8 @@
 <body>
   <?php 
       //Inicia o banco de dados
-      include "start-mysql.php";
-      
-      //Realiza uma Query SQL para buscar todos os administradores com @charlie
-      $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
-
-      //Categoria
-      $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
-      $cmdCategoriaFiltro = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
-
-      //Categoria nome
-      $cmdCategoriaNome = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
-      $cmdCategoriaNomeEditar = $pdo->query("SELECT CATEGORIA_NOME, CATEGORIA_ID FROM CATEGORIA WHERE CATEGORIA_ATIVO = 1");
-
-      //Produto
-      $cmdProduto = $pdo->query("SELECT PRODUTO_ID, PRODUTO_NOME, PRODUTO_DESC, PRODUTO_ATIVO, PRODUTO_DESCONTO, PRODUTO_PRECO, CATEGORIA_ID FROM PRODUTO");
-      
-      //Checa se o login foi feito com sucesso
-      if(!$_COOKIE['nome']){
-        header('Location:login-adm-erro.html');
-      }   
+      include "query-selector.php";
+         
 
   ?>
     <section class="menu">
@@ -147,50 +129,43 @@
               <th>Editar</th>
             </tr>
             <?php
-                //Cria tabela dos Admins
-              while($linha = $cmd->fetch())
+              //Cria tabela dos Admins
+              foreach($admins as $admin)
               { 
-            ?>
-              <tr>
-                <td class = "nome-adm-tabela">
-
-                  <?php
-                    echo $linha["ADM_NOME"];         
-                  ?>
-                </td>
-                <td class = "email-adm-tabela">
-                  <?php
-                    echo $linha["ADM_EMAIL"];         
-                  ?>
-                </td>
-                  <?php
-                    if($linha["ADM_ATIVO"])
-                    {
-                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
-                    }
-                    else
-                    {
-                      echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
-                    }                                        
-                  ?>
-                  <td>
-                    <?php                      
-                      echo "<button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>"; 
-                    ?>
-                  </td>
-                  <td class = "senha-adm-tabela" style = "display:none;">
-                    <?php
-                      echo $linha["ADM_SENHA"]; 
-                    ?>
-                  </td>
-                  <td class = "id-adm-tabela" style = "display:none;">
-                    <?php
-                      echo $linha["ADM_ID"];
-                    ?>
-                  </td>                 
-              </tr>            
-            <?php
-              } //while($linha = $cmd->fetch());
+                echo "  
+                  <tr>
+                    <td class = 'nome-adm-tabela'>
+                    
+                        {$admin["ADM_NOME"]}         
+                    
+                    </td>
+                    <td class = 'email-adm-tabela'>
+                      
+                        {$admin["ADM_EMAIL"]}        
+                      
+                    </td>";
+                 
+                if($admin["ADM_ATIVO"])
+                {
+                  echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                }
+                else
+                {
+                  echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                }                                        
+                  
+                echo "
+                    <td>                                        
+                        <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>                    
+                    </td>
+                    <td class = 'senha-adm-tabela' style = 'display:none;'>                      
+                        {$admin["ADM_SENHA"]}                      
+                    </td>
+                    <td class = 'id-adm-tabela' style = 'display:none;'>                    
+                        {$admin["ADM_ID"]}                    
+                    </td>                 
+                  </tr>";        
+              } 
             ?> 
         </table>
         
@@ -297,45 +272,36 @@
           </tr>
           <?php
             //Cria tabela de categoria
-            while($categoria = $cmdCategoria->fetch())
-            { 
-          ?>
-            <tr>
-              <td class = "nome-categoria-tabela">
-
-                <?php
-                  echo $categoria["CATEGORIA_NOME"];         
-                ?>
-              </td>
-              <td class = "desc-categoria-tabela">
-                <?php
-                  echo $categoria["CATEGORIA_DESC"];         
-                ?>
-              </td>
-                <?php
-                  if($categoria["CATEGORIA_ATIVO"])
-                  {
-                    echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
-                  }
-                  else
-                  {
-                    echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
-                  }                                        
-                ?>
-                <td class = "id-categoria-tabela" style = "display:none;">
-                  <?php
-                    echo $categoria["CATEGORIA_ID"];
-                  ?>
-                </td>  
-                <td>
-                  <?php                      
-                    echo "<button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>"; 
-                  ?>
+            foreach($categorias as $categoria)
+            {
+              echo "
+              <tr>
+                <td class = 'nome-categoria-tabela'>
+                    {$categoria["CATEGORIA_NOME"]}         
                 </td>
-            </tr>            
-          <?php
-            } //while($linha = $cmd->fetch());
-          ?> 
+                <td class = 'desc-categoria-tabela'>
+                     {$categoria["CATEGORIA_DESC"]}         
+                </td>";
+                  
+                if($categoria["CATEGORIA_ATIVO"])
+                {
+                  echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                }
+                else
+                {
+                  echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                }                                        
+                
+                echo "
+                  <td class = 'id-categoria-tabela' style = 'display:none;'>                    
+                      echo {$categoria["CATEGORIA_ID"]}
+                  </td>  
+                  <td>                                         
+                    <button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>
+                  </td>
+              </tr>";
+            } 
+          ?>
         </table>
         <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-plus"></i>Adicionar categoria</button>
 
@@ -426,7 +392,7 @@
               <div class="filter-box">
                 <a href="#" class="">Todos</a>
                 <?php
-                  while($categoria = $cmdCategoriaFiltro->fetch())
+                  foreach($categorias as $categoria)
                   {
                     echo "<a class={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
                   }
@@ -511,9 +477,9 @@
                           <option selected>Categoria</option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
-                            while($linha = $cmdCategoriaNome->fetch())
+                            foreach($categorias as $categoria)
                             {                          
-                              echo "<option value={$linha["CATEGORIA_ID"]}>{$linha["CATEGORIA_NOME"]}</option>";
+                              echo "<option value={$categorias["CATEGORIA_ID"]}>{$categorias["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>
@@ -577,9 +543,9 @@
                           <option selected>Categoria</option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
-                            while($linha = $cmdCategoriaNomeEditar->fetch())
+                            foreach($categorias as $categoria)
                             {                          
-                              echo "<option value={$linha["CATEGORIA_ID"]}>{$linha["CATEGORIA_NOME"]}</option>";
+                              echo "<option value={$categorias["CATEGORIA_ID"]}>{$categorias["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>
