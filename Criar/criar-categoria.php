@@ -8,7 +8,7 @@ if($_POST['desc']){
     $desc = $_POST["desc"];
 }
 else{
-    $desc = 'Descrição pendente';
+    $desc = "Livros de $nome";
 }
 
 $cmdtext = "INSERT INTO CATEGORIA(CATEGORIA_NOME, CATEGORIA_DESC) VALUES('" . $nome . "','" . $desc . "')";

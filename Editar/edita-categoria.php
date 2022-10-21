@@ -11,7 +11,7 @@ if($_POST['desc']){
     $desc = $_POST['desc'];
 }
 else{
-    $desc = "Descrição pendente!";
+    $desc = "Livros de $nome";
 }
 
 //Checando o status do checkbox
