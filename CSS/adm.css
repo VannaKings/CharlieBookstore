@@ -356,7 +356,8 @@ main .home
 {
     padding: 20px 0;
     width: 100%;
-    font-size:20px;
+    font-size:22px;
+    color: var(--laranja);
     border-bottom: 1px solid rgba(201, 201, 201, 0.83);
     margin-bottom: 20px
 }
@@ -369,17 +370,19 @@ main .home
 .container-filtro a
 {
     margin-bottom: 20px;
+    font-size: 18px;
     cursor: pointer;
     text-decoration: none;
     color:var(--preto) ;
+    max-width: 50px;
 }
 .container-filtro a:hover
 {
-    color:var(--laranja);
+    color:var(--laranja)!important;
     font-weight: bold;
 }
 
-/*  Seção Roupas ---- conteudo */
+/*  Seção Produtos ---- conteudo */
 
 .container-produtos 
 {
@@ -387,9 +390,14 @@ main .home
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
 }
-
+.card-produto .preco
+{
+    color: var(--laranja);
+    font-weight: bold;
+}
 .card-produto img
 {
     height: 250px;
@@ -440,7 +448,6 @@ main .home
 {
     display: flex;
     justify-content: space-around;
-
 }
 
 /* Seção Categoria */

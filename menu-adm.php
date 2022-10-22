@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Charlie Bookstore</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="CSS/menu-adm.css">
+    <link rel="stylesheet" type="text/css" href="CSS/adm.css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- Font Awesome -->
@@ -389,54 +389,45 @@
                   <strong>FILTRO</strong>
               </div>
               <p>Categorias</p>              
-              <div class="filter-box">
-                <a href="#" class="">Todos</a>
+              <div class="filter-box filter-categoria">
+                <a href="#" data-filter="todos">Todos</a>
                 <?php
                   foreach($categorias as $categoria)
                   {
-                    echo "<a class={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
+                    echo "<a data-filter={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
                   }
                 ?>
               </div>
           </div>
           <div class="container-nav-produtos">
-            <div class="container-produtos">
-              <div class="card-produto card" style="width: 18rem;">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="nome">Nome do produto</h5>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">0 produtos em estoque</p>
-                  <div class="botoes-produto">
-                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
+            <div class="container-produtos">              
+            <?php
+              foreach($produtos as $produto)
+              {
+                echo "
+                <div class='card-produto card {$produto["PRODUTO_ID"]}' style='max-width: 18rem; display:'flex'; >
+                  <img src='#' alt='' class='card-img-top'>
+                  <div class='card-body'>
+                    <h5 class='nome' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>
+
+                    <p class='preco' style='font-size: 20px;'>R$ {$produto["PRODUTO_PRECO"]}</p>
+
+                    <p class='estoque'><strong>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
+
+                    <div class='botoes-produto'>
+                      <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'><i class='fa-solid fa-pen-to-square'></i>Editar</button>
+                      <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</button>
+                    </div>
+
+                    <div class='detalhes-container' style='display:none'>
+                      <p>{$produto["PRODUTO_DESC"]}</p>
+                      <p>{$produto["PRODUTO_DESCONTO"]}</p>
+                      <p>{$produto["PRODUTO_ATIVO"]}</p>                      
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="card-produto card" style="width: 18rem;">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="nome">Nome do produto</h5>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">0 produtos em estoque</p>
-                  <div class="botoes-produto">
-                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card-produto card" style="width: 18rem;">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="nome">Nome do produto</h5>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">0 produtos em estoque</p>
-                  <div class="botoes-produto">
-                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
-                  </div>
-                </div>
-              </div>
+                </div>";
+              }
+            ?>                            
             </div>
           </div>          
         </div>
@@ -581,6 +572,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
 <script src= "JavaScript/single-pag.js"></script>
+<script src= "JavaScript/filtro.js"></script>
 <script src= "JavaScript/editar.js"></script>
 <script src= "JavaScript/editar-categoria.js"></script>
 </html>
