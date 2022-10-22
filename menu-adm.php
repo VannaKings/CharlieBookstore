@@ -263,6 +263,7 @@
       <!-- Seção Categoria -->
       <section class="secao-principal categorias">
         <h1>Categorias</h1>
+        <h3>Personalize as categorias existentes no seu site</h3>
         <table class="table table-striped table-hover tabela" id="#">
           <tr>
             <th>Nome</th>
@@ -431,6 +432,30 @@
             </div>
           </div>          
         </div>
+        
+        <!-- Modal Detalhes -->
+        <div class="modal fade modal-produto" id="staticBackdrop-visualizar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Detalhes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+              
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
 
         <!-- Modal Adicionar -->
 
