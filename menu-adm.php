@@ -419,11 +419,11 @@
                       <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'><i class='fa-solid fa-pen-to-square'></i>Editar</button>
                       <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</button>
                     </div>
-
+                    
                     <div class='detalhes-container' style='display:none'>
-                      <p>{$produto["PRODUTO_DESC"]}</p>
-                      <p>{$produto["PRODUTO_DESCONTO"]}</p>
-                      <p>{$produto["PRODUTO_ATIVO"]}</p>                      
+                      <p class='descricao'>{$produto["PRODUTO_DESC"]}</p>
+                      <p class='desconto'>{$produto["PRODUTO_DESCONTO"]}</p>
+                      <p class='produto-ativo'>{$produto["PRODUTO_ATIVO"]}</p>                      
                     </div>
                   </div>
                 </div>";
@@ -596,7 +596,6 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "JavaScript/single-pag.js"></script>
 <script src= "JavaScript/filtro.js"></script>
 <script src= "JavaScript/editar.js"></script>
 <script src= "JavaScript/editar-categoria.js"></script>
