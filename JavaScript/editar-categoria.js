@@ -16,7 +16,6 @@ let buttonCategoria = Array.from(document.getElementsByClassName("btn-selecionar
 buttonCategoria.forEach((element, index) => {
     element.setAttribute("chave", index);
     element.addEventListener("click", showEdit);
-    console.log(element, index);
 });
 
 //Realiza a função addValor em todos os inputs

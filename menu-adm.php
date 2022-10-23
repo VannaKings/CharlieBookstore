@@ -409,11 +409,11 @@
                 <div class='card-produto card {$produto["PRODUTO_ID"]}' style='max-width: 18rem; display:'flex'; >
                   <img src='#' alt='' class='card-img-top'>
                   <div class='card-body'>
-                    <h5 class='nome' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>
+                    <h5 class='titulo' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>
 
                     <p class='preco' style='font-size: 20px;'>R$ {$produto["PRODUTO_PRECO"]}</p>
 
-                    <p class='estoque'><strong>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
+                    <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
 
                     <div class='botoes-produto'>
                       <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'><i class='fa-solid fa-pen-to-square'></i>Editar</button>
@@ -421,7 +421,9 @@
                     </div>
                     
                     <div class='detalhes-container' style='display:none'>
-                      <p class='descricao'>{$produto["PRODUTO_DESC"]}</p>
+                      <p class='idProduto'>{$produto["PRODUTO_ID"]}</p>
+                      <p class='descricaoProduto'>{$produto["PRODUTO_DESC"]}</p>
+                      <p class='idCategoriaProduto'>{$produto["CATEGORIA_ID"]}</p>
                       <p class='desconto'>{$produto["PRODUTO_DESCONTO"]}</p>
                       <p class='produto-ativo'>{$produto["PRODUTO_ATIVO"]}</p>                      
                     </div>
@@ -467,21 +469,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="" method="POST">
+              <form class="form-adm" Action="Criar/criar-produto.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <input type="text" name="id" style = "display:none">
                     <label for="inputAddress">Título:</label>
                     <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label for="inputAddress">Preço:</label>
-                      <input type="text" class="form-control" aria-label="First name">
+                      <input name="preco" type="text" class="form-control">
                     </div>
                     <div class="col">
                       <label for="inputAddress">Desconto:</label>
-                      <input type="text" class="form-control" aria-label="Last name">
+                      <input name="desconto" type="text" class="form-control" >
                     </div>
                   </div>
                   <div class="form-group row">
@@ -505,13 +507,19 @@
                       <label for="inputPassword4">Estoque:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
+                        <input name="estoque" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
+                    <textarea name="desc" class="form-control"></textarea>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input inputAtivo" type="checkbox" name= 'ativo'>
+                    <label class="form-check-label" for="gridCheck">
+                      Produto ativo
+                    </label>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -533,21 +541,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="" method="POST">
+              <form class="form-adm" Action="Editar/edita-produto.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <input type="text" name="id" id="idProduto" style = "display:none">
                     <label for="inputAddress">Título:</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                    <input name="nome" type="text" class="form-control nome inputTitulo" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label for="inputAddress">Preço:</label>
-                      <input type="text" class="form-control" aria-label="First name">
+                      <input name="preco" type="text" class="form-control inputPreco" aria-label="First name">
                     </div>
                     <div class="col">
                       <label for="inputAddress">Desconto:</label>
-                      <input type="text" class="form-control" aria-label="Last name">
+                      <input name="desconto" type="text" class="form-control inputDesconto" aria-label="Last name">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -555,7 +563,7 @@
                       <label for="inputPassword4">Categoria:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                        <select class="form-select" id="inputGroupSelect01">
+                        <select name="categoria" class="form-select" id="inputGroupSelect01">
                           <option selected>Categoria</option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
@@ -571,13 +579,19 @@
                       <label for="inputPassword4">Estoque:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
+                        <input name="estoque" type="number" class="form-control inputEstoque" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
+                    <textarea name="desc" class="form-control inputDescProduto" id="message-text"></textarea>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
+                    <label class="form-check-label" for="gridCheck">
+                      Produto ativo
+                    </label>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -599,4 +613,5 @@
 <script src= "JavaScript/filtro.js"></script>
 <script src= "JavaScript/editar.js"></script>
 <script src= "JavaScript/editar-categoria.js"></script>
+<script src= "JavaScript/editar-produto.js"></script>
 </html>
