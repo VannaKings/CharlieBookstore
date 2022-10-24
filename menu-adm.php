@@ -68,18 +68,11 @@
     <!-- Bootstrap (com style dentro em algumas tags) -->
     <main class="conteudo">
       <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
-        <a class="navbar-brand" href="#" style="color: white; font-size:24px;">Menu</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse navegador" id="navbarSupportedContent">
-          <!-- Nav com data-filter -->
-          <nav class="nav  navbar-nav mr-auto ">
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="configuracao">Administração</a>
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="categorias">Categorias</a>            
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="produtos">Produtos</a>              
-          </nav>
+        <!-- Nav com data-filter -->
+        <div class="nav  navbar navbar-expand-lg ">
+            <a class="nav-link filtro" href="#" style="color: white; font-size: 22px;" data-filter="configuracao">Administração</a>
+            <a class="nav-link filtro" href="#" style="color: white; font-size: 22px;" data-filter="categorias">Categorias</a>            
+            <a class="nav-link filtro" href="#" style="color: white; font-size: 22px;" data-filter="produtos">Produtos</a>              
         </div>
       </nav>
 
