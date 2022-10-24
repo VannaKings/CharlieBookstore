@@ -10,6 +10,8 @@ $preco = $_POST['preco'];
 $desconto = $_POST['desconto'];
 $estoque = $_POST['estoque'];
 
+
+
 //Verificando se a descrição está vazia
 if($_POST['desc']){
     $desc = $_POST['desc'];
@@ -29,7 +31,6 @@ else{
 
 //Prepara o update
 $cmd = $pdo->prepare("UPDATE PRODUTO SET PRODUTO_NOME = :nome, PRODUTO_DESC = :descricao, PRODUTO_PRECO = :preco, PRODUTO_DESCONTO = :desconto, PRODUTO_ESTOQUE = :estoque, PRODUTO_ATIVO = :ativo WHERE PRODUTO_ID = :id");
-
 //Substituição de valores para realizar o update
 $cmd->bindValue(":nome", $nome);
 $cmd->bindValue(":descricao", $desc);
@@ -41,9 +42,10 @@ $cmd->bindValue(":estoque", $estoque);
 $cmd->bindValue(":ativo", $ativo, PDO::PARAM_BOOL);
 $cmd->bindValue(":id", $id);
 
+
 //Checa se o nome tiver algo e executa o Uptade
 if($nome){
-    $cmd->execute();    
+    $cmd->execute();
     header('Location: edita-sucesso.php');
 }
 else{

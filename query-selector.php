@@ -23,7 +23,7 @@ while($linha = $cmd->fetch(PDO::FETCH_ASSOC))
 //Categoria
 $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO 
 FROM CATEGORIA 
-WHERE CATEGORIA_DESC LIKE 'Livros%' OR 'Histórias%'");
+WHERE CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Historias%'");
 
 $categorias = [];
 

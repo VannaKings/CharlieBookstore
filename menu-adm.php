@@ -587,6 +587,10 @@
                     <label for="message-text" class="col-form-label">Descrição:</label>
                     <textarea name="desc" class="form-control inputDescProduto" id="message-text"></textarea>
                   </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Url:</label>
+                    <input type="url" name="url" id="url">
+                  </div>
                   <div class="form-check">
                     <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
                     <label class="form-check-label" for="gridCheck">

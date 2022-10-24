@@ -17,6 +17,7 @@ $cmd = $pdo->prepare($cmdtext);
 //Executa o comando e verifica se teve sucesso
 $isInputEmpty = $nome;
 
+
 if($isInputEmpty){
     $status = $cmd->execute();
     
