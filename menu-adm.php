@@ -390,7 +390,7 @@
               </div>
               <p>Categorias</p>              
               <div class="filter-box">
-                <a href="#" class="">Todos</a>
+                <a href="#" class="Todos">Todos</a>
                 <?php
                   foreach($categorias as $categoria)
                   {
