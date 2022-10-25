@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Charlie Bookstore</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="CSS/menu-adm.css">
+    <link rel="stylesheet" type="text/css" href="CSS/adm.css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- Font Awesome -->
@@ -68,18 +68,11 @@
     <!-- Bootstrap (com style dentro em algumas tags) -->
     <main class="conteudo">
       <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
-        <a class="navbar-brand" href="#" style="color: white; font-size:24px;">Menu</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse navegador" id="navbarSupportedContent">
-          <!-- Nav com data-filter -->
-          <nav class="nav  navbar-nav mr-auto ">
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="configuracao">Administração</a>
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="categorias">Categorias</a>            
-              <a class="nav-link filtro" href="#" style="color: white;" data-filter="produtos">Produtos</a>              
-          </nav>
+        <!-- Nav com data-filter -->
+        <div class="nav  navbar navbar-expand-lg ">
+            <a class="nav-link filtro" href="#" style="color: white; font-size: 22px;" data-filter="configuracao">Administração</a>
+            <a class="nav-link filtro" href="#" style="color: white; font-size: 22px;" data-filter="categorias">Categorias</a>            
+            <a class="nav-link filtro" href="#" style="color: white; font-size: 22px;" data-filter="produtos">Produtos</a>              
         </div>
       </nav>
 
@@ -263,6 +256,7 @@
       <!-- Seção Categoria -->
       <section class="secao-principal categorias">
         <h1>Categorias</h1>
+        <h3>Personalize as categorias existentes no seu site</h3>
         <table class="table table-striped table-hover tabela" id="#">
           <tr>
             <th>Nome</th>
@@ -389,57 +383,74 @@
                   <strong>FILTRO</strong>
               </div>
               <p>Categorias</p>              
-              <div class="filter-box">
-                <a href="#" class="Todos">Todos</a>
+              <div class="filter-box filter-categoria">
+                <a href="#" data-filter="todos">Todos</a>
                 <?php
                   foreach($categorias as $categoria)
                   {
-                    echo "<a class={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
+                    echo "<a data-filter={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
                   }
                 ?>
               </div>
           </div>
           <div class="container-nav-produtos">
-            <div class="container-produtos">
-              <div class="card-produto card" style="width: 18rem;">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="nome">Nome do produto</h5>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">0 produtos em estoque</p>
-                  <div class="botoes-produto">
-                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
+            <div class="container-produtos">              
+            <?php
+              foreach($produtos as $produto)
+              {
+                echo "
+                <div class='card-produto card {$produto["PRODUTO_ID"]}' style='max-width: 18rem; display:'flex'; >
+                  <img src='#' alt='' class='card-img-top'>
+                  <div class='card-body'>
+                    <h5 class='titulo' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>
+
+                    <p class='preco' style='font-size: 20px;'>R$ {$produto["PRODUTO_PRECO"]}</p>
+
+                    <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
+
+                    <div class='botoes-produto'>
+                      <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'><i class='fa-solid fa-pen-to-square'></i>Editar</button>
+                      <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</button>
+                    </div>
+                    
+                    <div class='detalhes-container' style='display:none'>
+                      <p class='idProduto'>{$produto["PRODUTO_ID"]}</p>
+                      <p class='descricaoProduto'>{$produto["PRODUTO_DESC"]}</p>
+                      <p class='idCategoriaProduto'>{$produto["CATEGORIA_ID"]}</p>
+                      <p class='desconto'>{$produto["PRODUTO_DESCONTO"]}</p>
+                      <p class='produto-ativo'>{$produto["PRODUTO_ATIVO"]}</p>                      
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="card-produto card" style="width: 18rem;">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="nome">Nome do produto</h5>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">0 produtos em estoque</p>
-                  <div class="botoes-produto">
-                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card-produto card" style="width: 18rem;">
-                <img src="" alt="" class="card-img-top">
-                <div class="card-body">
-                  <h5 class="nome">Nome do produto</h5>
-                  <p class="preço">R$ 0,00 </p>
-                  <p class="estoque">0 produtos em estoque</p>
-                  <div class="botoes-produto">
-                    <button type="button" class="btn btn-primary btn-editar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-editar-produto"><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                    <button type="button" class="btn btn-secondary btn-visualizar-produto" data-bs-toggle="modal" data-bs-target="#staticBackdrop-visualizar-produto"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</button>
-                  </div>
-                </div>
-              </div>
+                </div>";
+              }
+            ?>                            
             </div>
           </div>          
         </div>
+        
+        <!-- Modal Detalhes -->
+        <div class="modal fade modal-produto" id="staticBackdrop-visualizar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Detalhes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+              
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
 
         <!-- Modal Adicionar -->
 
@@ -451,21 +462,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="" method="POST">
+              <form class="form-adm" Action="Criar/criar-produto.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <input type="text" name="id" style = "display:none">
                     <label for="inputAddress">Título:</label>
                     <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label for="inputAddress">Preço:</label>
-                      <input type="text" class="form-control" aria-label="First name">
+                      <input name="preco" type="text" class="form-control">
                     </div>
                     <div class="col">
                       <label for="inputAddress">Desconto:</label>
-                      <input type="text" class="form-control" aria-label="Last name">
+                      <input name="desconto" type="text" class="form-control" >
                     </div>
                   </div>
                   <div class="form-group row">
@@ -489,18 +500,24 @@
                       <label for="inputPassword4">Estoque:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
+                        <input name="estoque" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
+                    <textarea name="desc" class="form-control"></textarea>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input inputAtivo" type="checkbox" name= 'ativo'>
+                    <label class="form-check-label" for="gridCheck">
+                      Produto ativo
+                    </label>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Adicionar</button>
                 </div>
               </form>
             </div>
@@ -517,21 +534,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="" method="POST">
+              <form class="form-adm" Action="Editar/edita-produto.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
+                    <input type="text" name="id" id="idProduto" style = "display:none">
                     <label for="inputAddress">Título:</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                    <input name="nome" type="text" class="form-control nome inputTitulo" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="row">
                     <div class="col">
                       <label for="inputAddress">Preço:</label>
-                      <input type="text" class="form-control" aria-label="First name">
+                      <input name="preco" type="text" class="form-control inputPreco" aria-label="First name">
                     </div>
                     <div class="col">
                       <label for="inputAddress">Desconto:</label>
-                      <input type="text" class="form-control" aria-label="Last name">
+                      <input name="desconto" type="text" class="form-control inputDesconto" aria-label="Last name">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -539,7 +556,7 @@
                       <label for="inputPassword4">Categoria:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                        <select class="form-select" id="inputGroupSelect01">
+                        <select name="categoria" class="form-select" id="inputGroupSelect01">
                           <option selected>Categoria</option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
@@ -555,13 +572,19 @@
                       <label for="inputPassword4">Estoque:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                        <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
+                        <input name="estoque" type="number" class="form-control inputEstoque" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
+                    <textarea name="desc" class="form-control inputDescProduto" id="message-text"></textarea>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
+                    <label class="form-check-label" for="gridCheck">
+                      Produto ativo
+                    </label>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -580,7 +603,8 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "JavaScript/single-pag.js"></script>
+<script src= "JavaScript/filtro.js"></script>
 <script src= "JavaScript/editar.js"></script>
 <script src= "JavaScript/editar-categoria.js"></script>
+<script src= "JavaScript/editar-produto.js"></script>
 </html>

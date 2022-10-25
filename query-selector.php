@@ -8,7 +8,9 @@ if(!$_COOKIE['nome']){
 }
 
 //Query SQL para buscar administradores com @charlie
-$cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID FROM ADMINISTRADOR WHERE ADM_EMAIL LIKE '%@charlie%'");
+$cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID 
+FROM ADMINISTRADOR 
+WHERE ADM_EMAIL LIKE '%@charlie%'");
 
 $admins = [];
 
@@ -19,7 +21,9 @@ while($linha = $cmd->fetch(PDO::FETCH_ASSOC))
 }
 
 //Categoria
-$cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO FROM CATEGORIA WHERE CATEGORIA_DESC LIKE 'Livros%' OR 'Histórias%'");
+$cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO 
+FROM CATEGORIA 
+WHERE CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Histórias%'");
 
 $categorias = [];
 
@@ -30,8 +34,10 @@ while($linha = $cmdCategoria->fetch())
 }
 
 
-//Produto
-$cmdProduto = $pdo->query("SELECT PRODUTO_ID, PRODUTO_NOME, PRODUTO_DESC, PRODUTO_ATIVO, PRODUTO_DESCONTO, PRODUTO_PRECO, CATEGORIA_ID FROM PRODUTO");
+//Produto, Produto_imagem e Produto_estoque
+$cmdProduto = $pdo->query("SELECT P.PRODUTO_ID, P.PRODUTO_NOME, P.PRODUTO_DESC, P.PRODUTO_ATIVO, P.PRODUTO_DESCONTO, P.PRODUTO_PRECO, P.CATEGORIA_ID, PE.PRODUTO_QTD
+FROM PRODUTO AS P INNER JOIN PRODUTO_ESTOQUE AS PE
+ON P.PRODUTO_ID = PE.PRODUTO_ID");
 
 $produtos = [];
 
