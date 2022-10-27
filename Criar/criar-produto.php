@@ -8,6 +8,7 @@ $nome = $_POST['nome'];
 $preco = $_POST['preco'];
 $desconto = $_POST['desconto'];
 $estoque = $_POST['estoque'];
+$categoria = $_POST['categoria'];
 
 //Verificando se a descrição está vazia
 if($_POST['desc']){
@@ -27,18 +28,31 @@ else{
 }
 
 //Prepara o insert
-$cmdtext = "INSERT INTO PRODUTO(PRODUTO_NOME, PRODUTO_DESC, PRODUTO_PRECO, PRODUTO_DESCONTO, PRODUTO_ATIVO) 
-VALUES('" . $nome . "','" . $desc . "', '" . $preco . "','" . $desconto . "','" . $ativo . "')";
-$cmd = $pdo->prepare($cmdtext);
+$query = $pdo->prepare("INSERT INTO PRODUTO(PRODUTO_NOME, PRODUTO_DESC, PRODUTO_PRECO, PRODUTO_DESCONTO, PRODUTO_ATIVO, CATEGORIA_ID) 
+VALUES(:nome, :descricao, :preco, :desconto, :ativo, :categoria)");
 
+$query->bindValue(":nome", $nome);
+$query->bindValue(":descricao", $desc);
+
+$query->bindValue(":preco", $preco);
+$query->bindValue(":desconto", $desconto);
+
+$query->bindValue(":categoria", $categoria, PDO::PARAM_INT);
+$query->bindValue(":ativo", $ativo, PDO::PARAM_BOOL);
+
+$query->execute();
+
+$id = $pdo->lastInsertId();
+
+$cmd = $pdo->prepare("INSERT INTO PRODUTO_ESTOQUE(PRODUTO_ID, PRODUTO_QTD) 
+VALUES('" . $id . "', '" . $estoque . "')");
 
 //Checa se o nome tiver algo e executa 
-if($nome == 'não execute ainda, precisa colocar categoria'){
-    $cmd->execute();    
-    header('Location: edita-sucesso.php');
+if($cmd->execute()){    
+    header('Location: criar-sucesso.php');
 }
 else{
-    header('Location: edita-erro.php'); 
+    header('Location: criar-erro.php'); 
 }
 
 

@@ -48,3 +48,15 @@ while($linha = $cmdProduto->fetch())
 }
 
 
+// $cmdFiltro = $pdo->query("SELECT C.CATEGORIA_ID, C.CATEGORIA_NOME, C.CATEGORIA_DESC, COUNT(P.PRODUTO_NOME)
+// FROM CATEGORIA AS C INNER JOIN PRODUTO AS P
+// ON C.CATEGORIA_ID = P.CATEGORIA_ID
+// GROUP BY C.CATEGORIA_ID
+// WHERE CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Histórias%'");
+
+// $filtro = [];
+
+// while($linha = $cmdFiltro->fetch())
+// { 
+//     $filtro[] = $linha;
+// }

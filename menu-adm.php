@@ -399,12 +399,12 @@
               foreach($produtos as $produto)
               {
                 echo "
-                <div class='card-produto card {$produto["PRODUTO_ID"]}' style='max-width: 18rem; display:'flex'; >
+                <div class='card-produto card {$produto["CATEGORIA_ID"]}' style='max-width: 18rem; display:'flex'; >
                   <img src='#' alt='' class='card-img-top'>
                   <div class='card-body'>
                     <h5 class='titulo' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>
 
-                    <p class='preco' style='font-size: 20px;'>R$ {$produto["PRODUTO_PRECO"]}</p>
+                    <p class='preco' style='font-size: 20px;'>{$produto["PRODUTO_PRECO"]}</p>
 
                     <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
 
@@ -484,7 +484,7 @@
                       <label for="inputPassword4">Categoria:</label> 
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                        <select class="form-select" id="inputGroupSelect01">
+                        <select name="categoria" class="form-select" id="inputGroupSelect01">
                           <option selected>Categoria</option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
@@ -557,7 +557,7 @@
                       <div class="input-group flex-nowrap">                      
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
                         <select name="categoria" class="form-select" id="inputGroupSelect01">
-                          <option selected>Categoria</option>
+                          <option></option>
                           <?php
                             //Percorre o nome das categoria e cria uma option para cada uma
                             foreach($categorias as $categoria)
