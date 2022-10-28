@@ -1,6 +1,6 @@
 <?php
 
-include "../start-mysql.php";
+include "../../start-mysql.php";
 
 //Pegando o Input do usuário
 $nome = $_POST['nome'];
@@ -46,19 +46,19 @@ if($nome){
     $cmd->execute();
 }
 else{
-    header('Location: edita-erro.php'); 
+    $editado = false; 
+    include 'produto.php';
 }
 
 $cmd2 = $pdo->prepare("UPDATE PRODUTO_ESTOQUE SET PRODUTO_QTD = :estoque WHERE PRODUTO_ID = :id");
 $cmd2->bindValue(":id", $id);
 $cmd2->bindValue(":estoque", $estoque);
 
-
-if($cmd2->execute()){   
-    //header('Location: edita-sucesso.php');
-
-    echo $categoria;
+if($cmd2->execute()){ 
+    $editado = true;
+    include 'produto.php';
 }
 else{
-    header('Location: edita-erro.php'); 
+    $editado = false; 
+    include 'produto.php';
 }

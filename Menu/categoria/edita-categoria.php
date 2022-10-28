@@ -1,6 +1,6 @@
 <?php
 
-include "../start-mysql.php";
+include "../../start-mysql.php";
 
 //Pegando o Input do usuário
 $nome = $_POST['nomeCategoria'];
@@ -34,11 +34,13 @@ $cmd->bindValue(":id", $id);
 
 //Checa se o nome tiver algo e executa o Uptade
 if($nome){
-    $cmd->execute();    
-    header('Location: edita-sucesso.php');
+    $cmd->execute(); 
+    $editado = true; 
+    include 'categoria.php';
 }
 else{
-    header('Location: edita-erro.php'); 
+    $editado = false; 
+    include 'categoria.php';
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-include "../start-mysql.php";
+include "../../start-mysql.php";
 
 //Pegando o Input do usuário
 $nome = $_POST['nome'];
@@ -40,19 +40,29 @@ $query->bindValue(":desconto", $desconto);
 $query->bindValue(":categoria", $categoria, PDO::PARAM_INT);
 $query->bindValue(":ativo", $ativo, PDO::PARAM_BOOL);
 
-$query->execute();
+//Checando se deu certo e pegando o id criado
+if($query->execute())
+{
+    $id = $pdo->lastInsertId();
+}
+else
+{
+    $cadastrado = false;
+    include 'produto.php';
+}
 
-$id = $pdo->lastInsertId();
 
 $cmd = $pdo->prepare("INSERT INTO PRODUTO_ESTOQUE(PRODUTO_ID, PRODUTO_QTD) 
 VALUES('" . $id . "', '" . $estoque . "')");
 
 //Checa se o nome tiver algo e executa 
 if($cmd->execute()){    
-    header('Location: criar-sucesso.php');
+    $cadastrado = true;
+    include 'produto.php';
 }
 else{
-    header('Location: criar-erro.php'); 
+    $cadastrado = false;
+    include 'produto.php';
 }
 
 

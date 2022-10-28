@@ -3,9 +3,9 @@
 include 'start-mysql.php';
 
 //Checa se o login do usuário foi feito com sucesso
-if(!$_COOKIE['nome']){
-    header('Location:login-adm-erro.html');
-}
+// if(!$_COOKIE['nome']){
+//     header('Location:login-adm-erro.html');
+// }
 
 //Query SQL para buscar administradores com @charlie
 $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID 
