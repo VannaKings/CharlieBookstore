@@ -235,7 +235,7 @@
                   <div class="form-group">
                     <input type="text" name="id" id="idAdm" style = "display:none">
                     <label for="inputAddress">Nome</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName-adm" placeholder="Nome" required>
                   </div>
                   <div class="form-group row">
                     <div class="col">
@@ -271,7 +271,7 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../JavaScript/filtro.js"></script>
-<script src= "../JavaScript/load.js"></script>
-<script src= "../JavaScript/editar.js"></script>
+<script src= "../../JavaScript/filtro.js"></script>
+<script src= "../../JavaScript/load.js"></script>
+<script src= "../../JavaScript/editar-adm.js"></script>
 </html>
