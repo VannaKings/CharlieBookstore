@@ -1,7 +1,7 @@
 //Pegando os input
 let idCategoria = document.getElementById('idCategoria');
-let nomeCategoria = document.querySelector('.InputNomeCategoria');
-let descCategoria = document.querySelector('.InputDesc');
+let nomeCategoria = document.querySelector('.inputNomeCategoria');
+let descCategoria = document.querySelector('.inputDesc');
 
 
 //Pegando os valores da tabela e armazenando em um array
@@ -10,6 +10,7 @@ let nomeTabelaCategoria = Array.from(document.getElementsByClassName("nome-categ
 let descTabelaCategoria = Array.from(document.getElementsByClassName("desc-categoria-tabela"));
 
 let buttonCategoria = Array.from(document.getElementsByClassName("btn-selecionar-editar-categoria"));
+
 
 
 //Chamando a função em todos os botões e atribuindo a chave de cada um com o index do array
@@ -28,11 +29,12 @@ function showEdit(){
 
     
     addValor(idTabelaCategoria[index],idCategoria);
+    
 }
 
 //Coloca no input o valor do array que irá ser editado
 function addValor(array,input){
-    input.value = array.innerText;
+    input.value = array.innerText.trim();
+    // console.log(array.innerText.trim());
 }
-
 

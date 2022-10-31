@@ -84,13 +84,13 @@ p
 
 /* Navegador vertical */
 
-.navegador
+.navegador-principal, .navegador-secundario
 {
     display: grid;
     grid-template-columns: 33px 125px;
 }
 
-#navegador2
+.navegador-secundario
 {
     margin-bottom: 50px;
 }
@@ -100,23 +100,25 @@ p
     margin: 10px 0;
 }
 
-.navegador ul
+.navegador-principal nav, .navegador-secundario nav
 {
     display: flex;
     flex-direction: column;
-    list-style: none;
 }
 
-.nav-perfil li, .nav-funcoes li, .nav-perfil a
+.nav-perfil a, .nav-funcoes a, .nav-perfil a
 {
     margin: 6px 0 ;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--preto);
 }
 
-.nav-perfil li:hover,.nav-perfil a:hover, .nav-funcoes li:hover
+.nav-perfil a:hover,.nav-perfil a:hover, .nav-funcoes a:hover
 {
     color: var(--laranja);
     font-weight: bold;
+    text-decoration: none;
 }
 
 .menu h1
@@ -197,7 +199,7 @@ nav .collapse
 
 .secao-principal
 {
-    display: none;
+    display: flex;
     flex-direction: column;
 }
 
@@ -215,13 +217,7 @@ nav .collapse
     font-weight: normal;
 }
 
-/* Seção home(inicialmente com display ativo) */
-
-main .home
-{
-    display: flex;
-    flex-direction: column;
-}
+/* Seção home */
 
 .funcoes
 {

@@ -4,5 +4,5 @@
 
     //Destroi todas as variaveis de sessao
     session_destroy();
-    header("location:login-adm.php");
+    header("location:Login/login-adm.php");
 ?>

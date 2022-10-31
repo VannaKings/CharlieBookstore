@@ -1,6 +1,6 @@
 <?php
 
-include '../start-mysql.php';
+include '../../start-mysql.php';
 
 $nome = $_POST["nome"];
 
@@ -20,11 +20,11 @@ $isInputEmpty = $nome;
 
 if($isInputEmpty){
     $status = $cmd->execute();
-    
-    header('Location: criar-sucesso.php');
+    $cadastrado = true;
+    include 'categoria.php';
 } 
 else{
-    
-    header('Location: criar-erro.php');
+    $cadastrado = false;
+    include 'categoria.php';
 }
     
