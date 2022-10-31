@@ -166,10 +166,10 @@
                     
                     <div class='detalhes-container' style='display:none'>
                       <p class='idProduto'>{$produto["PRODUTO_ID"]}</p>
-                      <p class='descricaoProduto'>{$produto["PRODUTO_DESC"]}</p>
-                      <p class='idCategoriaProduto'>{$produto["CATEGORIA_ID"]}</p>
+                      <p class='desc'>{$produto["PRODUTO_DESC"]}</p>
+                      <p class='idCategoria'>{$produto["CATEGORIA_ID"]}</p>
                       <p class='desconto'>{$produto["PRODUTO_DESCONTO"]}</p>
-                      <p class='produto-ativo'>{$produto["PRODUTO_ATIVO"]}</p>                      
+                      <p class='ativo'>{$produto["PRODUTO_ATIVO"]}</p>                      
                     </div>
                   </div>
                 </div>";
@@ -329,7 +329,7 @@
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea name="desc" class="form-control inputDescProduto" id="message-text"></textarea>
+                    <textarea name="desc" class="form-control inputDesc" id="message-text"></textarea>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
@@ -354,7 +354,6 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../JavaScript/filtro.js"></script>
-<script src= "../JavaScript/load.js"></script>
-<script src= "../JavaScript/editar-produto.js"></script>
+<script src= "../../JavaScript/filtro.js"></script>
+<script src= "../../JavaScript/editar-produto.js"></script>
 </html>

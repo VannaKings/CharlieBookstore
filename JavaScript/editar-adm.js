@@ -6,10 +6,10 @@ let senha = document.querySelector('.inputSenha');
 
 console.log(id)
 //Pegando os valores da tabela e armazenando em um array
-let idTabela = Array.from(document.getElementsByClassName("id-adm-tabela"));
-let nomeTabela = Array.from(document.getElementsByClassName("nome-adm-tabela"));
-let emailTabela = Array.from(document.getElementsByClassName("email-adm-tabela"));
-let senhaTabela = Array.from(document.getElementsByClassName("senha-adm-tabela"));
+let idTabela = Array.from(document.getElementsByClassName("id-tabela"));
+let nomeTabela = Array.from(document.getElementsByClassName("nome-tabela"));
+let emailTabela = Array.from(document.getElementsByClassName("email-tabela"));
+let senhaTabela = Array.from(document.getElementsByClassName("senha-tabela"));
 let button = Array.from(document.getElementsByClassName("btn-selecionar-editar"));
 
 

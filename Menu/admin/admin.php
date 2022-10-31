@@ -139,12 +139,12 @@
               { 
                 echo "  
                   <tr>
-                    <td class = 'nome-adm-tabela'>
+                    <td class = 'nome-tabela'>
                     
                         {$admin["ADM_NOME"]}         
                     
                     </td>
-                    <td class = 'email-adm-tabela'>
+                    <td class = 'email-tabela'>
                       
                         {$admin["ADM_EMAIL"]}        
                       
@@ -152,21 +152,21 @@
                  
                 if($admin["ADM_ATIVO"])
                 {
-                  echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
                 }
                 else
                 {
-                  echo '<td class="ativo-adm-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
                 }                                        
                   
                 echo "
                     <td>                                        
                         <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>                    
                     </td>
-                    <td class = 'senha-adm-tabela' style = 'display:none;'>                      
+                    <td class = 'senha-tabela' style = 'display:none;'>                      
                         {$admin["ADM_SENHA"]}                      
                     </td>
-                    <td class = 'id-adm-tabela' style = 'display:none;'>                    
+                    <td class = 'id-tabela' style = 'display:none;'>                    
                         {$admin["ADM_ID"]}                    
                     </td>                 
                   </tr>";        
@@ -271,7 +271,5 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../../JavaScript/filtro.js"></script>
-<script src= "../../JavaScript/load.js"></script>
 <script src= "../../JavaScript/editar-adm.js"></script>
 </html>

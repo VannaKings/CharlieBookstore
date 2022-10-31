@@ -3,8 +3,8 @@
 include "../../start-mysql.php";
 
 //Pegando o Input do usuário
-$nome = $_POST['nomeCategoria'];
-$id = $_POST['idCategoria'];
+$nome = $_POST['nome'];
+$id = $_POST['id'];
 
 //Verificando se a descrição está vazia
 if($_POST['desc']){
@@ -15,7 +15,7 @@ else{
 }
 
 //Checando o status do checkbox
-if(isset($_POST['ativo-categoria'])){
+if(isset($_POST['ativo'])){
     $ativo = 1;
     
 }

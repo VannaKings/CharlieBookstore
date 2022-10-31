@@ -138,28 +138,28 @@
             {
               echo "
               <tr>
-                <td class = 'nome-categoria-tabela'>
+                <td class = 'nome-tabela'>
                     {$categoria["CATEGORIA_NOME"]}         
                 </td>
-                <td class = 'desc-categoria-tabela'>
+                <td class = 'desc-tabela'>
                      {$categoria["CATEGORIA_DESC"]}         
                 </td>";
                   
                 if($categoria["CATEGORIA_ATIVO"])
                 {
-                  echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
                 }
                 else
                 {
-                  echo '<td class="ativo-categoria-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
                 }                                        
                 
                 echo "
-                  <td class = 'id-categoria-tabela' style = 'display:none;'>                    
+                  <td class = 'id-tabela' style = 'display:none;'>                    
                      {$categoria["CATEGORIA_ID"]}
                   </td>  
                   <td>                                         
-                    <button type='button' class='btn btn-primary btn-selecionar-editar-categoria' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>
+                    <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>
                   </td>
               </tr>";
             } 
@@ -210,9 +210,9 @@
               <form class="form-adm" Action="edita-categoria.php" method="POST">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" name="idCategoria" id="idCategoria" style = "display:none">
+                    <input type="text" name="id" id="idCategoria" style = "display:none">
                     <label for="inputAddress">Nome</label>
-                    <input name="nomeCategoria" type="text" class="form-control nome inputNomeCategoria" id="inputName" placeholder="Nome" required>
+                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
@@ -220,7 +220,7 @@
                   </div>
                   <div class="form-group">
                     <div class="form-check">
-                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo-categoria'>
+                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
                       <label class="form-check-label" for="gridCheck">
                         Categoria ativa
                       </label>
@@ -242,7 +242,5 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../../JavaScript/filtro.js"></script>
-<script src= "../../JavaScript/load.js"></script>
 <script src= "../../JavaScript/editar-categoria.js"></script>
 </html>

@@ -28,7 +28,12 @@
       //Inicia o banco de dados
       include "../query-selector.php";
       //Pega as querys realizadas
-      require_once "../Login/autentica-login.php";
+      session_start();
+
+      // Se existir a marcacao de estar logado
+      if(isset($_SESSION["logado"]) == false) {
+          header("Location: ../Login/login-adm.php");
+      }
     ?>
 
     <!-- Menu -->
