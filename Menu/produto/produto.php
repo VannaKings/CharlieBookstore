@@ -313,7 +313,7 @@
                             //Percorre o nome das categoria e cria uma option para cada uma
                             foreach($categorias as $categoria)
                             {                          
-                              echo "<option value={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</option>";
+                              echo "<option value={$categoria["CATEGORIA_ID"]} class = 'inputCategoria'>{$categoria["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>
