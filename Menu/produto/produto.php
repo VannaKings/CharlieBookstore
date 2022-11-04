@@ -213,7 +213,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
-              <form class="form-adm" Action="criar-produto.php" method="POST">
+              <form class="form-adm" Action="criar-produto.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                   <div class="form-group">
                     <input type="text" name="id" style = "display:none">
@@ -254,6 +254,10 @@
                         <input name="estoque" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
                       </div>                 
                     </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Coloque as imagens na ordem</label>
+                    <input class="form-control" type="file" id="formFile" name="imagem[]" multiple="multiple">
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
