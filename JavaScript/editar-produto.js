@@ -38,9 +38,12 @@ function showEdit(){
     addValor(tituloLista[index],titulo);
     addValor(estoqueLista[index],estoque);
     addValor(descLista[index],desc);
+
     addCategoria(idCategoria[index], categorias)
+
     addValor(descontoLista[index],desconto)
     addValor(precoLista[index],preco);
+    
     addValor(idLista[index],idProduto);
 }
 

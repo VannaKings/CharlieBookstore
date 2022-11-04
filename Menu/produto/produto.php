@@ -160,8 +160,12 @@
                     <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
 
                     <div class='botoes-produto'>
-                      <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'><i class='fa-solid fa-pen-to-square'></i>Editar</button>
-                      <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</button>
+                      <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'>
+                        <i class='fa-solid fa-pen-to-square'></i>Editar
+                      </button>
+                      <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'>
+                        <a href='detalhes.php' value={$produto["PRODUTO_ID"]} style='color: white; text-decoration: none;'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</a>
+                      </button>
                     </div>
                     
                     <div class='detalhes-container' style='display:none'>
@@ -180,7 +184,7 @@
         </div>
         
         <!-- Modal Detalhes -->
-        <div class="modal fade modal-produto" id="staticBackdrop-visualizar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <!-- <div class="modal fade modal-produto" id="staticBackdrop-visualizar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
@@ -200,7 +204,7 @@
 
             </div>
           </div>
-        </div>
+        </div> -->
 
 
         <!-- Modal Adicionar -->
@@ -255,9 +259,12 @@
                       </div>                 
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Coloque as imagens na ordem</label>
-                    <input class="form-control" type="file" id="formFile" name="imagem[]" multiple="multiple">
+                  <div class="col" style="margin-top:10px">
+                    <label for="formFile" class="form-label">Insira as imagens:</label>
+                    <div class="input-group flex-nowrap">
+                      <span class="input-group-text"><i class="fa-solid fa-camera"></i></span>
+                      <input class="form-control" type="file" name="imagem[]" multiple="multiple">
+                    </div>                    
                   </div>
                   <div class="form-group">
                     <label for="message-text" class="col-form-label">Descrição:</label>
