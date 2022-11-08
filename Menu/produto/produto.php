@@ -147,33 +147,42 @@
           <div class="container-nav-produtos">
             <div class="container-produtos">              
             <?php
+              
               foreach($produtos as $produto)
               {
                 echo "
-                <div class='card-produto card {$produto["CATEGORIA_ID"]}' style='max-width: 18rem; display:'flex'; >
-                  <img src='#' alt='' class='card-img-top'>
+                <div class='card-produto card {$produto["CATEGORIA_ID"]}' style='max-width: 16rem; display:'flex'; >
+                  <img src={$produto["IMAGEM_URL"]} alt='' class='card-img-top'>
                   <div class='card-body'>
-                    <h5 class='titulo' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>
+                    <h5 class='titulo' style='height:48px'>{$produto["PRODUTO_NOME"]}</h5>";
 
-                    <p class='preco' style='font-size: 20px;'>{$produto["PRODUTO_PRECO"]}</p>
-
-                    <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>
-
-                    <div class='botoes-produto'>
+                    if($produto["PRODUTO_PRECO"] != $produto["DESCONTO"])
+                    {
+                      echo "<div style='display: flex; align-itens:center;'>
+                      <p class='preco' style='font-size: 20px; margin-right: 10px'>{$produto["PRODUTO_PRECO"]}</p>
+                      <p style='margin-top:5px'>De: <strong style=' text-decoration: line-through; Font-size: 16px; color: grey;'>{$produto["PRODUTO_PRECO"]}</strong></p>
+                      </div>";
+                    }
+                    else
+                    {
+                      echo "<p class='preco' style='font-size: 20px;'>{$produto["PRODUTO_PRECO"]}</p>";
+                    }
+                    echo "<div class='botoes-produto'>
                       <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'>
                         <i class='fa-solid fa-pen-to-square'></i>Editar
                       </button>
                       <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'>
-                        <a href='detalhes.php' value={$produto["PRODUTO_ID"]} style='color: white; text-decoration: none;'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</a>
+                        <a href='detalhes.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</a>
                       </button>
                     </div>
                     
                     <div class='detalhes-container' style='display:none'>
                       <p class='idProduto'>{$produto["PRODUTO_ID"]}</p>
-                      <p class='desc'>{$produto["PRODUTO_DESC"]}</p>
+                      <p class='descricao'>{$produto["PRODUTO_DESC"]}</p>
                       <p class='idCategoria'>{$produto["CATEGORIA_ID"]}</p>
                       <p class='desconto'>{$produto["PRODUTO_DESCONTO"]}</p>
-                      <p class='ativo'>{$produto["PRODUTO_ATIVO"]}</p>                      
+                      <p class='ativo'>{$produto["PRODUTO_ATIVO"]}</p> 
+                      <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>                     
                     </div>
                   </div>
                 </div>";
@@ -222,7 +231,7 @@
                   <div class="form-group">
                     <input type="text" name="id" style = "display:none">
                     <label for="inputAddress">Título:</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
                   </div>
                   <div class="row">
                     <div class="col">
@@ -324,7 +333,7 @@
                             //Percorre o nome das categoria e cria uma option para cada uma
                             foreach($categorias as $categoria)
                             {                          
-                              echo "<option value={$categoria["CATEGORIA_ID"]} class = 'inputCategoria'>{$categoria["CATEGORIA_NOME"]}</option>";
+                              echo "<option value={$categoria["CATEGORIA_ID"]} class='inputCategoria'>{$categoria["CATEGORIA_NOME"]}</option>";
                             }
                           ?>
                         </select>

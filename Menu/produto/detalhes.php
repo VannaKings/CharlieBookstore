@@ -8,6 +8,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/detalhes.css">
     
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -28,7 +29,33 @@
       //Pega as querys realizadas
       require_once "../../Login/autentica-login.php";
 
+      $id = $_GET['id'];
+
+      //Pegando os detalhes que ficarão em destaque
+      $destaque = $pdo->query("SELECT P.PRODUTO_ID, P.PRODUTO_NOME, P.PRODUTO_PRECO, (P.PRODUTO_PRECO-P.PRODUTO_DESCONTO) AS DESCONTO, PI.IMAGEM_URL, P.PRODUTO_DESC, P.PRODUTO_ATIVO, PE.PRODUTO_QTD
+      FROM PRODUTO AS P LEFT OUTER JOIN PRODUTO_ESTOQUE AS PE
+      ON P.PRODUTO_ID = PE.PRODUTO_ID
+      INNER JOIN PRODUTO_IMAGEM AS PI
+      ON P.PRODUTO_ID = PI.PRODUTO_ID
+      WHERE P.PRODUTO_ID = 8 AND PI.IMAGEM_URL = 'https://i.imgur.com/kEMPVSD.jpg'")->fetch();
+
+      //Pegando todas as imagens exceto a de capa
+      $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL
+      FROM PRODUTO AS P INNER JOIN PRODUTO_IMAGEM AS PI
+      ON P.PRODUTO_ID = PI.PRODUTO_ID
+      WHERE P.PRODUTO_ID = 8 AND PI.IMAGEM_ORDEM <> 1");
+
+      $imagens = [];
       
+      while($linha = $cmdImagem->fetch()){
+        $imagens[] = $linha;
+      }
+
+      $categoria= $pdo->query("SELECT C.CATEGORIA_NOME
+      FROM PRODUTO AS P INNER JOIN CATEGORIA AS C
+      ON P.CATEGORIA_ID = C.CATEGORIA_ID
+      WHERE P.PRODUTO_ID = 8")->fetch();
+
     ?>
 
     <!-- Menu -->
@@ -90,20 +117,43 @@
         </nav>
       <div>
       
-      <!-- Seção Produtos -->
+      <!-- Seção Detalhes -->
 
       <section class= "secao-principal produtos secao-produtos">
-        <h1>Produtos</h1>
-        <h3>Adicione ou edite produtos já existentes do seu site.</h3>
-        <div class="img-produtos">
-            <img class="img-principal" src="" alt="">
+        <h1>Detalhes</h1>      
+        <div class="detalhes-produto">
             <ul class="img-list">
-                <li><img src="" alt=""></li>
-                <li><img src="" alt=""></li>
-                <li><img src="" alt=""></li>
-                <li><img src="" alt=""></li>
-                <li><img src="" alt=""></li>
+            <?php
+              foreach($imagens as $imagem)  
+                echo "<li><img src={$imagem["IMAGEM_URL"]} alt='Imagem do produto'></li>";
+            ?>
             </ul>
+            <?php
+                echo "<img class='img-principal' src={$destaque["IMAGEM_URL"]} alt='Imagem principal'>";
+            ?>
+            <div class="informacoes">
+            <?php
+                echo "<h2>{$destaque["PRODUTO_NOME"]}</h2>";
+                if($destaque["PRODUTO_PRECO"] != $destaque["DESCONTO"])
+                {
+                    echo "<p class='preco-destaque'>R$ {$destaque["DESCONTO"]}</p>
+                    <p>De: <strong class='preco-antigo'>{$destaque["PRODUTO_PRECO"]}</strong></p>";
+                }
+                else
+                {
+                    echo "<p class='preco-destaque'>R$ {$destaque["PRODUTO_PRECO"]}</p>";
+                }
+                echo "<p>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
+                if($destaque["PRODUTO_QTD"])
+                {
+                    echo "<p>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
+                }
+                else {
+                    echo "<p>Estoque: Sem informações</p>";
+                }
+                echo "<p><strong>Descrição: </strong>{$destaque["PRODUTO_DESC"]} </p>"
+            ?>
+            </div>
         </div>
       </section>
     </main>

@@ -13,7 +13,7 @@ let categorias = Array.from(document.getElementsByClassName('inputCategoria'));
 let idLista = Array.from(document.getElementsByClassName("idProduto"));
 let tituloLista = Array.from(document.getElementsByClassName("titulo"));
 let estoqueLista = Array.from(document.getElementsByClassName("estoque"));
-let descLista = Array.from(document.getElementsByClassName("desc"));
+let descLista = Array.from(document.getElementsByClassName("descricao"));
 let precoLista = Array.from(document.getElementsByClassName("preco"));
 let descontoLista = Array.from(document.getElementsByClassName("desconto"));
 
