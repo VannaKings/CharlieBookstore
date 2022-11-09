@@ -93,19 +93,19 @@
       <section class= "secao-principal produtos secao-produtos">
         <h1>Produtos</h1>
         <h3>Adicione ou edite produtos já existentes do seu site.</h3>
-        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-adicionar-produto"><i class="fa-solid fa-book"></i>Adicionar produto</button>
+        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-adicionar-produto"><i class="fa-solid fa-book" style="margin-bottom: 5px;"></i>Adicionar produto</button>
         <?php
           //Alerta sobre situação do cadastrar
           if(isset($cadastrado))
           {
             if(!$cadastrado){
-              echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
+              echo '<div class="alert alert-danger" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
                     Erro ao cadastrar, por favor tente novamente
                   </div>';
             }
             else
             {
-              echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
+              echo '<div class="alert alert-success" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
                     Cadastro realizado com sucesso!
                   </div>';
             }
@@ -115,13 +115,13 @@
           if(isset($editado))
           {
             if(!$editado){
-              echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
+              echo '<div class="alert alert-danger" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
                     Erro ao editar, por favor tente novamente
                   </div>';
             }
             else
             {
-              echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
+              echo '<div class="alert alert-success" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
                     Alteração realizada com sucesso!
                   </div>';
             }
@@ -159,7 +159,7 @@
                     if($produto["PRODUTO_PRECO"] != $produto["DESCONTO"])
                     {
                       echo "<div style='display: flex; align-itens:center;'>
-                      <p class='preco' style='font-size: 20px; margin-right: 10px'>{$produto["PRODUTO_PRECO"]}</p>
+                      <p class='preco' style='font-size: 20px; margin-right: 10px'>{$produto["DESCONTO"]}</p>
                       <p style='margin-top:5px'>De: <strong style=' text-decoration: line-through; Font-size: 16px; color: grey;'>{$produto["PRODUTO_PRECO"]}</strong></p>
                       </div>";
                     }
