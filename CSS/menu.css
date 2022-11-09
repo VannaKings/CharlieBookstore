@@ -208,6 +208,7 @@ nav .collapse
     margin: 20px;
     color: var(--laranja);
     max-width: 410px;
+    border-bottom: 1px solid grey;
 }
 
 .secao-principal h3

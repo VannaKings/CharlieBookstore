@@ -8,7 +8,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">
-    <link rel="stylesheet" type="text/css" href="../../CSS/detalhes.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/detalhes-produto.css">
     
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -120,6 +120,7 @@
       <!-- Seção Detalhes -->
 
       <section class= "secao-principal produtos secao-produtos">
+      <!-- <div class="container"> -->
         <h1>Detalhes</h1>      
         <div class="detalhes-produto">
             <ul class="img-list">
@@ -134,27 +135,38 @@
             <div class="informacoes">
             <?php
                 echo "<h2>{$destaque["PRODUTO_NOME"]}</h2>";
+                
                 if($destaque["PRODUTO_PRECO"] != $destaque["DESCONTO"])
                 {
                     echo "<p class='preco-destaque'>R$ {$destaque["DESCONTO"]}</p>
-                    <p>De: <strong class='preco-antigo'>{$destaque["PRODUTO_PRECO"]}</strong></p>";
+                    <p>De: <strong class='preco-antigo'>R$ {$destaque["PRODUTO_PRECO"]}</strong></p>";
                 }
                 else
                 {
                     echo "<p class='preco-destaque'>R$ {$destaque["PRODUTO_PRECO"]}</p>";
                 }
-                echo "<p>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
+
+                echo "<p class='informacoes-texto'><i class='fa-solid fa-book-open' style='color:purple; margin-right:6px;'></i>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
+                
                 if($destaque["PRODUTO_QTD"])
                 {
-                    echo "<p>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
+                    if($destaque["PRODUTO_QTD"] > 0)
+                    {
+                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:green; margin-right:10px;'>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
+                    }
+                    else {
+                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
+                    }
                 }
                 else {
-                    echo "<p>Estoque: Sem informações</p>";
+                    echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: Sem informações</p>";
                 }
-                echo "<p><strong>Descrição: </strong>{$destaque["PRODUTO_DESC"]} </p>"
+
+                echo "<p class='informacoes-texto'><strong>Descrição: </strong>{$destaque["PRODUTO_DESC"]} </p>"
             ?>
             </div>
         </div>
+      <!-- </div> -->
       </section>
     </main>
 </body>
