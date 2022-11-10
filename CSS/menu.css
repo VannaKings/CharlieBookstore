@@ -84,39 +84,43 @@ p
 
 /* Navegador vertical */
 
-.navegador
-{
-    display: grid;
-    grid-template-columns: 33px 125px;
-}
-
-#navegador2
-{
-    margin-bottom: 50px;
-}
-
-.icons i
-{
-    margin: 10px 0;
-}
-
-.navegador ul
+.nav-vertical
 {
     display: flex;
     flex-direction: column;
     list-style: none;
+    width: 100%;
+    padding-left: 0!important;
 }
 
-.nav-perfil li, .nav-funcoes li, .nav-perfil a
+.nav-vertical li
 {
-    margin: 6px 0 ;
+    width: 100%;
     cursor: pointer;
 }
 
-.nav-perfil li:hover,.nav-perfil a:hover, .nav-funcoes li:hover
+.nav-vertical li:hover, .nav-vertical li:hover a, .nav-vertical li:hover i
 {
-    color: var(--laranja);
-    font-weight: bold;
+    background-color: var(--laranja);
+    color: white!important;
+}
+
+.nav-vertical i
+{
+    margin: 10px 20px 10px 40px;
+}
+
+.nav-vertical a
+{
+    margin: 6px 0 ;
+    text-decoration: none;
+    color: var(--preto);
+}
+
+.nav-vertical a:hover, .nav-vertical i:hover
+{
+    color: white;
+    text-decoration: none;
 }
 
 .menu h1
@@ -197,7 +201,7 @@ nav .collapse
 
 .secao-principal
 {
-    display: none;
+    display: flex;
     flex-direction: column;
 }
 
@@ -215,13 +219,7 @@ nav .collapse
     font-weight: normal;
 }
 
-/* Seção home(inicialmente com display ativo) */
-
-main .home
-{
-    display: flex;
-    flex-direction: column;
-}
+/* Seção home */
 
 .funcoes
 {
@@ -337,7 +335,6 @@ main .home
 {
     margin: 1px 5px 0 0;
     font-size: 20px;
-    color: var(--marromEscuro);
 }
 
 .titulo_filtro
@@ -356,7 +353,8 @@ main .home
 {
     padding: 20px 0;
     width: 100%;
-    font-size:20px;
+    font-size:22px;
+    color: var(--laranja);
     border-bottom: 1px solid rgba(201, 201, 201, 0.83);
     margin-bottom: 20px
 }
@@ -369,17 +367,19 @@ main .home
 .container-filtro a
 {
     margin-bottom: 20px;
+    font-size: 18px;
     cursor: pointer;
     text-decoration: none;
     color:var(--preto) ;
+    max-width: 50px;
 }
 .container-filtro a:hover
 {
-    color:var(--laranja);
+    color:var(--laranja)!important;
     font-weight: bold;
 }
 
-/*  Seção Roupas ---- conteudo */
+/*  Seção Produtos ---- conteudo */
 
 .container-produtos 
 {
@@ -387,9 +387,14 @@ main .home
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
 }
-
+.card-produto .preco
+{
+    color: var(--laranja);
+    font-weight: bold;
+}
 .card-produto img
 {
     height: 250px;
@@ -440,7 +445,6 @@ main .home
 {
     display: flex;
     justify-content: space-around;
-
 }
 
 /* Seção Categoria */
@@ -449,5 +453,7 @@ main .home
 {
     margin-right: 10px!important;
 }
+
+
 
 

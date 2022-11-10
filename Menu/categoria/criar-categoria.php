@@ -1,6 +1,6 @@
 <?php
 
-include '../start-mysql.php';
+include '../../start-mysql.php';
 
 $nome = $_POST["nome"];
 
@@ -8,7 +8,7 @@ if($_POST['desc']){
     $desc = $_POST["desc"];
 }
 else{
-    $desc = 'Descrição pendente';
+    $desc = "Livros de $nome";
 }
 
 $cmdtext = "INSERT INTO CATEGORIA(CATEGORIA_NOME, CATEGORIA_DESC) VALUES('" . $nome . "','" . $desc . "')";
@@ -19,11 +19,11 @@ $isInputEmpty = $nome;
 
 if($isInputEmpty){
     $status = $cmd->execute();
-    
-    header('Location: criar-sucesso.php');
+    $cadastrado = true;
+    include 'categoria.php';
 } 
 else{
-    
-    header('Location: criar-erro.php');
+    $cadastrado = false;
+    include 'categoria.php';
 }
     

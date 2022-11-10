@@ -1,21 +1,21 @@
 <?php
 
-include "../start-mysql.php";
+include "../../start-mysql.php";
 
 //Pegando o Input do usuário
-$nome = $_POST['nomeCategoria'];
-$id = $_POST['idCategoria'];
+$nome = $_POST['nome'];
+$id = $_POST['id'];
 
 //Verificando se a descrição está vazia
 if($_POST['desc']){
     $desc = $_POST['desc'];
 }
 else{
-    $desc = "Descrição pendente!";
+    $desc = "Livros de $nome";
 }
 
 //Checando o status do checkbox
-if(isset($_POST['ativo-categoria'])){
+if(isset($_POST['ativo'])){
     $ativo = 1;
     
 }
@@ -34,11 +34,13 @@ $cmd->bindValue(":id", $id);
 
 //Checa se o nome tiver algo e executa o Uptade
 if($nome){
-    $cmd->execute();
-    header('Location: edita-sucesso.php');
+    $cmd->execute(); 
+    $editado = true; 
+    include 'categoria.php';
 }
 else{
-    header('Location: edita-erro.php'); 
+    $editado = false; 
+    include 'categoria.php';
 }
 
 

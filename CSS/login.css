@@ -37,8 +37,8 @@ body
 .formulario form
 {    
     text-align: center;
+    width: 400px;
     margin: 0 auto;
-    width: 25%;
     border: solid 2px rgb(219, 219, 219);
     padding: 20px 40px;    
 }
@@ -51,13 +51,14 @@ body
 
 .email, .senha
 {
-    margin: 20px 0;
+    margin-bottom: 10px;
 }
 
 .senha-titulo, .email-titulo
 {
     width: 10px;
     font-size: 18px;
+    margin-bottom: 0;
     color: var(--marromEscuro);
 }
 

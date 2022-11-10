@@ -1,5 +1,5 @@
 <?php
-include '../start-mysql.php';
+include '../../start-mysql.php';
 
 //Captura o post do usuário
 $nome = $_POST["nome"];
@@ -25,10 +25,12 @@ $isInputEmpty = $nome && $email && $senha;
 
 if($isInputEmpty){
     $status = $cmd->execute();
-    header('Location: criar-sucesso.php');
+    $cadastrado = true;
+    include 'admin.php';
 } 
 else{
-    header('Location: criar-erro.php');
+    $cadastrado = false;
+    include 'admin.php';
 }
 
     
