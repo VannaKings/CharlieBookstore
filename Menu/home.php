@@ -55,7 +55,7 @@
         <!-- Navegador Perfil -->   
         <ul class="nav-vertical">  
             <li style="background-color:#ed8863;"><i class="fa-solid fa-house" style="color:white;"></i><a class="filtro" style="color:white;" href="home.php">Home</a></li>          
-            <li><i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i><a href="../../logout-adm.php">Sair</a></li>
+            <li><i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i><a href="../logout-adm.php">Sair</a></li>
         </ul>    
         <h1>Navegador</h1>        
         <!-- Nav seções -->

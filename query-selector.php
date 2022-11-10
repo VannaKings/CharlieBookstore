@@ -10,7 +10,7 @@ include 'start-mysql.php';
 //Query SQL para buscar administradores com @charlie
 $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID 
 FROM ADMINISTRADOR 
-WHERE ADM_EMAIL LIKE '%@charlie%'");
+WHERE ADM_EMAIL LIKE '%@charlie.com%'");
 
 $admins = [];
 
