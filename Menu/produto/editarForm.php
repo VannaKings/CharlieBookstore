@@ -85,8 +85,7 @@
             <li><i class="fa-solid fa-gear" style="color:#1195d3;"></i><a class="filtro" href= "../admin/admin.php">Configuração</a></li>
             <li><i class="fa-solid fa-list" style="color:#4ed5a3;"></i><a class="filtro" href= "../categoria/categoria.php">Categorias</a></li>
             <li style="background-color:#ed8863"><i class="fa-solid fa-book" style="color:white;"></i><a class="filtro" style="color:white;"href= "produto.php">Produtos</a><li>
-        </ul>   
-        
+        </ul>
     </section>
     
     <!-- Bootstrap (com style dentro em algumas tags) -->
@@ -107,56 +106,9 @@
 
       <section class= "secao-principal produtos secao-produtos">
       <!-- <div class="container"> -->
-        <h1>Detalhes</h1>      
-        <div class="detalhes-produto">
-            <!-- Imagens -->
-            <?php
-                //Checando se existem mais imagens além da principal
-                if($imagens){
-                    echo '<ul class="img-list">';
-                    foreach($imagens as $imagem)  
-                        echo "<li><img src={$imagem["IMAGEM_URL"]} alt='Imagem do produto'></li>";
-                    echo '</ul>';
-                }
-                echo "<img class='img-principal' src={$detalhe["IMAGEM_URL"]} alt='Imagem principal'>";
-            ?>
-            <div class="informacoes">
-            <?php
-                echo "<h2>{$detalhe["PRODUTO_NOME"]}</h2>";
-                
-                //Checando se existe desconto
-                if($detalhe["PRODUTO_PRECO"] != $detalhe["DESCONTO"])
-                {
-                    echo "<p class='preco-destaque'>R$ {$detalhe["DESCONTO"]}</p>
-                    <p>De: <strong class='preco-antigo'>R$ {$detalhe["PRODUTO_PRECO"]}</strong></p>";
-                }
-                else
-                {
-                    echo "<p class='preco-destaque'>R$ {$detalhe["PRODUTO_PRECO"]}</p>";
-                }
-
-                echo "<p class='informacoes-texto'><i class='fa-solid fa-book-open' style='color:purple; margin-right:6px;'></i>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
-                
-                //Checando se existe o número da qtd em estoque
-                if($detalhe["PRODUTO_QTD"])
-                {
-                    //Verificando se a quantidade é maior que 0 para mudar a cor do icone
-                    if($detalhe["PRODUTO_QTD"] > 0)
-                    {
-                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:rgb(109, 210, 109); margin-right:10px;'></i>Estoque: {$detalhe["PRODUTO_QTD"]}</p>";
-                    }
-                    else {
-                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: {$detalhe["PRODUTO_QTD"]}</p>";
-                    }
-                }
-                else {
-                    echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: Sem informações</p>";
-                }
-
-                echo "<p class='informacoes-texto'><strong>Descrição: </strong>{$detalhe["PRODUTO_DESC"]} </p>"
-            ?>
-            </div>
-        </div>
+        <h1 style="max-width:100%">Em manutenção, por favor volte mais tarde!</h1>
+        <img style="max-height:700px;"src="../../imgs/manutencao.jpeg" alt="">      
+        
       <!-- </div> -->
       </section>
     </main>

@@ -44,33 +44,18 @@
             </p>
             <p class="cargo">Administrador</p>
         </div>
-        <div class="navegador-principal">
-                <!-- Navegador Perfil -->
-            <div class="icons">
-                <i class="fa-solid fa-house" style="color:#ed8863;"></i>                
-                <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
-            </div>
-                <!-- Nav com data-filter -->     
-            <nav class="nav-perfil nav">  
-                <a class="filtro" href="../home.php">Home</a>          
-                <a href="../../logout-adm.php">Sair</a>
-            </nav>            
-        </div>
-        <h1>Navegador</h1>
-        <div class="navegador-secundario">
-            <!-- Navegador Funções -->
-            <div class="icons">
-                <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
-                <i class="fa-solid fa-list" style="color:#4ed5a3;"></i>
-                <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
-            </div>
-                <!-- Nav com data-filter -->
-            <nav class="nav-funcoes nav">
-                <a class="filtro" href= "../admin/admin.php">Configuração</a>
-                <a class="filtro" href= "categoria.php">Categorias</a>
-                <a class="filtro" href= "../produto/produto.php">Produtos</a>
-            </nav>
-        </div>
+        <!-- Navegador Perfil -->   
+        <ul class="nav-vertical">  
+            <li><i class="fa-solid fa-house" style="color:#ed8863;"></i><a class="filtro" href="../home.php">Home</a></li>          
+            <li><i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i><a href="../../logout-adm.php">Sair</a></li>
+        </ul>    
+        <h1>Navegador</h1>        
+        <!-- Nav seções -->
+        <ul class="nav-vertical">
+            <li><i class="fa-solid fa-gear" style="color:#1195d3;"></i><a class="filtro" href= "../admin/admin.php">Configuração</a></li>
+            <li style="background-color:#ed8863;"><i class="fa-solid fa-list" style="color:white;"></i><a style="color:white;" class="filtro" href= "categoria.php">Categorias</a></li>
+            <li><i class="fa-solid fa-book" style="color:#4e4ed5;"></i><a class="filtro" href= "../produto/produto.php">Produtos</a><li>
+        </ul>
     </section>
     
     <!-- Bootstrap (com style dentro em algumas tags) -->

@@ -45,33 +45,19 @@
             </p>
             <p class="cargo">Administrador</p>
         </div>
-        <div class="navegador-principal">
-                <!-- Navegador Perfil -->
-            <div class="icons">
-                <i class="fa-solid fa-house" style="color:#ed8863;"></i>                
-                <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
-            </div>
-                <!-- Nav com data-filter -->     
-            <nav class="nav-perfil nav">  
-                <a class="filtro" href="../home.php">Home</a>          
-                <a href="../../logout-adm.php">Sair</a>
-            </nav>            
-        </div>
-        <h1>Navegador</h1>
-        <div class="navegador-secundario">
-            <!-- Navegador Funções -->
-            <div class="icons">
-                <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
-                <i class="fa-solid fa-list" style="color:#4ed5a3;"></i>
-                <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
-            </div>
-                <!-- Nav com data-filter -->
-            <nav class="nav-funcoes nav">
-                <a class="filtro" href= "../admin/admin.php">Configuração</a>
-                <a class="filtro" href= "../categoria/categoria.php">Categorias</a>
-                <a class="filtro" href= "produto.php">Produtos</a>
-            </nav>
-        </div>
+        <!-- Navegador Perfil -->   
+        <ul class="nav-vertical">  
+            <li><i class="fa-solid fa-house" style="color:#ed8863;"></i><a class="filtro" href="../home.php">Home</a></li>          
+            <li><i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i><a href="../../logout-adm.php">Sair</a></li>
+        </ul>    
+        <h1>Navegador</h1>        
+        <!-- Nav seções -->
+        <ul class="nav-vertical">
+            <li><i class="fa-solid fa-gear" style="color:#1195d3;"></i><a class="filtro" href= "../admin/admin.php">Configuração</a></li>
+            <li><i class="fa-solid fa-list" style="color:#4ed5a3;"></i><a class="filtro" href= "../categoria/categoria.php">Categorias</a></li>
+            <li style="background-color:#ed8863"><i class="fa-solid fa-book" style="color:white;"></i><a class="filtro" style="color:white;"href= "produto.php">Produtos</a><li>
+        </ul>
+        
     </section>
     
     <!-- Bootstrap (com style dentro em algumas tags) -->
@@ -130,7 +116,7 @@
         <div class="container">
           <div class="container-filtro">
               <div class="titulo_filtro">
-                  <i class="fa-solid fa-bookmark"></i>
+                  <i class="fa-solid fa-bookmark"style="color:#1195d3"></i>
                   <strong>FILTRO</strong>
               </div>
               <p>Categorias</p>              
@@ -169,7 +155,7 @@
                     }
                     echo "<div class='botoes-produto'>
                       <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'>
-                        <i class='fa-solid fa-pen-to-square'></i>Editar
+                        <a href='editarForm.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-pen-to-square'></i>Editar</a>
                       </button>
                       <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'>
                         <a href='detalhes.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</a>
@@ -297,7 +283,7 @@
 
         <!-- Modal Editar -->
 
-        <div class="modal fade modal-produto" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <!-- <div class="modal fade modal-produto" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -365,7 +351,7 @@
               </form>
             </div>
           </div>
-        </div>
+        </div> -->
         
       </section>
     </main>

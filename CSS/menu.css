@@ -84,40 +84,42 @@ p
 
 /* Navegador vertical */
 
-.navegador-principal, .navegador-secundario
-{
-    display: grid;
-    grid-template-columns: 33px 125px;
-}
-
-.navegador-secundario
-{
-    margin-bottom: 50px;
-}
-
-.icons i
-{
-    margin: 10px 0;
-}
-
-.navegador-principal nav, .navegador-secundario nav
+.nav-vertical
 {
     display: flex;
     flex-direction: column;
+    list-style: none;
+    width: 100%;
+    padding-left: 0!important;
 }
 
-.nav-perfil a, .nav-funcoes a, .nav-perfil a
+.nav-vertical li
+{
+    width: 100%;
+    cursor: pointer;
+}
+
+.nav-vertical li:hover, .nav-vertical li:hover a, .nav-vertical li:hover i
+{
+    background-color: var(--laranja);
+    color: white!important;
+}
+
+.nav-vertical i
+{
+    margin: 10px 20px 10px 40px;
+}
+
+.nav-vertical a
 {
     margin: 6px 0 ;
-    cursor: pointer;
     text-decoration: none;
     color: var(--preto);
 }
 
-.nav-perfil a:hover,.nav-perfil a:hover, .nav-funcoes a:hover
+.nav-vertical a:hover, .nav-vertical i:hover
 {
-    color: var(--laranja);
-    font-weight: bold;
+    color: white;
     text-decoration: none;
 }
 
@@ -208,7 +210,6 @@ nav .collapse
     margin: 20px;
     color: var(--laranja);
     max-width: 410px;
-    /* border-bottom: 1px solid grey; */
 }
 
 .secao-principal h3
@@ -334,7 +335,6 @@ nav .collapse
 {
     margin: 1px 5px 0 0;
     font-size: 20px;
-    color: var(--marromEscuro);
 }
 
 .titulo_filtro
