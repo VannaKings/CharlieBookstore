@@ -150,6 +150,11 @@ p
     display: flex; 
     width: 100%;
 }
+
+.nav1
+{
+    margin-left: 60px;
+}
 .navbar-brand
 {
     margin-bottom: 5px;
@@ -202,21 +207,38 @@ nav .collapse
 .secao-principal
 {
     display: flex;
-    flex-direction: column;
 }
 
 .secao-principal h1
 {
     margin: 20px;
     color: var(--laranja);
-    max-width: 410px;
+    padding: 10px;
+    background-color: rgb(248, 248, 248);
+    width: 100%;
+    max-width: 1000px;
 }
 
 .secao-principal h3
 {
-    margin-left: 20px;
+    margin-left: 25px;
     font-size: 20px;
     font-weight: normal;
+}
+
+.container-alinhamento
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 50px;
+}
+
+.container-teste
+{
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
 }
 
 /* Seção home */
@@ -259,7 +281,7 @@ nav .collapse
     margin: 0 10px;
 }
 
-.configuracao .btn-cadastro, .categorias .btn-cadastro
+.configuracao .btn-cadastro, .categorias .btn-cadastro, .secao-produtos .btn-cadastro
 {
     padding: 10px 20px;
     color: white;
@@ -286,8 +308,8 @@ nav .collapse
 
 .secao-adicionar .container
 {
-    /* border: 1px solid rgb(208, 208, 208); */
-    background-color: whitesmoke;
+    /* border: 1px solid ; */
+    background-color: rgb(250, 250, 250);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -314,7 +336,7 @@ nav .collapse
 .secao-produtos .container
 {
     display: flex;
-    margin-left: 20px;
+    margin-left: 10px;
     padding: 30px 10px 0 10px;
 }
 
@@ -328,7 +350,7 @@ nav .collapse
 
 .container-filtro
 {
-    max-width: 500px;
+    max-width: 550px;
 }
 
 .container-filtro i
@@ -387,7 +409,7 @@ nav .collapse
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 10px;
+    column-gap: 30px;
     row-gap: 10px;
 }
 .card-produto .preco
@@ -422,18 +444,6 @@ nav .collapse
 .card-produto .btn-editar-produto i, .card-produto .btn-visualizar-produto i
 {
     margin-right: 5px;
-}
-
-.secao-produtos .btn-cadastro
-{
-    padding: 10px 20px;
-    color: white;
-    background-color: var(--verde);
-    margin: 10px 20px 0 20px;
-    border: 1px solid var(--verde);
-    border-radius: 10px;
-    max-width: 300px;
-    font-size: 18px;
 }
 
 .secao-produtos .btn-cadastro i

@@ -8,7 +8,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">
-    <link rel="stylesheet" type="text/css" href="../../CSS/detalhes-produto.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/detalhe.css">
     
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -43,7 +43,7 @@
       $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL
       FROM PRODUTO AS P INNER JOIN PRODUTO_IMAGEM AS PI
       ON P.PRODUTO_ID = PI.PRODUTO_ID
-      WHERE P.PRODUTO_ID = " . $id . " AND PI.IMAGEM_ORDEM <> 1");
+      WHERE P.PRODUTO_ID = " . $id . "");
 
       $imagens = [];
       
@@ -95,7 +95,7 @@
         <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
           <!-- Nav com data-filter -->
           <div class="nav  navbar navbar-expand-lg ">
-              <a class="nav-link" href= "../home.php" style="color: white; font-size: 22px;">Home</a>
+              <a class="nav-link nav1" href= "../home.php" style="color: white; font-size: 22px;">Home</a>
               <a class="nav-link" href= "../admin/admin.php" style="color: white; font-size: 22px;">Administração</a>
               <a class="nav-link" href= "../categoria/categoria.php" style="color: white; font-size: 22px;">Categorias</a>            
               <a class="nav-link" href= "produto.php" style="color: white; font-size: 22px;">Produtos</a>              
@@ -106,58 +106,60 @@
       <!-- Seção Detalhes -->
 
       <section class= "secao-principal produtos secao-produtos">
-      <!-- <div class="container"> -->
-        <h1>Detalhes</h1>      
-        <div class="detalhes-produto">
-            <!-- Imagens -->
-            <?php
-                //Checando se existem mais imagens além da principal
-                if($imagens){
-                    echo '<ul class="img-list">';
-                    foreach($imagens as $imagem)  
-                        echo "<li><img src={$imagem["IMAGEM_URL"]} alt='Imagem do produto'></li>";
-                    echo '</ul>';
-                }
-                echo "<img class='img-principal' src={$detalhe["IMAGEM_URL"]} alt='Imagem principal'>";
-            ?>
-            <div class="informacoes">
-            <?php
-                echo "<h2>{$detalhe["PRODUTO_NOME"]}</h2>";
-                
-                //Checando se existe desconto
-                if($detalhe["PRODUTO_PRECO"] != $detalhe["DESCONTO"])
-                {
-                    echo "<p class='preco-destaque'>R$ {$detalhe["DESCONTO"]}</p>
-                    <p>De: <strong class='preco-antigo'>R$ {$detalhe["PRODUTO_PRECO"]}</strong></p>";
-                }
-                else
-                {
-                    echo "<p class='preco-destaque'>R$ {$detalhe["PRODUTO_PRECO"]}</p>";
-                }
+        <div class="container-principal">
+            <h1>Detalhes</h1>      
+            <div class="detalhes-produto">
+                <div class="container-detalhes">
+                    <!-- Imagens -->
+                    <?php
+                        //Checando se existem mais imagens além da principal
+                        if(count($imagens) > 1){
+                            echo '<ul class="img-list">';
+                            foreach($imagens as $imagem)  
+                                echo "<li><img class='imgs' src={$imagem["IMAGEM_URL"]} alt='Imagem do produto'></li>";
+                            echo '</ul>';
+                        }
+                        echo "<img class='img-principal' src={$detalhe["IMAGEM_URL"]} alt='Imagem principal'>";
+                    ?>
+                    <div class="informacoes">
+                        <?php
+                            echo "<h2>{$detalhe["PRODUTO_NOME"]}</h2>";
+                            
+                            //Checando se existe desconto
+                            if($detalhe["PRODUTO_PRECO"] != $detalhe["DESCONTO"])
+                            {
+                                echo "<p class='preco-destaque'>R$ {$detalhe["DESCONTO"]}</p>
+                                <p>De: <strong class='preco-antigo'>R$ {$detalhe["PRODUTO_PRECO"]}</strong></p>";
+                            }
+                            else
+                            {
+                                echo "<p class='preco-destaque'>R$ {$detalhe["PRODUTO_PRECO"]}</p>";
+                            }
 
-                echo "<p class='informacoes-texto'><i class='fa-solid fa-book-open' style='color:purple; margin-right:6px;'></i>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
-                
-                //Checando se existe o número da qtd em estoque
-                if($detalhe["PRODUTO_QTD"])
-                {
-                    //Verificando se a quantidade é maior que 0 para mudar a cor do icone
-                    if($detalhe["PRODUTO_QTD"] > 0)
-                    {
-                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:rgb(109, 210, 109); margin-right:10px;'></i>Estoque: {$detalhe["PRODUTO_QTD"]}</p>";
-                    }
-                    else {
-                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: {$detalhe["PRODUTO_QTD"]}</p>";
-                    }
-                }
-                else {
-                    echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: Sem informações</p>";
-                }
+                            echo "<p class='informacoes-texto'><i class='fa-solid fa-book-open' style='color:purple; margin-right:6px;'></i>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
+                            
+                            //Checando se existe o número da qtd em estoque
+                            if($detalhe["PRODUTO_QTD"])
+                            {
+                                //Verificando se a quantidade é maior que 0 para mudar a cor do icone
+                                if($detalhe["PRODUTO_QTD"] > 0)
+                                {
+                                    echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:rgb(109, 210, 109); margin-right:10px;'></i>Estoque: {$detalhe["PRODUTO_QTD"]}</p>";
+                                }
+                                else {
+                                    echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: {$detalhe["PRODUTO_QTD"]}</p>";
+                                }
+                            }
+                            else {
+                                echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: Sem informações</p>";
+                            }
 
-                echo "<p class='informacoes-texto'><strong>Descrição: </strong>{$detalhe["PRODUTO_DESC"]} </p>"
-            ?>
+                            echo "<p class='informacoes-texto'><strong>Descrição: </strong>{$detalhe["PRODUTO_DESC"]} </p>"
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
-      <!-- </div> -->
       </section>
     </main>
 </body>
@@ -167,4 +169,5 @@
 <!-- JavaScript -->
 <script src= "../../JavaScript/filtro.js"></script>
 <script src= "../../JavaScript/editar-produto.js"></script>
+<script src= "../../JavaScript/imgs.js"></script>
 </html>

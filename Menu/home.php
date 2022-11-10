@@ -72,7 +72,7 @@
         <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
           <!-- Nav com data-filter -->
           <div class="nav  navbar navbar-expand-lg ">
-              <a class="nav-link" href= "home.php" style="color: white; font-size: 22px;">Home</a>
+              <a class="nav-link nav1" href= "home.php" style="color: white; font-size: 22px;">Home</a>
               <a class="nav-link" href= "admin/admin.php" style="color: white; font-size: 22px;">Administração</a>
               <a class="nav-link" href= "categoria/categoria.php" style="color: white; font-size: 22px;">Categorias</a>            
               <a class="nav-link" href= "produto/produto.php" style="color: white; font-size: 22px;">Produtos</a>              
@@ -83,6 +83,7 @@
       <!-- Home -->
 
       <section class="secao-principal home">
+        <div class="container-alinhamento">
         <h1>Acesso Administrativo</h1>
         <h3>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</h3>
         <div class="funcoes">
@@ -110,6 +111,7 @@
               <a href="#" class="btn btn-primary filtro" data-filter="configuracao" style="background-color: #ed8863; border-color: #ed8863; color: white">Configurar admins</a>
             </div>
           </div>
+        </div>
         </div>
       </section>
     </main>
