@@ -64,7 +64,7 @@
         <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
           <!-- Nav com data-filter -->
           <div class="nav  navbar navbar-expand-lg ">
-              <a class="nav-link" href= "../home.php" style="color: white; font-size: 22px;">Home</a>
+              <a class="nav-link nav1" href= "../home.php" style="color: white; font-size: 22px;">Home</a>
               <a class="nav-link" href= "../admin/admin.php" style="color: white; font-size: 22px;">Administração</a>
               <a class="nav-link" href= "categoria.php" style="color: white; font-size: 22px;">Categorias</a>            
               <a class="nav-link" href= "../produto/produto.php" style="color: white; font-size: 22px;">Produtos</a>              
@@ -74,149 +74,153 @@
 
       <!-- Seção Categoria -->
       <section class="secao-principal categorias">
-        <h1>Categorias</h1>
-        <h3>Personalize as categorias existentes no seu site</h3>
-        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-plus"></i>Adicionar categoria</button>
-        <?php
-            //Alerta sobre situação do cadastrar
-            if(isset($cadastrado))
-            {
-              if(!$cadastrado){
-                echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
-                      Erro ao cadastrar, por favor tente novamente
-                    </div>';
-              }
-              else
-              {
-                echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
-                      Cadastro realizado com sucesso!
-                    </div>';
-              }
-            }
-
-            //Alerta sobre situação do editar
-            if(isset($editado))
-            {
-              if(!$editado){
-                echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
-                      Erro ao editar, por favor tente novamente
-                    </div>';
-              }
-              else
-              {
-                echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
-                      Alteração realizada com sucesso!
-                    </div>';
-              }
-            }
-        ?>
-        <table class="table table-striped table-hover tabela" id="#">
-          <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Ativo</th>
-            <th>Editar</th>
-          </tr>
-          <?php
-            //Cria tabela de categoria
-            foreach($categorias as $categoria)
-            {
-              echo "
-              <tr>
-                <td class = 'nome-tabela'>
-                    {$categoria["CATEGORIA_NOME"]}         
-                </td>
-                <td class = 'desc-tabela'>
-                     {$categoria["CATEGORIA_DESC"]}         
-                </td>";
-                  
-                if($categoria["CATEGORIA_ATIVO"])
+        <div class="container-alinhamento">
+          <h1>Categorias</h1>
+          <h3>Personalize as categorias existentes no seu site</h3>
+          <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-plus"></i>Adicionar categoria</button>
+          <div class="container-teste">
+            <?php
+                //Alerta sobre situação do cadastrar
+                if(isset($cadastrado))
                 {
-                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                  if(!$cadastrado){
+                    echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
+                          Erro ao cadastrar, por favor tente novamente
+                        </div>';
+                  }
+                  else
+                  {
+                    echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
+                          Cadastro realizado com sucesso!
+                        </div>';
+                  }
                 }
-                else
+
+                //Alerta sobre situação do editar
+                if(isset($editado))
                 {
-                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
-                }                                        
-                
-                echo "
-                  <td class = 'id-tabela' style = 'display:none;'>                    
-                     {$categoria["CATEGORIA_ID"]}
-                  </td>  
-                  <td>                                         
-                    <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>
-                  </td>
-              </tr>";
-            } 
-          ?>
-        </table>
-        
+                  if(!$editado){
+                    echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
+                          Erro ao editar, por favor tente novamente
+                        </div>';
+                  }
+                  else
+                  {
+                    echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
+                          Alteração realizada com sucesso!
+                        </div>';
+                  }
+                }
+            ?>
+            <table class="table table-striped table-hover tabela" id="#">
+              <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Ativo</th>
+                <th>Editar</th>
+              </tr>
+              <?php
+                //Cria tabela de categoria
+                foreach($categorias as $categoria)
+                {
+                  echo "
+                  <tr>
+                    <td class = 'nome-tabela'>
+                        {$categoria["CATEGORIA_NOME"]}         
+                    </td>
+                    <td class = 'desc-tabela'>
+                        {$categoria["CATEGORIA_DESC"]}         
+                    </td>";
+                      
+                    if($categoria["CATEGORIA_ATIVO"])
+                    {
+                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                    }
+                    else
+                    {
+                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                    }                                        
+                    
+                    echo "
+                      <td class = 'id-tabela' style = 'display:none;'>                    
+                        {$categoria["CATEGORIA_ID"]}
+                      </td>  
+                      <td>                                         
+                        <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-categoria'><i class='fa-solid fa-pen-to-square'></i></button>
+                      </td>
+                  </tr>";
+                } 
+              ?>
+            </table>
+            
 
-        <!-- Adicionar Categoria -->
-        <div class="modal fade" id="staticBackdrop-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <form class="form-adm" Action="criar-categoria.php" method="POST">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="inputAddress">Nome:</label>
-                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
-                  </div>                  
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea name="desc" class="form-control"></textarea>
-                  </div>                                      
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
-                </div>
-              </form>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal Editar Categoria -->
-
-        <div class="modal fade" id="staticBackdrop-editar-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-
-              <form class="form-adm" Action="edita-categoria.php" method="POST">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <input type="text" name="id" id="idCategoria" style = "display:none">
-                    <label for="inputAddress">Nome</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+            <!-- Adicionar Categoria -->
+            <div class="modal fade" id="staticBackdrop-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="form-group">
-                    <label for="message-text" class="col-form-label">Descrição:</label>
-                    <textarea class="form-control inputDesc" name="desc"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
-                      <label class="form-check-label" for="gridCheck">
-                        Categoria ativa
-                      </label>
+
+                  <form class="form-adm" Action="criar-categoria.php" method="POST">
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="inputAddress">Nome:</label>
+                        <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
+                      </div>                  
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descrição:</label>
+                        <textarea name="desc" class="form-control"></textarea>
+                      </div>                                      
                     </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal Editar Categoria -->
+
+            <div class="modal fade" id="staticBackdrop-editar-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
+
+                  <form class="form-adm" Action="edita-categoria.php" method="POST">
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <input type="text" name="id" id="idCategoria" style = "display:none">
+                        <label for="inputAddress">Nome</label>
+                        <input name="nome" type="text" class="form-control nome inputNome" id="inputName" placeholder="Nome" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descrição:</label>
+                        <textarea class="form-control inputDesc" name="desc"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
+                          <label class="form-check-label" for="gridCheck">
+                            Categoria ativa
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                    </div>
+                  </form>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

@@ -64,7 +64,7 @@
         <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
           <!-- Nav com data-filter -->
           <div class="nav  navbar navbar-expand-lg ">
-              <a class="nav-link" href= "../home.php" style="color: white; font-size: 22px;">Home</a>
+              <a class="nav-link nav1" href= "../home.php" style="color: white; font-size: 22px;">Home</a>
               <a class="nav-link" href= "admin.php" style="color: white; font-size: 22px;">Administração</a>
               <a class="nav-link" href= "../categoria/categoria.php" style="color: white; font-size: 22px;">Categorias</a>            
               <a class="nav-link" href= "../produto/produto.php" style="color: white; font-size: 22px;">Produtos</a>              
@@ -75,177 +75,181 @@
       <!-- Configuração -->
 
       <section class= "secao-principal configuracao">
-        <h1>Configuração</h1>
-        <h3>Crie, exclua ou atualize dados de outros administradores</h3>
-        <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
-        <?php
-          //Alerta sobre situação do cadastrar
-          if(isset($cadastrado))
-          {
-            if(!$cadastrado){
-              echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
-                    Erro ao cadastrar, por favor tente novamente
-                  </div>';
-            }
-            else
-            {
-              echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
-                    Cadastro realizado com sucesso!
-                  </div>';
-            }
-          }
-
-          //Alerta sobre situação do editar
-          if(isset($editado))
-          {
-            if(!$editado){
-              echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
-                    Erro ao editar, por favor tente novamente
-                  </div>';
-            }
-            else
-            {
-              echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
-                    Alteração realizada com sucesso!
-                  </div>';
-            }
-          }
-        ?>
-        <table class="table table-striped table-hover tabela">
-            <tr>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Ativo</th>
-              <th>Editar</th>
-            </tr>
+        <div class="container-alinhamento">
+          <h1>Configuração</h1>
+          <h3>Crie, exclua ou atualize dados de outros administradores</h3>
+          <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
+          <div class="container-teste">  
             <?php
-              //Cria tabela dos Admins
-              foreach($admins as $admin)
-              { 
-                echo "  
-                  <tr>
-                    <td class = 'nome-tabela'>
-                    
-                        {$admin["ADM_NOME"]}         
-                    
-                    </td>
-                    <td class = 'email-tabela'>
-                      
-                        {$admin["ADM_EMAIL"]}        
-                      
-                    </td>";
-                 
-                if($admin["ADM_ATIVO"])
-                {
-                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+              //Alerta sobre situação do cadastrar
+              if(isset($cadastrado))
+              {
+                if(!$cadastrado){
+                  echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
+                        Erro ao cadastrar, por favor tente novamente
+                      </div>';
                 }
                 else
                 {
-                  echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
-                }                                        
-                  
-                echo "
-                    <td>                                        
-                        <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>                    
-                    </td>
-                    <td class = 'senha-tabela' style = 'display:none;'>                      
-                        {$admin["ADM_SENHA"]}                      
-                    </td>
-                    <td class = 'id-tabela' style = 'display:none;'>                    
-                        {$admin["ADM_ID"]}                    
-                    </td>                 
-                  </tr>";        
-              } 
-            ?> 
-        </table>
-        
-        
-        
-        <!-- Modal Cadastro -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+                  echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
+                        Cadastro realizado com sucesso!
+                      </div>';
+                }
+              }
 
-              <form class="form-adm" Action="criar-adm.php" method="POST">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="inputAddress">Nome:</label>
-                    <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
+              //Alerta sobre situação do editar
+              if(isset($editado))
+              {
+                if(!$editado){
+                  echo '<div class="alert alert-danger" role="alert" style="margin-left:20px; max-width: 1000px">
+                        Erro ao editar, por favor tente novamente
+                      </div>';
+                }
+                else
+                {
+                  echo '<div class="alert alert-success" role="alert" style="margin-left:20px; max-width: 1000px">
+                        Alteração realizada com sucesso!
+                      </div>';
+                }
+              }
+            ?>
+            <table class="table table-striped table-hover tabela">
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Ativo</th>
+                  <th>Editar</th>
+                </tr>
+                <?php
+                  //Cria tabela dos Admins
+                  foreach($admins as $admin)
+                  { 
+                    echo "  
+                      <tr>
+                        <td class = 'nome-tabela'>
+                        
+                            {$admin["ADM_NOME"]}         
+                        
+                        </td>
+                        <td class = 'email-tabela'>
+                          
+                            {$admin["ADM_EMAIL"]}        
+                          
+                        </td>";
+                    
+                    if($admin["ADM_ATIVO"])
+                    {
+                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                    }
+                    else
+                    {
+                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                    }                                        
+                      
+                    echo "
+                        <td>                                        
+                            <button type='button' class='btn btn-primary btn-selecionar-editar' style='background: none; border: none; padding: 0;'data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar'><i class='fa-solid fa-pen-to-square'></i></button>                    
+                        </td>
+                        <td class = 'senha-tabela' style = 'display:none;'>                      
+                            {$admin["ADM_SENHA"]}                      
+                        </td>
+                        <td class = 'id-tabela' style = 'display:none;'>                    
+                            {$admin["ADM_ID"]}                    
+                        </td>                 
+                      </tr>";        
+                  } 
+                ?> 
+            </table>
+            
+            
+            
+            <!-- Modal Cadastro -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
 
-                  </div>
-                  <div class="form-group row">
-                    <div class="col">
-                      <label for="input-email">Email:</label>
-                      <input name="email" type="email" class="form-control" placeholder="Email" required>
-                    </div>          
-                    <div class="col">
-                      <label for="input-senha">Senha:</label>
-                      <input name="senha" type="password" class="form-control"  placeholder="Senha" required>
-                    </div>                 
-                  </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input"  name="ativo" type="checkbox" id="gridCheck">
-                      <label class="form-check-label" for="gridCheck">
-                        Administrador ativo
-                      </label>
+                  <form class="form-adm" Action="criar-adm.php" method="POST">
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="inputAddress">Nome:</label>
+                        <input name="nome" type="text" class="form-control nome" id="inputName" placeholder="Nome" required>
+
+                      </div>
+                      <div class="form-group row">
+                        <div class="col">
+                          <label for="input-email">Email:</label>
+                          <input name="email" type="email" class="form-control" placeholder="Email" required>
+                        </div>          
+                        <div class="col">
+                          <label for="input-senha">Senha:</label>
+                          <input name="senha" type="password" class="form-control"  placeholder="Senha" required>
+                        </div>                 
+                      </div>
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input"  name="ativo" type="checkbox" id="gridCheck">
+                          <label class="form-check-label" for="gridCheck">
+                            Administrador ativo
+                          </label>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
-                </div>
-              </form>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary btn-adicionar">Cadastrar</button>
+                    </div>
+                  </form>
 
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        
-        <!-- Modal Editar -->
-        <div class="modal fade" id="staticBackdrop-editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+            
+            <!-- Modal Editar -->
+            <div class="modal fade" id="staticBackdrop-editar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
 
-              <form class="form-adm" Action="edita-adm.php" method="POST">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <input type="text" name="id" id="idAdm" style = "display:none">
-                    <label for="inputAddress">Nome</label>
-                    <input name="nome" type="text" class="form-control nome inputNome" id="inputName-adm" placeholder="Nome" required>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col">
-                      <label for="inputEmail4">Email</label>
-                      <input name="email" type="email" class="form-control inputEmail" id="inputEmail4" placeholder="Email" required>
-                    </div>          
-                    <div class="col">
-                      <label for="inputPassword4">Senha</label>
-                      <input name="senha" type="password" class="form-control inputSenha" id="inputPassword4" placeholder="Senha" required>
-                    </div>                 
-                  </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name = 'ativo' value = "1">
-                      <label class="form-check-label" for="gridCheck">
-                        Administrador ativo
-                      </label>
+                  <form class="form-adm" Action="edita-adm.php" method="POST">
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <input type="text" name="id" id="idAdm" style = "display:none">
+                        <label for="inputAddress">Nome</label>
+                        <input name="nome" type="text" class="form-control nome inputNome" id="inputName-adm" placeholder="Nome" required>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col">
+                          <label for="inputEmail4">Email</label>
+                          <input name="email" type="email" class="form-control inputEmail" id="inputEmail4" placeholder="Email" required>
+                        </div>          
+                        <div class="col">
+                          <label for="inputPassword4">Senha</label>
+                          <input name="senha" type="password" class="form-control inputSenha" id="inputPassword4" placeholder="Senha" required>
+                        </div>                 
+                      </div>
+                      <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name = 'ativo' value = "1">
+                          <label class="form-check-label" for="gridCheck">
+                            Administrador ativo
+                          </label>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                    </div>
+                  </form>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
