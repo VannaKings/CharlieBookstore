@@ -152,10 +152,10 @@
                 {
                     if($destaque["PRODUTO_QTD"] > 0)
                     {
-                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:green; margin-right:10px;'>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
+                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:green; margin-right:10px;'></i>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
                     }
                     else {
-                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
+                        echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: {$destaque["PRODUTO_QTD"]}</p>";
                     }
                 }
                 else {
