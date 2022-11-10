@@ -94,7 +94,7 @@
         <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
           <!-- Nav com data-filter -->
           <div class="nav  navbar navbar-expand-lg ">
-              <a class="nav-link " href= "../home.php" style="color: white; font-size: 22px;">Home</a>
+              <a class="nav-link nav1 " href= "../home.php" style="color: white; font-size: 22px;">Home</a>
               <a class="nav-link" href= "../admin/admin.php" style="color: white; font-size: 22px;">Administração</a>
               <a class="nav-link" href= "../categoria/categoria.php" style="color: white; font-size: 22px;">Categorias</a>            
               <a class="nav-link" href= "produto.php" style="color: white; font-size: 22px;">Produtos</a>              
@@ -106,8 +106,8 @@
 
       <section class= "secao-principal produtos secao-produtos" style="display:flex; flex-direction:column; ">
             
-          <h1 style="max-width:100%; margin-left:20px; background-color:white">Em manutenção, por favor volte mais tarde!</h1>
-          <img style="max-height:700px;" src="../../imgs/manutencao.jpeg" alt="">      
+          <h1 style="max-width:100%; margin-left:60px; background-color:white">Em manutenção, por favor volte mais tarde!</h1>
+          <img style="max-width:1000px; " src="../../imgs/manutencao.jpg" alt="">      
        
       </section>
     </main>
