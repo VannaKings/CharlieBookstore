@@ -141,11 +141,11 @@ for ($i=0; $i < count($arquivo['name']) ; $i++)
     //Checa se o nome tiver algo e executa 
     if($cmd->execute()){    
         $cadastrado = true;
-        // include 'produto.php';
+        include 'produto.php';
     }
     else{
         $cadastrado = false;
-        // include 'produto.php';
+        include 'produto.php';
     }
     echo $urlIMG;
     
@@ -157,11 +157,11 @@ VALUES('" . $id . "', '" . $estoque . "')");
 //Checa se o nome tiver algo e executa 
 if($cmd->execute()){    
     $cadastrado = true;
-    // include 'produto.php';
+    include 'produto.php';
 }
 else{
     $cadastrado = false;
-    // include 'produto.php';
+    include 'produto.php';
 }
 
  

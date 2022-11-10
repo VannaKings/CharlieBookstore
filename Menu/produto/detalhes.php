@@ -37,13 +37,13 @@
       ON P.PRODUTO_ID = PE.PRODUTO_ID
       INNER JOIN PRODUTO_IMAGEM AS PI
       ON P.PRODUTO_ID = PI.PRODUTO_ID
-      WHERE P.PRODUTO_ID = 8 AND PI.IMAGEM_URL = 'https://i.imgur.com/kEMPVSD.jpg'")->fetch();
+      WHERE P.PRODUTO_ID = " . $id . " AND PI.IMAGEM_ORDEM = 1")->fetch();
 
       //Pegando todas as imagens exceto a de capa
       $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL
       FROM PRODUTO AS P INNER JOIN PRODUTO_IMAGEM AS PI
       ON P.PRODUTO_ID = PI.PRODUTO_ID
-      WHERE P.PRODUTO_ID = 8 AND PI.IMAGEM_ORDEM <> 1");
+      WHERE P.PRODUTO_ID = " . $id . " AND PI.IMAGEM_ORDEM <> 1");
 
       $imagens = [];
       
@@ -54,7 +54,7 @@
       $categoria= $pdo->query("SELECT C.CATEGORIA_NOME
       FROM PRODUTO AS P INNER JOIN CATEGORIA AS C
       ON P.CATEGORIA_ID = C.CATEGORIA_ID
-      WHERE P.PRODUTO_ID = 8")->fetch();
+      WHERE P.PRODUTO_ID = " . $id . "")->fetch();
 
     ?>
 
