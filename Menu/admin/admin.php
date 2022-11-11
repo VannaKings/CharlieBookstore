@@ -79,7 +79,7 @@
           <h1>Configuração</h1>
           <h3>Crie, exclua ou atualize dados de outros administradores</h3>
           <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user-plus"></i>Adicionar administrador</button>
-          <div class="container-teste">  
+           
             <?php
               //Alerta sobre situação do cadastrar
               if(isset($cadastrado))
@@ -113,6 +113,7 @@
                 }
               }
             ?>
+          <div class="container-teste"> 
             <table class="table table-striped table-hover tabela">
                 <tr>
                   <th>Nome</th>

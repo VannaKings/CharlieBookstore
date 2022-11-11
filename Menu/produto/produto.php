@@ -81,7 +81,7 @@
           <h1>Produtos</h1>
           <h3>Adicione ou edite produtos já existentes do seu site.</h3>
           <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-adicionar-produto"><i class="fa-solid fa-book" style="margin-bottom: 5px;"></i>Adicionar produto</button>
-          <div class="container-teste">
+          
             <?php
               //Alerta sobre situação do cadastrar
               if(isset($cadastrado))
@@ -115,6 +115,7 @@
                 }
               }
             ?>
+          <div class="container-teste">
             <div class="container">
               <div class="container-filtro">
                   <div class="titulo_filtro">
@@ -125,7 +126,7 @@
                   <div class="filter-box filter-categoria">
                     <a href="#" data-filter="todos">Todos</a>
                     <?php
-                      foreach($categorias as $categoria)
+                      foreach($categorias2 as $categoria)
                       {
                         echo "<a data-filter={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
                       }
@@ -179,7 +180,6 @@
                 </div>
               </div>          
             </div>
-            
             <!-- Modal Detalhes -->
             <!-- <div class="modal fade modal-produto" id="staticBackdrop-visualizar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -240,7 +240,7 @@
                               <option selected>Categoria</option>
                               <?php
                                 //Percorre o nome das categoria e cria uma option para cada uma
-                                foreach($categorias as $categoria)
+                                foreach($categorias2 as $categoria)
                                 {                          
                                   echo "<option value={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</option>";
                                 }
@@ -252,7 +252,7 @@
                           <label for="inputPassword4">Estoque:</label> 
                           <div class="input-group flex-nowrap">                      
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                            <input name="estoque" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
+                            <input name="estoque" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'  value =  '0' required>
                           </div>                 
                         </div>
                       </div>
@@ -260,7 +260,7 @@
                         <label for="formFile" class="form-label">Insira as imagens:</label>
                         <div class="input-group flex-nowrap">
                           <span class="input-group-text"><i class="fa-solid fa-camera"></i></span>
-                          <input class="form-control" type="file" name="imagem[]" multiple="multiple">
+                          <input class="form-control" type="file" name="imagem[]" multiple="multiple" required>
                         </div>                    
                       </div>
                       <div class="form-group">
@@ -319,7 +319,7 @@
                               <option></option>
                               <?php
                                 //Percorre o nome das categoria e cria uma option para cada uma
-                                foreach($categorias as $categoria)
+                                foreach($categorias2 as $categoria)
                                 {                          
                                   echo "<option value={$categoria["CATEGORIA_ID"]} class='inputCategoria'>{$categoria["CATEGORIA_NOME"]}</option>";
                                 }

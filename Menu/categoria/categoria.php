@@ -78,7 +78,7 @@
           <h1>Categorias</h1>
           <h3>Personalize as categorias existentes no seu site</h3>
           <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal" data-bs-target="#staticBackdrop-categoria"><i class="fa-solid fa-plus"></i>Adicionar categoria</button>
-          <div class="container-teste">
+          
             <?php
                 //Alerta sobre situação do cadastrar
                 if(isset($cadastrado))
@@ -112,6 +112,7 @@
                   }
                 }
             ?>
+          <div class="container-teste">
             <table class="table table-striped table-hover tabela" id="#">
               <tr>
                 <th>Nome</th>

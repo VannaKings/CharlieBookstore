@@ -92,7 +92,7 @@
             <div class="card-body nav">
               <h5 class="card-title">Organize suas categorias</h5>
               <p class="card-text">Adicione, edite ou exclua categorias existentes no seu site</p>
-              <a href="#" class="btn btn-primary filtro" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="categorias">Organizar categorias</a>
+              <a href="categoria/categoria.php" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="categorias">Organizar categorias</a>
             </div>
           </div>
           <div class="card navegador">
@@ -100,7 +100,7 @@
             <div class="card-body nav">
               <h5 class="card-title">Customize seus Produtos</h5>
               <p class="card-text">Personalize a visualização dos seus produtos ou adicione novos</p>
-              <a href="#" class="btn btn-primary filtro" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="produtos">Editar produtos</a>
+              <a href="produto/produto.php" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="produtos">Editar produtos</a>
             </div>
           </div>
           <div class="card navegador">
@@ -108,7 +108,7 @@
             <div class="card-body nav">
               <h5 class="card-title">Edite os Administradores</h5>
               <p class="card-text">Adicione ou edite informações de outros administradores</p>
-              <a href="#" class="btn btn-primary filtro" data-filter="configuracao" style="background-color: #ed8863; border-color: #ed8863; color: white">Configurar admins</a>
+              <a href="admin/admin.php" class="btn btn-primary" data-filter="configuracao" style="background-color: #ed8863; border-color: #ed8863; color: white">Configurar admins</a>
             </div>
           </div>
         </div>

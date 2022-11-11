@@ -25,7 +25,12 @@ $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC
 FROM CATEGORIA 
 WHERE CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Histórias%'");
 
+$cmdCategoria2 = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO 
+FROM CATEGORIA 
+WHERE (CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Histórias%') AND CATEGORIA_ATIVO = 1");
+
 $categorias = [];
+$categorias2 = [];
 
 //Guardando as informações recebidas
 while($linha = $cmdCategoria->fetch())
@@ -33,6 +38,11 @@ while($linha = $cmdCategoria->fetch())
     $categorias[] = $linha;
 }
 
+//Guardando as informações recebidas
+while($linha2 = $cmdCategoria2->fetch())
+{ 
+    $categorias2[] = $linha2;
+}
 
 //Produto, Produto_imagem e Produto_estoque
 $cmdProduto = $pdo->query("SELECT P.PRODUTO_ID, P.PRODUTO_NOME, P.PRODUTO_DESC, P.PRODUTO_ATIVO, P.PRODUTO_DESCONTO, P.PRODUTO_PRECO, (P.PRODUTO_PRECO - P.PRODUTO_DESCONTO) AS 'DESCONTO', P.CATEGORIA_ID, PE.PRODUTO_QTD, PI.IMAGEM_ORDEM, PI.IMAGEM_URL

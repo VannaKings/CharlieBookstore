@@ -153,7 +153,7 @@
                             else {
                                 echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: Sem informações</p>";
                             }
-
+                            
                             echo "<p class='informacoes-texto'><strong>Descrição: </strong>{$detalhe["PRODUTO_DESC"]} </p>"
                         ?>
                     </div>
