@@ -139,17 +139,27 @@ for ($i=0; $i < count($arquivo['name']) ; $i++)
         // Formato de imagem nao permitido
         echo 'Não é permitido esse formato de imagem'; 
     }
+    //Salva a ordem da imagem para começar no 1
+    $ordemImagem = $i + 1;
+    
     $cmd = $pdo->prepare("INSERT INTO PRODUTO_IMAGEM(PRODUTO_ID, IMAGEM_URL, IMAGEM_ORDEM) 
-            VALUES('" . $id . "', '" . $urlIMG . "', '" . $i . "')");
+            VALUES('" . $id . "', '" . $urlIMG . "', '" . $ordemImagem . "')");
     //Checa se o nome tiver algo e executa 
-    if($cmd->execute()){    
+
+    try {
+        $cmd->execute();
         $cadastrado = true;
-        // include 'produto.php';
-    }
-    else{
+    } catch (Exception $e) {
         $cadastrado = false;
         include 'produto.php';
     }
+    // if(){    
+        
+    //     // include 'produto.php';
+    // }
+    // else{
+        
+    // }
     
     
 }
@@ -158,15 +168,22 @@ $cmd = $pdo->prepare("INSERT INTO PRODUTO_ESTOQUE(PRODUTO_ID, PRODUTO_QTD)
 VALUES('" . $id . "', '" . $estoque . "')");
 
 //Checa se o nome tiver algo e executa 
-if($cmd->execute()){    
+// if($cmd->execute()){    
+//     $cadastrado = true;
+//     include 'produto.php';
+// }
+// else{
+//     $cadastrado = false;
+//     include 'produto.php';
+// }
+try{
+    $cmd->execute();    
     $cadastrado = true;
     include 'produto.php';
-}
-else{
+} catch(Exception $e){
     $cadastrado = false;
     include 'produto.php';
 }
-
  
 
 
