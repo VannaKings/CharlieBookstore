@@ -8,6 +8,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/detalhes.css">
     
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -154,13 +155,24 @@
                 </div>
                 <div class="col" style="margin-top:10px">
                   <label for="formFile" class="form-label">Imagens:</label>
-                  <?php foreach ($imagens as $imagem) {
-                    # code...
-                  }?>
-                  <div class="input-group flex-nowrap">
-                    <span class="input-group-text"><?=# echo $imagem["IMAGEM_ORDEM"]?></span>
-                    <input class="form-control" type="file" name="imagem[]" multiple="multiple" required>
-                  </div>                    
+                  <div class="img-list-editar" >
+                    <?php 
+                      foreach ($imagens as $imagem)
+                      {
+                          echo "<div style='margin-right:10px' class='container-img'>
+                                  <div class='imgs'>
+                                    <img src={$imagem["IMAGEM_URL"]}>
+                                  </div>
+                                  <div class='input-group flex-nowrap'>
+                                    <span class='input-group-text'><i class='fa-solid fa-camera'></i></span>
+                                    <input class='form-control' type='file' name='imagem[]' required>
+                                  </div>
+                                </div>";                          
+                      }
+                    ?>
+                  </div>
+                  
+                                      
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Descrição:</label>

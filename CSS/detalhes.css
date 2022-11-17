@@ -35,8 +35,9 @@ h2
     flex-direction: column;
     /* justify-content: space-between; */
     cursor: pointer;
-    
+    padding-left: 0!important;
 }
+
 
 .img-list li
 {
@@ -45,10 +46,11 @@ h2
     width: 100px;
     height: 100px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.img-list img
+.img-list .imgs
 {
     max-width: 100%;
     max-height: 100%;
@@ -88,4 +90,44 @@ h2
 {
     color: red;
     margin-right: 10px;
+}
+
+
+.img-list-editar
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-img
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    max-width: 400px;
+}
+
+.container-img .imgs
+{
+    display: flex;
+    justify-content: center;
+    width: 130px;
+    height: 100px;
+    border: 2px solid rgb(219, 219, 219);
+    margin-left: 10px;
+}
+
+.container-img img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container-img .flex-nowrap
+{
+    max-height: 37px;
+    margin-top: 20px;
+    max-width: 150px;
 }
