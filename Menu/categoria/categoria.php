@@ -135,11 +135,11 @@
                       
                     if($categoria["CATEGORIA_ATIVO"])
                     {
-                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-check"></i></td>';                  
+                      echo '<td class="ativo-tabela ativo"><i class="fa-solid fa-circle-check"></i></td>';                  
                     }
                     else
                     {
-                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                      echo '<td class="ativo-tabela inativo"><i class="fa-solid fa-circle-exclamation"></i></td>';
                     }                                        
                     
                     echo "

@@ -77,3 +77,15 @@ h2
     font-size: 18px;
     max-width: 450px;
 }
+
+.fa-circle-check
+{
+    color: rgb(109, 210, 109);
+    margin-right: 10px;
+}
+
+.fa-circle-exclamation
+{
+    color: red;
+    margin-right: 10px;
+}

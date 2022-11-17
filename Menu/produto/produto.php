@@ -126,7 +126,7 @@
                   <div class="filter-box filter-categoria">
                     <a href="#" data-filter="todos">Todos</a>
                     <?php
-                      foreach($categorias2 as $categoria)
+                      foreach($categoriasAtivas as $categoria)
                       {
                         echo "<a data-filter={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</a>";            
                       }
@@ -156,22 +156,23 @@
                         {
                           echo "<p class='preco' style='font-size: 20px;'>{$produto["PRODUTO_PRECO"]}</p>";
                         }
+                        if($produto["PRODUTO_ATIVO"])
+                        {
+                            echo "<p class='informacoes-texto ativo-produto'><i class='fa-solid fa-circle-check'></i> Ativo </p>";
+                            
+                        }
+                        else
+                        {
+                            echo "<p class='informacoes-texto ativo-produto inativo'><i class='fa-solid fa-circle-exclamation'></i> Inativo </p>";
+                        }
+
                         echo "<div class='botoes-produto'>
                           <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'>
-                            <a href='editarForm.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-pen-to-square'></i>Editar</a>
+                            <a href='editar-form.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-pen-to-square'></i>Editar</a>
                           </button>
                           <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'>
                             <a href='detalhes.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</a>
                           </button>
-                        </div>
-                        
-                        <div class='detalhes-container' style='display:none'>
-                          <p class='idProduto'>{$produto["PRODUTO_ID"]}</p>
-                          <p class='descricao'>{$produto["PRODUTO_DESC"]}</p>
-                          <p class='idCategoria'>{$produto["CATEGORIA_ID"]}</p>
-                          <p class='desconto'>{$produto["PRODUTO_DESCONTO"]}</p>
-                          <p class='ativo'>{$produto["PRODUTO_ATIVO"]}</p> 
-                          <p><strong class='estoque'>{$produto["PRODUTO_QTD"]}</strong> em estoque</p>                     
                         </div>
                       </div>
                     </div>";
@@ -180,29 +181,6 @@
                 </div>
               </div>          
             </div>
-            <!-- Modal Detalhes -->
-            <!-- <div class="modal fade modal-produto" id="staticBackdrop-visualizar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Detalhes</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <div class="modal-body">
-                  
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
-                  </div>
-
-                </div>
-              </div>
-            </div> -->
-
 
             <!-- Modal Adicionar -->
 
@@ -240,7 +218,7 @@
                               <option selected>Categoria</option>
                               <?php
                                 //Percorre o nome das categoria e cria uma option para cada uma
-                                foreach($categorias2 as $categoria)
+                                foreach($categoriasAtivas as $categoria)
                                 {                          
                                   echo "<option value={$categoria["CATEGORIA_ID"]}>{$categoria["CATEGORIA_NOME"]}</option>";
                                 }
@@ -283,77 +261,6 @@
               </div>
             </div>
 
-            <!-- Modal Editar -->
-
-            <!-- <div class="modal fade modal-produto" id="staticBackdrop-editar-produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <form class="form-adm" Action="edita-produto.php" method="POST">
-                    <div class="modal-body">
-                      <div class="form-group">
-                        <input type="text" name="id" id="idProduto" style = "display:none">
-                        <label for="inputAddress">Título:</label>
-                        <input name="nome" type="text" class="form-control nome inputTitulo" id="inputName" placeholder="Nome" required>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <label for="inputAddress">Preço:</label>
-                          <input name="preco" type="text" class="form-control inputPreco" aria-label="First name">
-                        </div>
-                        <div class="col">
-                          <label for="inputAddress">Desconto:</label>
-                          <input name="desconto" type="text" class="form-control inputDesconto" aria-label="Last name">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="col">
-                          <label for="inputPassword4">Categoria:</label> 
-                          <div class="input-group flex-nowrap">                      
-                            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
-                            <select name="categoria" class="form-select" id="inputGroupSelect01">
-                              <option></option>
-                              <?php
-                                //Percorre o nome das categoria e cria uma option para cada uma
-                                foreach($categorias2 as $categoria)
-                                {                          
-                                  echo "<option value={$categoria["CATEGORIA_ID"]} class='inputCategoria'>{$categoria["CATEGORIA_NOME"]}</option>";
-                                }
-                              ?>
-                            </select>
-                          </div>                 
-                        </div>
-                        <div class="col">
-                          <label for="inputPassword4">Estoque:</label> 
-                          <div class="input-group flex-nowrap">                      
-                            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-box-archive"></i></span>
-                            <input name="estoque" type="number" class="form-control inputEstoque" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '0' step = '1'>
-                          </div>                 
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Descrição:</label>
-                        <textarea name="desc" class="form-control inputDesc" id="message-text"></textarea>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input inputAtivo" type="checkbox" id="gridCheck" name= 'ativo'>
-                        <label class="form-check-label" for="gridCheck">
-                          Produto ativo
-                        </label>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                      <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </section>
@@ -363,6 +270,5 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../../JavaScript/filtro.js"></script>
-<script src= "../../JavaScript/editar-produto.js"></script>
+<script src= "../../JavaScript/produto.js"></script>
 </html>

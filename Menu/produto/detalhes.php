@@ -39,7 +39,7 @@
       ON P.PRODUTO_ID = PI.PRODUTO_ID
       WHERE P.PRODUTO_ID = " . $id . " AND PI.IMAGEM_ORDEM = 1")->fetch();
 
-      //Pegando todas as imagens exceto a de capa
+      //Pegando todas as imagens
       $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL
       FROM PRODUTO AS P INNER JOIN PRODUTO_IMAGEM AS PI
       ON P.PRODUTO_ID = PI.PRODUTO_ID
@@ -136,6 +136,16 @@
                                 echo "<p class='preco-destaque'>R$ {$detalhe["PRODUTO_PRECO"]}</p>";
                             }
 
+                            if($detalhe["PRODUTO_ATIVO"])
+                            {
+                                echo "<p class='informacoes-texto'><i class='fa-solid fa-circle-check'></i> Ativo </p>";
+                                
+                            }
+                            else
+                            {
+                                echo "<p class='informacoes-texto'><i class='fa-solid fa-circle-exclamation'></i> Inativo </p>";
+                            }
+
                             echo "<p class='informacoes-texto'><i class='fa-solid fa-book-open' style='color:purple; margin-right:6px;'></i>Gênero: {$categoria["CATEGORIA_NOME"]}</p>";
                             
                             //Checando se existe o número da qtd em estoque
@@ -153,6 +163,8 @@
                             else {
                                 echo "<p class='informacoes-texto'><i class='fa-solid fa-box' style='color:red; margin-right:10px;'></i>Estoque: Sem informações</p>";
                             }
+
+                            
                             
                             echo "<p class='informacoes-texto'><strong>Descrição: </strong>{$detalhe["PRODUTO_DESC"]} </p>"
                         ?>
@@ -167,7 +179,5 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../../JavaScript/filtro.js"></script>
-<script src= "../../JavaScript/editar-produto.js"></script>
-<script src= "../../JavaScript/imgs.js"></script>
+<script src= "../../JavaScript/produto.js"></script>
 </html>

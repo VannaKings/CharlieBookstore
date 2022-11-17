@@ -1,10 +1,3 @@
-//Single-pag
-const nav = document.querySelectorAll(".navegador .nav .filtro");
-console.log(nav)
-const secoes = document.querySelectorAll(".secao-principal")
-
-filtro(nav, secoes);
-
 //Categorias e produtos
 const navProduto = document.querySelectorAll(".filter-categoria a");
 console.log(navProduto)
@@ -43,4 +36,17 @@ function filtro(navs, divs) {
             })
         })
     })
+}
+
+//Detalhes - Imagens
+let imgs = Array.from(document.querySelectorAll(".imgs"));
+let imgDestaque = document.querySelector(".img-principal");
+
+imgs.forEach(img => {
+    img.addEventListener("click", mudarImagem)
+});
+
+function mudarImagem(){
+    let src = this.getAttribute("src");
+    imgDestaque.setAttribute("src", src)
 }

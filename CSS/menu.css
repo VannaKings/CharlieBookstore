@@ -457,6 +457,16 @@ nav .collapse
     justify-content: space-around;
 }
 
+.fa-circle-check
+{
+    color: rgb(109, 210, 109);
+}
+
+.fa-circle-exclamation
+{
+    color: red;
+}
+
 /* Seção Categoria */
 
 .btn-primary .fa-solid 

@@ -144,7 +144,7 @@
                     }
                     else
                     {
-                      echo '<td class="ativo-tabela"><i class="fa-solid fa-circle-exclamation"></i></td>';
+                      echo '<td class="ativo-tabela inativo"><i class="fa-solid fa-circle-exclamation"></i></td>';
                     }                                        
                       
                     echo "
