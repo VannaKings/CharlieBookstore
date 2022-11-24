@@ -51,6 +51,5 @@ function addValor(array,input){
         return;
     }
     input.value = array.innerText.trim();
-    // console.log(array.innerText.trim());
 }
 

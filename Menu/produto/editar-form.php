@@ -39,7 +39,7 @@
       WHERE P.PRODUTO_ID = " . $id . " AND PI.IMAGEM_ORDEM = 1")->fetch();
 
       //Pegando todas as imagens
-      $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL
+      $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL, PI.IMAGEM_ID
       FROM PRODUTO AS P INNER JOIN PRODUTO_IMAGEM AS PI
       ON P.PRODUTO_ID = PI.PRODUTO_ID
       WHERE P.PRODUTO_ID = " . $id . "");
@@ -107,7 +107,7 @@
           <h1 style= "margin-left:0">Editar</h1>
           
           <div class="container-teste">
-            <form class="form-adm" Action="edita-produto.php" method="POST">
+            <form class="form-adm" Action="edita-produto.php" method="POST" style='display:flex; max-height: 500px'>
               <div class="modal-body">
                 <div class="form-group">
                   <input type="text" name="id" id="idProduto" style = "display:none">
@@ -153,30 +153,10 @@
                     </div>                 
                   </div>
                 </div>
-                <div class="col" style="margin-top:10px">
-                  <label for="formFile" class="form-label">Imagens:</label>
-                  <div class="img-list-editar" >
-                    <?php 
-                      foreach ($imagens as $imagem)
-                      {
-                          echo "<div style='margin-right:10px' class='container-img'>
-                                  <div class='imgs'>
-                                    <img src={$imagem["IMAGEM_URL"]}>
-                                  </div>
-                                  <div class='input-group flex-nowrap'>
-                                    <span class='input-group-text'><i class='fa-solid fa-camera'></i></span>
-                                    <input class='form-control' type='file' name='imagem[]' required>
-                                  </div>
-                                </div>";                          
-                      }
-                    ?>
-                  </div>
-                  
-                                      
-                </div>
+                
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Descrição:</label>
-                  <textarea name="desc" class="form-control inputDesc" id="message-text">
+                  <textarea name="desc" class="form-control inputDesc" id="message-text" rows='10'>
                   <?php
                     echo $detalhe["PRODUTO_DESC"];
                   ?>
@@ -189,9 +169,65 @@
                   </label>
                 </div>
               </div>
+
+              <div class="col" style="margin-top:10px">
+                  <label for="formFile" class="form-label">Imagens:</label>
+                  <div class="img-list-editar" >
+                    <?php 
+                      foreach ($imagens as $imagem)
+                      {
+                          echo "<div style='margin-right:10px' class='container-img'>
+                                  <div class='imgs' style='margin-left:0;'>
+                                    <img src={$imagem["IMAGEM_URL"]} >
+                                  </div>
+
+                                  <p class='ordem' style='display:none'>{$imagem["IMAGEM_ORDEM"]}</p>
+                                  <p class='id' style='display:none'>{$imagem["IMAGEM_ID"]}</p>
+                                  
+                                  <div>
+                                    <button type='button' class='btn btn-primary btn-editar-imagem' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-imagem'>Trocar imagem</button>
+                                  </div>
+                                </div>";                          
+                      }
+                    ?>
+                  </div>                                
+              </div>
             </form>
           </div>
         </div>
+
+        <div class="modal fade" id="staticBackdrop-editar-imagem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <form class="form-adm" Action="edita-categoria.php" method="POST">
+                    <div class="modal-body">
+
+                      <input type="hidden" name="id" class="inputId" value=''>
+
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ordem:</label>
+                      </div>
+
+                      <div class='input-group flex-nowrap'>
+                        <input name="ordem" type="number" class="form-control inputOrdem" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '1' step = '1'  value='' style="max-width:70px"required>
+                        <input class='form-control' type='file' name='imagem[]' required>
+                      </div>
+                      
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
       
       </section>
     </main>
@@ -200,5 +236,5 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <!-- JavaScript -->
-<script src= "../../JavaScript/editar-categoria.js"></script>
+<script src= "../../JavaScript/editar-imagem.js"></script>
 </html>
