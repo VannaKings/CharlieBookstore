@@ -28,7 +28,12 @@
       //Inicia o banco de dados
       include "../query-selector.php";
       //Pega as querys realizadas
-      require_once "../Login/autentica-login.php";
+      session_start();
+
+      // Se existir a marcacao de estar logado
+      if(isset($_SESSION["logado"]) == false) {
+          header("Location: ../Login/login-adm.php");
+      }
     ?>
 
     <!-- Menu -->
@@ -47,33 +52,18 @@
             </p>
             <p class="cargo">Administrador</p>
         </div>
-        <div class="navegador-principal">
-                <!-- Navegador Perfil -->
-            <div class="icons">
-                <i class="fa-solid fa-house" style="color:#ed8863;"></i>                
-                <i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i>
-            </div>
-                <!-- Nav com data-filter -->     
-            <nav class="nav-perfil nav">  
-                <a class="filtro" href="home.php">Home</a>          
-                <a href="../logout-adm.php">Sair</a>
-            </nav>            
-        </div>
-        <h1>Navegador</h1>
-        <div class="navegador-secundario">
-            <!-- Navegador Funções -->
-            <div class="icons">
-                <i class="fa-solid fa-gear" style="color:#1195d3;"></i>
-                <i class="fa-solid fa-list" style="color:#4ed5a3;"></i>
-                <i class="fa-solid fa-book" style="color:#4e4ed5;"></i>
-            </div>
-                <!-- Nav com data-filter -->
-            <nav class="nav-funcoes nav">
-                <a class="filtro" href= "admin/admin.php">Configuração</a>
-                <a class="filtro" href= "categoria/categoria.php">Categorias</a>
-                <a class="filtro" href= "produto/produto.php">Produtos</a>
-            </nav>
-        </div>
+        <!-- Navegador Perfil -->   
+        <ul class="nav-vertical">  
+            <li style="background-color:#ed8863;"><i class="fa-solid fa-house" style="color:white;"></i><a class="filtro" style="color:white;" href="home.php">Home</a></li>          
+            <li><i class="fa-solid fa-unlock" style="color: rgb(251, 101, 101);"></i><a href="../logout-adm.php">Sair</a></li>
+        </ul>    
+        <h1>Navegador</h1>        
+        <!-- Nav seções -->
+        <ul class="nav-vertical">
+            <li><i class="fa-solid fa-gear" style="color:#1195d3;"></i><a class="filtro" href= "admin/admin.php">Configuração</a></li>
+            <li><i class="fa-solid fa-list" style="color:#4ed5a3;"></i><a class="filtro" href= "categoria/categoria.php">Categorias</a></li>
+            <li><i class="fa-solid fa-book" style="color:#4e4ed5;"></i><a class="filtro" href= "produto/produto.php">Produtos</a><li>
+        </ul>
     </section>
     
     <!-- Bootstrap (com style dentro em algumas tags) -->
@@ -82,7 +72,7 @@
         <nav class="navegador navbar navbar-expand-lg" style="background-color: #61cdff;">
           <!-- Nav com data-filter -->
           <div class="nav  navbar navbar-expand-lg ">
-              <a class="nav-link" href= "home.php" style="color: white; font-size: 22px;">Home</a>
+              <a class="nav-link nav1" href= "home.php" style="color: white; font-size: 22px;">Home</a>
               <a class="nav-link" href= "admin/admin.php" style="color: white; font-size: 22px;">Administração</a>
               <a class="nav-link" href= "categoria/categoria.php" style="color: white; font-size: 22px;">Categorias</a>            
               <a class="nav-link" href= "produto/produto.php" style="color: white; font-size: 22px;">Produtos</a>              
@@ -93,6 +83,7 @@
       <!-- Home -->
 
       <section class="secao-principal home">
+        <div class="container-alinhamento">
         <h1>Acesso Administrativo</h1>
         <h3>Veja quais são os principais acessos administrativos disponíveis para organizar seu site.</h3>
         <div class="funcoes">
@@ -101,7 +92,7 @@
             <div class="card-body nav">
               <h5 class="card-title">Organize suas categorias</h5>
               <p class="card-text">Adicione, edite ou exclua categorias existentes no seu site</p>
-              <a href="#" class="btn btn-primary filtro" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="categorias">Organizar categorias</a>
+              <a href="categoria/categoria.php" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="categorias">Organizar categorias</a>
             </div>
           </div>
           <div class="card navegador">
@@ -109,7 +100,7 @@
             <div class="card-body nav">
               <h5 class="card-title">Customize seus Produtos</h5>
               <p class="card-text">Personalize a visualização dos seus produtos ou adicione novos</p>
-              <a href="#" class="btn btn-primary filtro" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="produtos">Editar produtos</a>
+              <a href="produto/produto.php" class="btn btn-primary" style="background-color: #ed8863; border-color: #ed8863; color: white;" data-filter="produtos">Editar produtos</a>
             </div>
           </div>
           <div class="card navegador">
@@ -117,9 +108,10 @@
             <div class="card-body nav">
               <h5 class="card-title">Edite os Administradores</h5>
               <p class="card-text">Adicione ou edite informações de outros administradores</p>
-              <a href="#" class="btn btn-primary filtro" data-filter="configuracao" style="background-color: #ed8863; border-color: #ed8863; color: white">Configurar admins</a>
+              <a href="admin/admin.php" class="btn btn-primary" data-filter="configuracao" style="background-color: #ed8863; border-color: #ed8863; color: white">Configurar admins</a>
             </div>
           </div>
+        </div>
         </div>
       </section>
     </main>
