@@ -7,8 +7,8 @@
     <title>Login - Charlie Bookstore</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/detalhes.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">    
     <link rel="stylesheet" type="text/css" href="../../CSS/editar-produto.css">
 
     <!-- Bootstrap -->
@@ -40,10 +40,9 @@
       WHERE P.PRODUTO_ID = " . $id . " AND PI.IMAGEM_ORDEM = 1")->fetch();
 
       //Pegando todas as imagens
-      $cmdImagem = $pdo->query("SELECT P.PRODUTO_ID, PI.IMAGEM_ORDEM, PI.IMAGEM_URL, PI.IMAGEM_ID
-      FROM PRODUTO AS P INNER JOIN PRODUTO_IMAGEM AS PI
-      ON P.PRODUTO_ID = PI.PRODUTO_ID
-      WHERE P.PRODUTO_ID = " . $id . "");
+      $cmdImagem = $pdo->query("SELECT PRODUTO_ID, IMAGEM_ORDEM, IMAGEM_URL, IMAGEM_ID
+      FROM PRODUTO_IMAGEM    
+      WHERE PRODUTO_ID = " . $id . "");
 
       $imagens = [];
       
@@ -102,13 +101,13 @@
         </nav>
       <div>
 
-      <!-- Seção Categoria -->
+      <!-- Seção Editar Produto  -->
       <section class="secao-principal categorias">
         <div class="container-alinhamento" style= "margin-left:70px">
           <h1 style= "margin-left:0">Editar</h1>
           
           <div class="container-teste">
-            <form class="form-adm" Action="edita-produto.php" method="POST" >
+            <form class="form-adm form-produto-editar" Action="edita-produto.php" method="POST" >
               <div class="modal-body">
                 <div class="form-group">
                   <input type="text" name="id" id="idProduto" style = "display:none">
@@ -157,7 +156,7 @@
                 
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">Descrição:</label>
-                  <textarea name="desc" class="form-control inputDesc" id="message-text" rows='10'>
+                  <textarea name="desc" class="form-control inputDesc" id="message-text" rows='7'>
                   <?php
                     echo $detalhe["PRODUTO_DESC"];
                   ?>
@@ -169,9 +168,10 @@
                     Produto ativo
                   </label>
                 </div>
+                <button type='submit' class='btn btn-success'>Salvar alterações</button>
               </div>
 
-              <div class="col" style="margin-top:10px">
+              <div class="col">
                   <label for="formFile" class="form-label">Imagens:</label>
                   <div class="img-list-editar" >
                     <?php 
@@ -186,7 +186,7 @@
                                   <p class='id' style='display:none'>{$imagem["IMAGEM_ID"]}</p>
                                   
                                   <div class = 'container-button'>
-                                    <button type='button' class='btn btn-primary btn-editar-imagem' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-imagem'>Trocar imagem</button>
+                                    <button type='button' class='btn btn-primary btn-editar-imagem' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-imagem'><i class='fa-solid fa-pen-to-square'></i> Editar</button>
                                   </div>
                                 </div>";                          
                       }
@@ -205,7 +205,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
-                  <form class="form-adm" Action="edita-categoria.php" method="POST">
+                  <form class="form-adm" Action="edita-imagem.php" method="POST">
                     <div class="modal-body">
 
                       <input type="hidden" name="id" class="inputId" value=''>

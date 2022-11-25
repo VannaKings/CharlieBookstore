@@ -107,7 +107,7 @@
 
       <section class= "secao-principal produtos secao-produtos">
         <div class="container-principal">
-            <h1>Detalhes</h1>      
+            <h1 style="margin-left:0; min-width:1200px;">Detalhes</h1>      
             <div class="detalhes-produto">
                 <div class="container-detalhes">
                     <!-- Imagens -->

@@ -30,6 +30,8 @@ else{
 }
 
 //Prepara o update
+$cmd = $pdo->prepare("UPDATE PRODUTO SET PRODUTO_NOME = :nome, PRODUTO_DESC = :descricao, PRODUTO_PRECO = :preco, PRODUTO_DESCONTO = :desconto, CATEGORIA_ID = :categoria, PRODUTO_ATIVO = :ativo WHERE PRODUTO_ID = :id");
+
 $cmd->bindValue(":nome", $nome);
 $cmd->bindValue(":descricao", $desc);
 $cmd->bindValue(":preco", $preco);
