@@ -9,7 +9,8 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../../CSS/menu.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/detalhes.css">
-    
+    <link rel="stylesheet" type="text/css" href="../../CSS/editar-produto.css">
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     
@@ -107,7 +108,7 @@
           <h1 style= "margin-left:0">Editar</h1>
           
           <div class="container-teste">
-            <form class="form-adm" Action="edita-produto.php" method="POST" style='display:flex; max-height: 500px'>
+            <form class="form-adm" Action="edita-produto.php" method="POST" >
               <div class="modal-body">
                 <div class="form-group">
                   <input type="text" name="id" id="idProduto" style = "display:none">
@@ -184,7 +185,7 @@
                                   <p class='ordem' style='display:none'>{$imagem["IMAGEM_ORDEM"]}</p>
                                   <p class='id' style='display:none'>{$imagem["IMAGEM_ID"]}</p>
                                   
-                                  <div>
+                                  <div class = 'container-button'>
                                     <button type='button' class='btn btn-primary btn-editar-imagem' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-imagem'>Trocar imagem</button>
                                   </div>
                                 </div>";                          

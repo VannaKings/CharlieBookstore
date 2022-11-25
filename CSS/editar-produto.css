@@ -1,0 +1,16 @@
+.form-adm{
+    display:flex; 
+    max-height: 500px;
+    justify-content: space-between;
+}
+.form-adm> div:first-child{
+    margin-right: 50px;
+}
+.container-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+.btn-editar-imagem{
+    font-size: 12px!important;    
+}
