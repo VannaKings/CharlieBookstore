@@ -205,18 +205,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
-                  <form class="form-adm" Action="edita-imagem.php" method="POST">
+                  <form class="form-adm" Action="edita-imagem.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
 
-                      <input type="hidden" name="id" class="inputId" value=''>
+                      <input type="text" name="id" id="inputId" value=''>
 
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Ordem:</label>
                       </div>
 
                       <div class='input-group flex-nowrap'>
+                        
                         <input name="ordem" type="number" class="form-control inputOrdem" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '1' step = '1'  value='' style="max-width:70px"required>
-                        <input class='form-control' type='file' name='imagem[]' required>
+                        <input class='form-control' type='file' name='imagem' required>
                       </div>
                       
 

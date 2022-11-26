@@ -1,12 +1,10 @@
 //Pegando os input
-let id = document.getElementsByClassName('inputId');
+let id = document.getElementById('inputId');
 let ordemInput = document.querySelector('.inputOrdem');
-
-
+console.log(id, ordemInput)
 //Pegando os valores da tabela e armazenando em um array
 let idImagem = Array.from(document.getElementsByClassName("id"));
 let ordem = Array.from(document.getElementsByClassName("ordem"));
-
 let button = Array.from(document.getElementsByClassName("btn-editar-imagem"));
 
 //Chamando a função em todos os botões e atribuindo a chave de cada um com o index do array
@@ -28,6 +26,6 @@ function showEdit(){
 //Coloca no input o valor do array que irá ser editado
 function addValor(array,input){
     input.value = array.innerText.trim();
-    console.log(input);
+    // console.log(input);
 }
 
