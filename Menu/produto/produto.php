@@ -27,6 +27,19 @@
       include "../../query-selector.php";
       //Pega as querys realizadas
       require_once "../../Login/autentica-login.php";
+
+      //Checando se há um cadastro novo
+      if(isset($_GET['cadastrado']))
+      {
+        $cadastrado = $_GET['cadastrado'];
+      }
+      
+      //Checando se há uma nova edição
+      if(isset($_GET['editado']))
+      {
+        $editado = $_GET['editado'];
+      }
+
     ?>
 
     <!-- Menu -->
@@ -168,7 +181,7 @@
 
                         echo "<div class='botoes-produto'>
                           <button type='button' class='btn btn-primary btn-editar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-editar-produto'>
-                            <a href='editar-form.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-pen-to-square'></i>Editar</a>
+                            <a href='update-form.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-pen-to-square'></i>Editar</a>
                           </button>
                           <button type='button' class='btn btn-secondary btn-visualizar-produto' data-bs-toggle='modal' data-bs-target='#staticBackdrop-visualizar-produto'>
                             <a href='detalhes.php?id={$produto["PRODUTO_ID"]}' style='color: white; text-decoration: none;'><i class='fa-solid fa-magnifying-glass'></i>Detalhes</a>

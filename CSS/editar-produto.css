@@ -1,3 +1,18 @@
+:root
+{
+    --marromEscuro: #5c3d2f;
+    --laranja: #ed8863;
+    --marrom: #be8c66;
+    --bege: #e4d1ba;
+    --azul: #1195d3;
+    --azulClaro: #85d1f4;
+    --preto: rgb(70, 70, 70);
+    --laranjaClaro: rgb(248, 202, 162);
+    --verde: rgb(109, 210, 109);
+    --cinza: rgb(219, 219, 219);
+}
+
+
 /*Formulário de editar*/
 .form-produto-editar{
     display:flex; 
@@ -19,14 +34,56 @@
     margin-top: 5px;
 }
 
+.container-button i
+{
+    margin-right: 5px!important;
+}
+
 .btn-editar-imagem{
   
     font-size: 15px!important;  
     padding: 5px 25px!important;  
 }
 
-.btn-success
+/*Botões de salvar e detalhes*/
+
+.btn-success, .btn-secondary
 {
     margin-top: 10px;
     padding: 10px 20px;
+}
+
+.btn-secondary a
+{
+    color: white;
+    text-decoration: none;
+}
+
+.btn-secondary a:hover
+{
+    color: white;
+    text-decoration: none;
+}
+
+.container-btn-update i 
+{
+    margin-right: 5px;
+}
+
+/*Botões de salvar e detalhes*/
+
+.container-adicionar
+{
+    border: 1px dashed var(--azul);
+    margin: 0px 15px 48px 5px;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    border-width: medium;
+}
+
+.container-adicionar button i
+{
+    font-size: 20px;
 }

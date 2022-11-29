@@ -26,6 +26,18 @@
       include "../../query-selector.php";
       //Pega as querys realizadas
       require_once "../../Login/autentica-login.php";
+
+      //Checando se há um cadastro novo
+      if(isset($_GET['cadastrado']))
+      {
+        $cadastrado = $_GET['cadastrado'];
+      }
+      
+      //Checando se há uma nova edição
+      if(isset($_GET['editado']))
+      {
+        $editado = $_GET['editado'];
+      }
     ?>
 
     <!-- Menu -->

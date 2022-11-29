@@ -29,7 +29,19 @@
       //Pega as querys realizadas
       require_once "../../Login/autentica-login.php";
 
+      //Pegando o id do produto
       $id = $_GET['id'];
+
+      //Checando se foi realizado alguma tentativa de edição
+      if(isset($_GET['editado']))
+      {
+        $editado = $_GET['editado'];
+      }
+
+      if(isset($_GET['cadastrado']))
+      {
+        $cadastrado = $_GET['cadastrado'];
+      }
 
       //Pegando os detalhes que ficarão em destaque
       $detalhe = $pdo->query("SELECT P.PRODUTO_ID, P.PRODUTO_NOME, P.PRODUTO_PRECO, P.PRODUTO_DESCONTO, (P.PRODUTO_PRECO-P.PRODUTO_DESCONTO) AS DESCONTO, PI.IMAGEM_URL, P.PRODUTO_DESC, P.PRODUTO_ATIVO, PE.PRODUTO_QTD 
@@ -50,6 +62,7 @@
         $imagens[] = $linha;
       }
 
+      //Pegando nome e id de categoria do produto
       $categoria= $pdo->query("SELECT C.CATEGORIA_NOME, P.CATEGORIA_ID
       FROM PRODUTO AS P INNER JOIN CATEGORIA AS C
       ON P.CATEGORIA_ID = C.CATEGORIA_ID
@@ -105,9 +118,45 @@
       <section class="secao-principal categorias">
         <div class="container-alinhamento" style= "margin-left:70px">
           <h1 style= "margin-left:0">Editar</h1>
+
+          <?php
+              //Alerta sobre situação do cadastrar
+              if(isset($cadastrado))
+              {
+                if(!$cadastrado){
+                  echo '<div class="alert alert-danger" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
+                        Erro ao cadastrar imagem, por favor tente novamente
+                      </div>';
+                }
+                else
+                {
+                  echo '<div class="alert alert-success" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
+                        Cadastro realizado com sucesso!
+                      </div>';
+                }
+              }
+
+              //Alerta sobre situação do editar
+              if(isset($editado))
+              {
+                if(!$editado){
+                  echo '<div class="alert alert-danger" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
+                        Erro ao editar, por favor tente novamente
+                      </div>';
+                }
+                else
+                {
+                  echo '<div class="alert alert-success" role="alert" style="margin:10px 0 0 20px; max-width: 950px">
+                        Alteração de imagem realizada com sucesso!
+                      </div>';
+                }
+              }
+            ?>
           
           <div class="container-teste">
+
             <form class="form-adm form-produto-editar" Action="edita-produto.php" method="POST" >
+              
               <div class="modal-body">
                 <div class="form-group">
                   <input type="text" name="id" id="idProduto" style = "display:none">
@@ -168,7 +217,12 @@
                     Produto ativo
                   </label>
                 </div>
-                <button type='submit' class='btn btn-success'>Salvar alterações</button>
+                <div class='container-btn-update'>
+                  <button type='submit' class='btn btn-success'><i class="fa-regular fa-floppy-disk"></i>Salvar</button>
+                  <button type='button' class='btn btn-secondary'>
+                    <a href="<?php echo "detalhes.php?id=$id";?>"><i class="fa-solid fa-magnifying-glass"></i>Detalhes</a>
+                  </button>
+                </div>
               </div>
 
               <div class="col">
@@ -191,45 +245,91 @@
                                 </div>";                          
                       }
                     ?>
+                    <div class='container-adicionar'>
+                      <button type='button' class='btn btn-link' data-bs-toggle='modal' data-bs-target='#staticBackdrop-adicionar-imagem'><i class="fa-solid fa-plus"></i></button>
+                    </div>
                   </div>                                
               </div>
             </form>
           </div>
         </div>
 
+        <!-- Editar Imagem -->              
+
         <div class="modal fade" id="staticBackdrop-editar-imagem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="edita-imagem.php" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                  
+                  <!-- id do produto -->
+                  <input type="hidden" name="produto" value='<?php echo $id?>'>
+                  <!-- id da imagem -->
+                  <input type="hidden" name="id" id="inputId" value=''>                      
+
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Ordem:</label>
                   </div>
 
-                  <form class="form-adm" Action="edita-imagem.php" method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
+                  <div class='input-group flex-nowrap'>
+                    
+                    <input name="ordem" type="number" class="form-control inputOrdem" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '1' step = '1'  value='' style="max-width:70px"required>
+                    <input class='form-control' type='file' name='imagem' required>
+                  </div>
+                  
 
-                      <input type="text" name="id" id="inputId" value=''>
-
-                      <div class="form-group">
-                        <label for="message-text" class="col-form-label">Ordem:</label>
-                      </div>
-
-                      <div class='input-group flex-nowrap'>
-                        
-                        <input name="ordem" type="number" class="form-control inputOrdem" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '1' step = '1'  value='' style="max-width:70px"required>
-                        <input class='form-control' type='file' name='imagem' required>
-                      </div>
-                      
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                      <button type="submit" class="btn btn-primary btn-adicionar">Editar</button>
-                    </div>
-                  </form>
                 </div>
-              </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Salvar</button>
+                </div>
+              </form>
+
             </div>
+          </div>
+        </div>
+
+        <!-- Adicionar Imagem -->
+
+        <div class="modal fade" id="staticBackdrop-adicionar-imagem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+              
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Adicionar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <form class="form-adm" Action="criar-imgs.php" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                  
+                  <!-- id do produto -->
+                  <input type="hidden" name="produto" value='<?php echo $id?>'>                   
+
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Ordem:</label>
+                  </div>
+
+                  <div class='input-group flex-nowrap'>                        
+                    <input name="ordem" type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="addon-wrapping" min = '1' step = '1'  value='' style="max-width:70px"required>
+                    <input class='form-control' type='file' name='imagem' required>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary btn-adicionar">Salvar</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
       
       </section>
     </main>

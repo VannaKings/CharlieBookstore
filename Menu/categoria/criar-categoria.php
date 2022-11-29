@@ -21,10 +21,10 @@ $isInputEmpty = $nome;
 if($isInputEmpty){
     $status = $cmd->execute();
     $cadastrado = true;
-    include 'categoria.php';
+    header("Location: /CharlieBookstore/Menu/categoria/categoria.php?cadastrado=$cadastrado");
 } 
 else{
     $cadastrado = false;
-    include 'categoria.php';
+    header("Location: /CharlieBookstore/Menu/categoria/categoria.php?cadastrado=$cadastrado");
 }
     

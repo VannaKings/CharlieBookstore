@@ -36,11 +36,11 @@ $cmd->bindValue(":id", $id);
 if($nome){
     $cmd->execute(); 
     $editado = true; 
-    include 'categoria.php';
+    header("Location: /CharlieBookstore/Menu/categoria/categoria.php?editado=$editado");
 }
 else{
     $editado = false; 
-    include 'categoria.php';
+    header("Location: /CharlieBookstore/Menu/categoria/categoria.php?editado=$editado");
 }
 
 

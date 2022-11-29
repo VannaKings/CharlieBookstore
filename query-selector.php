@@ -9,8 +9,8 @@ include 'start-mysql.php';
 
 //Query SQL para buscar administradores com @charlie
 $cmd = $pdo->query("SELECT ADM_EMAIL, ADM_SENHA, ADM_ATIVO, ADM_NOME, ADM_ID 
-FROM ADMINISTRADOR 
-WHERE ADM_EMAIL LIKE '%@charlie.com%'");
+FROM ADMINISTRADOR
+WHERE ADM_EMAIL NOT LIKE ''");
 
 $admins = [];
 
@@ -22,12 +22,11 @@ while($linha = $cmd->fetch(PDO::FETCH_ASSOC))
 
 //Categoria
 $cmdCategoria = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO 
-FROM CATEGORIA 
-WHERE CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Histórias%'");
+FROM CATEGORIA");
 
 $cmdCategoriaAtiva = $pdo->query("SELECT CATEGORIA_ID, CATEGORIA_NOME, CATEGORIA_DESC, CATEGORIA_ATIVO 
 FROM CATEGORIA 
-WHERE (CATEGORIA_DESC LIKE 'Livros%' OR CATEGORIA_DESC LIKE 'Histórias%') AND CATEGORIA_ATIVO = 1");
+WHERE CATEGORIA_ATIVO = 1");
 
 $categorias = [];
 $categoriasAtivas = [];

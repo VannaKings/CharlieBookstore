@@ -26,11 +26,11 @@ $isInputEmpty = $nome && $email && $senha;
 if($isInputEmpty){
     $status = $cmd->execute();
     $cadastrado = true;
-    include 'admin.php';
+    header("Location: /CharlieBookstore/Menu/admin/admin.php?cadastrado=$cadastrado");
 } 
 else{
     $cadastrado = false;
-    include 'admin.php';
+    header("Location: /CharlieBookstore/Menu/admin/admin.php?cadastrado=$cadastrado");
 }
 
     

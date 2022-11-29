@@ -26,6 +26,18 @@
       include "../../query-selector.php";
       //Pega as querys realizadas
       require_once "../../Login/autentica-login.php";
+
+      //Checando se há um cadastro novo
+      if(isset($_GET['cadastrado']))
+      {
+        $cadastrado = $_GET['cadastrado'];
+      }
+      
+      //Checando se há uma nova edição
+      if(isset($_GET['editado']))
+      {
+        $editado = $_GET['editado'];
+      }
     ?>
 
     <!-- Menu -->
@@ -230,9 +242,10 @@
                           <label for="inputEmail4">Email</label>
                           <input name="email" type="email" class="form-control inputEmail" id="inputEmail4" placeholder="Email" required>
                         </div>          
-                        <div class="col">
+                        <div class="col senha-admin">
                           <label for="inputPassword4">Senha</label>
                           <input name="senha" type="password" class="form-control inputSenha" id="inputPassword4" placeholder="Senha" required>
+                          <i class="fa-solid fa-eye-slash"></i>
                         </div>                 
                       </div>
                       <div class="form-group">

@@ -30,11 +30,11 @@ $cmd->bindValue(":id", $id);
 if($nome && $email && $senha){
     $cmd->execute();
     $editado = true;
-    include 'admin.php';
+    header("Location: /CharlieBookstore/Menu/admin/admin.php?editado=$editado");
 }
 else{
     $editado = false;
-    include 'admin.php'; 
+    header("Location: /CharlieBookstore/Menu/admin/admin.php?editado=$editado"); 
 }
     
     

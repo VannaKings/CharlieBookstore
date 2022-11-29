@@ -7,11 +7,13 @@ $nome = $_POST['nome'];
 
 $preco = $_POST['preco'];
 $desconto = $_POST['desconto'];
+
 $estoque = $_POST['estoque'];
 $categoria = $_POST['categoria'];
+
 if(is_float($estoque)){
     $cadastrado = false;
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?cadastrado=$cadastrado");
 }
 
 //Verificando se a descrição está vazia
@@ -30,6 +32,7 @@ if(isset($_POST['ativo'])){
 else{
     $ativo = 0;
 }
+
 //Prepara o insert
 $query = $pdo->prepare("INSERT INTO PRODUTO(PRODUTO_NOME, PRODUTO_DESC, PRODUTO_PRECO, PRODUTO_DESCONTO, PRODUTO_ATIVO, CATEGORIA_ID) 
 VALUES(:nome, :descricao, :preco, :desconto, :ativo, :categoria)");
@@ -51,13 +54,14 @@ if($query->execute())
 else
 {
     $cadastrado = false;
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?cadastrado=$cadastrado");
 }
-$IMGUR_CLIENT_ID = "046874d6e062fb8";
 
+
+$IMGUR_CLIENT_ID = "046874d6e062fb8";
     
 //
-// Se nao nenhum arquivo for selecionado, entao informa que precisa selecionar um 
+// Se nenhum arquivo for selecionado, entao informa que precisa selecionar um 
 //
 if(empty($_FILES["imagem"]["name"])){ 
     die('Selecione um arquivo para fazer o upload');
@@ -144,45 +148,28 @@ for ($i=0; $i < count($arquivo['name']) ; $i++)
     
     $cmd = $pdo->prepare("INSERT INTO PRODUTO_IMAGEM(PRODUTO_ID, IMAGEM_URL, IMAGEM_ORDEM) 
             VALUES('" . $id . "', '" . $urlIMG . "', '" . $ordemImagem . "')");
+    
     //Checa se o nome tiver algo e executa 
-
     try {
         $cmd->execute();
         $cadastrado = true;
     } catch (Exception $e) {
         $cadastrado = false;
-        include 'produto.php';
+        header("Location: /CharlieBookstore/Menu/produto/produto.php?cadastrado=$cadastrado");
     }
-    // if(){    
-        
-    //     // include 'produto.php';
-    // }
-    // else{
-        
-    // }
-    
     
 }
 
 $cmd = $pdo->prepare("INSERT INTO PRODUTO_ESTOQUE(PRODUTO_ID, PRODUTO_QTD) 
 VALUES('" . $id . "', '" . $estoque . "')");
 
-//Checa se o nome tiver algo e executa 
-// if($cmd->execute()){    
-//     $cadastrado = true;
-//     include 'produto.php';
-// }
-// else{
-//     $cadastrado = false;
-//     include 'produto.php';
-// }
 try{
     $cmd->execute();    
     $cadastrado = true;
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?cadastrado=$cadastrado");
 } catch(Exception $e){
     $cadastrado = false;
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?cadastrado=$cadastrado");
 }
  
 

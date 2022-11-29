@@ -1,4 +1,4 @@
-/* Cores da loja */
+/* Cores do site */
 :root
 {
     --marromEscuro: #5c3d2f;
@@ -324,6 +324,13 @@ nav .collapse
     font-size: 36px;
 }
 
+.senha-admin i
+{
+    position: absolute;
+    right: 30px;
+    bottom: 62px;
+    cursor: pointer;
+}
 
 
 .form-check
@@ -471,7 +478,7 @@ nav .collapse
 
 .btn-primary .fa-solid 
 {
-    margin-right: 10px!important;
+    margin-right: 10px;
 }
 
 

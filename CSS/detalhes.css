@@ -1,5 +1,17 @@
 /* Seção Detalhes(produto)  */
-
+:root
+{
+    --marromEscuro: #5c3d2f;
+    --laranja: #ed8863;
+    --marrom: #be8c66;
+    --bege: #e4d1ba;
+    --azul: #1195d3;
+    --azulClaro: #85d1f4;
+    --preto: rgb(70, 70, 70);
+    --laranjaClaro: rgb(248, 202, 162);
+    --verde: rgb(109, 210, 109);
+    --cinza: rgb(219, 219, 219);
+}
 
 h2
 {
@@ -21,7 +33,7 @@ h2
     width: 500px;
     margin-left: 20px;
     height: 600px;
-    border: 2px solid rgb(219, 219, 219);
+    border: 2px solid var(--cinza);
 }
 
 .img-list
@@ -38,7 +50,7 @@ h2
 .img-list li
 {
     margin-bottom: 10px;
-    border: 2px solid rgb(219, 219, 219);
+    border: 2px solid var(--cinza);
     width: 100px;
     height: 100px;
     display: flex;
@@ -111,7 +123,7 @@ h2
     justify-content: center;
     width: 130px;
     height: 100px;
-    border: 2px solid rgb(219, 219, 219);
+    border: 2px solid var(--cinza);
     margin-left: 10px;
 }
 

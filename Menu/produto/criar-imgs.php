@@ -5,8 +5,8 @@ include "../../start-mysql.php";
 //Pegando o Input do usuário
 
 $ordem = $_POST['ordem'];
-$id = $_POST['id'];
 $produto = $_POST['produto'];
+$id = $_POST['produto'];
 
 $IMGUR_CLIENT_ID = "046874d6e062fb8";
 
@@ -94,20 +94,20 @@ if(in_array($fileType, $allowTypes)){
     // Formato de imagem nao permitido
     echo 'Não é permitido esse formato de imagem'; 
 }
-$cmd = $pdo->prepare("UPDATE PRODUTO_IMAGEM SET IMAGEM_URL = :urlImg, IMAGEM_ORDEM = :ordem WHERE IMAGEM_ID = :id");
 
-$cmd->bindValue(":urlImg", $urlIMG);
-$cmd->bindValue(":ordem", $ordem);
-$cmd->bindValue(":id", $id);
-// echo $id . " e " . $ordem . " e " . $urlIMG;
+//Inserindo a imagem no banco
+$cmd = $pdo->prepare("INSERT INTO PRODUTO_IMAGEM(PRODUTO_ID, IMAGEM_URL, IMAGEM_ORDEM) 
+        VALUES('" . $id . "', '" . $urlIMG . "', '" . $ordem . "')");
+
+
 //Checa se o nome tiver algo e executa 
 try {
     $cmd->execute();
-    $editado = true;
+    $cadastrado = true;
 } catch (Exception $e) {
-    $editado = false;
+    $cadastrado = false;
     
 }
-header("Location: /CharlieBookstore/Menu/produto/update-form.php?id=$produto&editado=$editado");
+header("Location: /CharlieBookstore/Menu/produto/update-form.php?id=$produto&cadastrado=$cadastrado");
     
     

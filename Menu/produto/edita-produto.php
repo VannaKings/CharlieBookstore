@@ -48,7 +48,7 @@ if($nome){
 }
 else{
     $editado = false; 
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?editado=$editado");
 }
 
 $cmd2 = $pdo->prepare("UPDATE PRODUTO_ESTOQUE SET PRODUTO_QTD = :estoque WHERE PRODUTO_ID = :id");
@@ -57,9 +57,9 @@ $cmd2->bindValue(":estoque", $estoque);
 
 if($cmd2->execute()){ 
     $editado = true;
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?editado=$editado");
 }
 else{
     $editado = false; 
-    include 'produto.php';
+    header("Location: /CharlieBookstore/Menu/produto/produto.php?editado=$editado");
 }

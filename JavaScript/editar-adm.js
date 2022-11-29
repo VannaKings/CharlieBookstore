@@ -58,3 +58,22 @@ function addValor(array,input){
     // console.log(array.innerText, input)
 }
 
+
+//Visualizar senha
+
+const btn = document.querySelector('.senha-admin i');
+console.log(btn);
+
+btn.addEventListener('click', () =>
+{
+    if(senha.type == 'password')
+    {
+        senha.type = 'text';        
+        btn.className = 'fa-solid fa-eye';
+    }
+    else
+    {
+        senha.type = 'password';
+        btn.className = 'fa-solid fa-eye-slash';
+    }
+})
