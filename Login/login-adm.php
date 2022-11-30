@@ -46,15 +46,7 @@
             </div>
             <input type="submit" value="Entrar" class="entrar">
         </form>
-        <!-- Redefinir senha -->
-        <div class="redefinir">
-            <a href="">Redefinir senha</a>
-        </div>
-        <!-- Voltar para o site -->
-        <div class="voltar">
-            <i class="fa-solid fa-left-long"></i>
-            <a href=""> Voltar para o site </a>
-        </div>
+       
     </section>
 </body>
 </html>
