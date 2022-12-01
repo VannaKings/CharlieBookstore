@@ -159,7 +159,7 @@
               
               <div class="modal-body">
                 <div class="form-group">
-                  <input type="text" name="id" id="idProduto" style = "display:none">
+                  <input type="text" name="id" id="idProduto" style = "display:none" value="<?php echo $detalhe["PRODUTO_ID"]?>">
                   <label for="inputAddress">Título:</label>
                   <input name="nome" type="text" class="form-control nome inputTitulo" id="inputName" placeholder="Nome" 
                   value="<?php echo $detalhe["PRODUTO_NOME"]?>" required>
@@ -182,7 +182,7 @@
                     <div class="input-group flex-nowrap">                      
                       <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-list"></i></span>
                       <select name="categoria" class="form-select" id="inputGroupSelect01">
-                        <option value="<?php $categoria["CATEGORIA_ID"]?>" selected><?php echo $categoria["CATEGORIA_NOME"]?></option>
+                        <option value="<?php echo $categoria["CATEGORIA_ID"]?>" selected><?php echo $categoria["CATEGORIA_NOME"]?></option>
                         <?php
                           //Percorre o nome das categoria e cria uma option para cada uma
                           foreach($categoriasAtivas as $categoria)
